@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="Malorfa Open Graph placeholder">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#2C4A3E"/>
+      <stop offset="55%" stop-color="#5C7A6A"/>
+      <stop offset="100%" stop-color="#D9D4C8"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="#F5F4F1"/>
+  <rect x="0" y="0" width="1200" height="630" fill="url(#g)" opacity="0.92"/>
+  <text x="80" y="300" fill="#FCFCFA" font-family="Georgia, serif" font-size="72">Malorfa</text>
+  <text x="80" y="360" fill="#EBE8E2" font-family="Helvetica, Arial, sans-serif" font-size="28">[PLACEHOLDER: Open Graph image]</text>
+</svg>

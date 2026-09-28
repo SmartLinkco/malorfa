@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="1200" viewBox="0 0 900 1200" role="img" aria-label="Dual-identity hero poster placeholder">
+  <defs>
+    <linearGradient id="board" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2a3340"/>
+      <stop offset="100%" stop-color="#1a1f1c"/>
+    </linearGradient>
+    <linearGradient id="garden" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#5c7a6a"/>
+      <stop offset="100%" stop-color="#2c4a3e"/>
+    </linearGradient>
+  </defs>
+  <rect width="450" height="1200" fill="url(#board)"/>
+  <rect x="450" width="450" height="1200" fill="url(#garden)"/>
+  <text x="40" y="80" fill="#ebe8e2" font-family="Georgia, serif" font-size="28">BOARDROOM</text>
+  <text x="490" y="80" fill="#fcfcfa" font-family="Georgia, serif" font-size="28">GREENHOUSE</text>
+  <text x="40" y="1120" fill="#8fa892" font-family="Helvetica, Arial, sans-serif" font-size="20">[PLACEHOLDER: Replace with client footage]</text>
+  <text x="40" y="1160" fill="#d9d4c8" font-family="Helvetica, Arial, sans-serif" font-size="16">/public/media/hero-dual-identity.mp4</text>
+  <!-- soft leaf silhouette on garden side -->
+  <path d="M680 700 C620 620 640 500 720 460 C760 560 740 660 680 700Z" fill="#8fa892" opacity="0.45"/>
+  <path d="M760 780 C720 700 760 600 820 580 C840 680 800 760 760 780Z" fill="#fcfcfa" opacity="0.2"/>
+</svg>

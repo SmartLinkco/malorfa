@@ -1,0 +1,159 @@
+@import "tailwindcss";
+
+:root {
+  --canvas: #f5f4f1;
+  --ivory: #fcfcfa;
+  --stone: #ebe8e2;
+  --sand: #d9d4c8;
+  --ink: #1a1f1c;
+  --forest: #2c4a3e;
+  --sage: #5c7a6a;
+  --moss: #8fa892;
+  --brass: #9a8560;
+}
+
+@theme inline {
+  --color-canvas: var(--canvas);
+  --color-ivory: var(--ivory);
+  --color-stone: var(--stone);
+  --color-sand: var(--sand);
+  --color-ink: var(--ink);
+  --color-forest: var(--forest);
+  --color-sage: var(--sage);
+  --color-moss: var(--moss);
+  --color-brass: var(--brass);
+  --font-sans: var(--font-source), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-cormorant), ui-serif, Georgia, serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background: var(--canvas);
+    color: var(--ink);
+    font-family: var(--font-sans), system-ui, sans-serif;
+  }
+
+  ::selection {
+    background: color-mix(in srgb, var(--sage) 35%, white);
+    color: var(--ink);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--forest);
+    outline-offset: 2px;
+  }
+
+  /* Soft custom cursor — only when JS enables .has-custom-cursor */
+  html.has-custom-cursor,
+  html.has-custom-cursor * {
+    cursor: none !important;
+  }
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-6xl px-5 md:px-8;
+  }
+
+  .section-pad {
+    @apply py-16 md:py-24;
+  }
+
+  .field-input {
+    @apply w-full rounded-sm border border-ink/15 bg-ivory px-3 py-2.5 text-sm text-ink placeholder:text-ink/40 transition-colors focus-visible:border-forest focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-forest/25;
+  }
+
+  .prose-site {
+    @apply space-y-4 text-base leading-relaxed text-ink/75 md:text-lg;
+  }
+
+  .fade-up {
+    animation: fade-up 0.7s ease-out both;
+  }
+
+  .fade-up-delay-1 {
+    animation: fade-up 0.7s ease-out 0.12s both;
+  }
+
+  .fade-up-delay-2 {
+    animation: fade-up 0.7s ease-out 0.24s both;
+  }
+
+  .fade-up-delay-3 {
+    animation: fade-up 0.7s ease-out 0.36s both;
+  }
+
+  /* Botanical micro-interaction */
+  .leaf-accent {
+    transform-origin: 40% 80%;
+    transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .group:hover .leaf-accent,
+  .leaf-accent:hover {
+    transform: rotate(-12deg) translateY(-1px);
+  }
+
+  .plant-card-hover .leaf-accent {
+    transition:
+      transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+      opacity 0.3s ease;
+  }
+
+  .plant-card-hover:hover .leaf-accent {
+    transform: rotate(10deg) scale(1.08);
+    opacity: 1;
+  }
+
+  /* Soft film grain on travel imagery — CSS only */
+  .travel-grain::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.22;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .fade-up,
+  .fade-up-delay-1,
+  .fade-up-delay-2,
+  .fade-up-delay-3 {
+    animation: none;
+  }
+
+  .leaf-accent,
+  .group:hover .leaf-accent,
+  .leaf-accent:hover,
+  .plant-card-hover:hover .leaf-accent {
+    transition: none;
+    transform: none;
+  }
+
+  html.has-custom-cursor,
+  html.has-custom-cursor * {
+    cursor: auto !important;
+  }
+}
