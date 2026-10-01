@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { InteractiveHero } from "@/components/effects/InteractiveHero";
 import { TodayPlantTip } from "@/components/effects/TodayPlantTip";
-import { LeafAccent } from "@/components/effects/LeafAccent";
+import { FacetShowcase } from "@/components/effects/FacetShowcase";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import { CtaBand } from "@/components/ui/CtaBand";
@@ -14,7 +14,7 @@ import { books } from "@/content/books";
 import { media } from "@/content/media";
 import { plantCollection } from "@/content/plants";
 import { services } from "@/content/services";
-import { facets, site } from "@/content/site";
+import { site } from "@/content/site";
 
 export const metadata: Metadata = {
   title: {
@@ -63,29 +63,9 @@ export default function HomePage() {
             eyebrow="One brand, four facets"
             title="A coherent practice of attention"
             description="Corporate credibility and a lived creative life—same standards of clarity, warmth, and care."
-            className="mb-12"
+            className="mb-12 max-w-2xl"
           />
-          <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {facets.map((f) => (
-              <li key={f.id}>
-                <Link
-                  href={f.href}
-                  className="group block h-full rounded-md border border-ink/8 bg-ivory/60 p-5 transition-colors hover:border-sage/40 hover:bg-ivory focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-forest/30"
-                >
-                  <LeafAccent className="mb-2 opacity-70 transition-transform group-hover:rotate-12" />
-                  <p className="text-xs font-semibold uppercase tracking-[0.14em] text-sage">
-                    {f.label}
-                  </p>
-                  <p className="mt-3 text-sm leading-relaxed text-ink/70 group-hover:text-ink">
-                    {f.blurb}
-                  </p>
-                  <span className="mt-4 inline-block text-sm font-medium text-forest">
-                    Explore →
-                  </span>
-                </Link>
-              </li>
-            ))}
-          </ul>
+          <FacetShowcase />
         </div>
       </section>
 
