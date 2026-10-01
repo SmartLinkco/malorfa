@@ -16,9 +16,9 @@ export const site = {
   location: "Ghana · on the road",
   calendarUrl: "#", // TODO: replace with Calendly / booking link
   social: {
-    linkedin: "#", // PLACEHOLDER
-    instagram: "#", // PLACEHOLDER
-    goodreads: "#", // PLACEHOLDER
+    linkedin: "https://www.linkedin.com/in/malorfa-bsc-mpr-apr-a52754114/",
+    instagram: "https://www.instagram.com/call_me_malorfa/",
+    goodreads: "https://www.goodreads.com/book/show/254752922-i-walked-away",
     substack: "#", // PLACEHOLDER
   },
   newsletterNote:

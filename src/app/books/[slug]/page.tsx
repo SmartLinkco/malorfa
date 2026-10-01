@@ -72,15 +72,23 @@ export default async function BookDetailPage({ params }: Props) {
           </div>
 
           <div className="mt-10 flex flex-wrap gap-3">
-            {book.buyLinks.map((link) => (
-              <Button key={link.label} href={link.href} variant="secondary">
-                {link.label}
-              </Button>
-            ))}
+            {book.buyLinks.map((link) => {
+              const external = link.href.startsWith("http");
+              return (
+                <Button
+                  key={link.label}
+                  href={link.href}
+                  variant="secondary"
+                  external={external}
+                >
+                  {link.label}
+                </Button>
+              );
+            })}
             <Button href="/books">All books</Button>
           </div>
           <p className="mt-4 text-xs text-ink/45">
-            Retailer links are stubs — connect real URLs before launch.
+            Ghana WhatsApp orders available for local delivery.
           </p>
         </div>
       </div>

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { navLinks, site } from "@/content/site";
 import { NewsletterForm } from "@/components/ui/NewsletterForm";
+import { SocialLinks } from "@/components/layout/SocialLinks";
 
 export function Footer() {
   const year = new Date().getFullYear();
@@ -15,6 +16,7 @@ export function Footer() {
               {site.positioning}
             </p>
             <p className="mt-4 text-sm text-ivory/50">{site.name}</p>
+            <SocialLinks className="mt-6" />
           </div>
 
           <div>
@@ -51,15 +53,6 @@ export function Footer() {
             © {year} {site.brand}. All rights reserved.
           </p>
           <div className="flex flex-wrap gap-5">
-            <a href={site.social.linkedin} className="hover:text-ivory">
-              LinkedIn
-            </a>
-            <a href={site.social.instagram} className="hover:text-ivory">
-              Instagram
-            </a>
-            <a href={site.social.goodreads} className="hover:text-ivory">
-              Goodreads
-            </a>
             <Link href="/contact" className="hover:text-ivory">
               Privacy stub
             </Link>

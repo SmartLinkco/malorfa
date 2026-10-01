@@ -30,8 +30,8 @@ export const books: Book[] = [
     excerpt: "The conversation starts the moment you open the first page.",
     buyLinks: [
       {
-        label: "Amazon",
-        href: "https://www.amazon.com/s?k=I+Walked+Away+Malorfa+Aryee",
+        label: "Buy on Amazon",
+        href: "https://amzn.eu/d/00Fzw501",
       },
       { label: "Ghana orders (WhatsApp)", href: "https://wa.me/233243554423" },
     ],
