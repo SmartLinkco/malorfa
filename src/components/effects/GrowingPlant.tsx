@@ -11,18 +11,30 @@ type Props = {
 
 /**
  * SVG plant that unfurls with scroll progress (0–1 across the page).
+ * Growth is eased forward so foliage reads clearly before page end.
  * Static full-growth fallback when prefers-reduced-motion is set.
  */
 export function GrowingPlant({ progress, className }: Props) {
   const reduced = usePrefersReducedMotion();
   const gradId = useId().replace(/:/g, "");
-  const p = reduced ? 1 : Math.min(1, Math.max(0, progress));
+  // Reach full growth around ~55% page scroll so change is obvious sooner
+  const eased = reduced ? 1 : Math.min(1, Math.max(0, progress) / 0.55);
+  const p = eased;
 
-  const stem = 0.15 + p * 0.85;
-  const leaf1 = Math.max(0, (p - 0.12) / 0.55);
-  const leaf2 = Math.max(0, (p - 0.28) / 0.55);
-  const leaf3 = Math.max(0, (p - 0.45) / 0.5);
-  const leaf4 = Math.max(0, (p - 0.6) / 0.4);
+  const stem = 0.18 + p * 0.82;
+  const stemTop = 128 - 100 * stem;
+
+  const leaf = (start: number, span: number) =>
+    Math.min(1, Math.max(0, (p - start) / span));
+
+  const leaf1 = leaf(0.05, 0.28);
+  const leaf2 = leaf(0.12, 0.28);
+  const leaf3 = leaf(0.2, 0.26);
+  const leaf4 = leaf(0.3, 0.26);
+  const leaf5 = leaf(0.4, 0.24);
+  const leaf6 = leaf(0.5, 0.24);
+  const leaf7 = leaf(0.62, 0.22);
+  const leaf8 = leaf(0.74, 0.2);
 
   return (
     <svg
@@ -41,7 +53,7 @@ export function GrowingPlant({ progress, className }: Props) {
       <ellipse cx="60" cy="128" rx="24" ry="5" fill="#d9d4c8" />
 
       <path
-        d={`M60 128 Q58 ${128 - 70 * stem} 60 ${128 - 100 * stem}`}
+        d={`M60 128 Q58 ${128 - 70 * stem} 60 ${stemTop}`}
         fill="none"
         stroke="#2c4a3e"
         strokeWidth="2.5"
@@ -51,10 +63,14 @@ export function GrowingPlant({ progress, className }: Props) {
         strokeDashoffset={1 - stem}
       />
 
-      <Leaf cx={48} cy={100} rotate={-55} scale={leaf1} side="left" fill={`url(#${gradId})`} />
-      <Leaf cx={74} cy={88} rotate={48} scale={leaf2} side="right" fill={`url(#${gradId})`} />
-      <Leaf cx={44} cy={68} rotate={-40} scale={leaf3} side="left" fill={`url(#${gradId})`} />
-      <Leaf cx={72} cy={52} rotate={35} scale={leaf4} side="right" fill={`url(#${gradId})`} />
+      <Leaf cx={50} cy={118} rotate={-62} scale={leaf1} side="left" fill={`url(#${gradId})`} />
+      <Leaf cx={72} cy={112} rotate={58} scale={leaf2} side="right" fill={`url(#${gradId})`} />
+      <Leaf cx={46} cy={98} rotate={-48} scale={leaf3} side="left" fill={`url(#${gradId})`} />
+      <Leaf cx={76} cy={90} rotate={42} scale={leaf4} side="right" fill={`url(#${gradId})`} />
+      <Leaf cx={44} cy={74} rotate={-38} scale={leaf5} side="left" fill={`url(#${gradId})`} />
+      <Leaf cx={74} cy={66} rotate={36} scale={leaf6} side="right" fill={`url(#${gradId})`} />
+      <Leaf cx={48} cy={50} rotate={-32} scale={leaf7} side="left" fill={`url(#${gradId})`} />
+      <Leaf cx={70} cy={40} rotate={28} scale={leaf8} side="right" fill={`url(#${gradId})`} />
     </svg>
   );
 }

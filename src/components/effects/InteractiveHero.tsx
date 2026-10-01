@@ -109,7 +109,7 @@ export function InteractiveHero() {
 
       {/* Fixed plant — growth maps to scroll through the whole page */}
       <div
-        className="pointer-events-none fixed bottom-0 left-0 z-20 h-44 w-28 opacity-80 md:h-[min(78vh,640px)] md:w-48 md:opacity-90 lg:w-56"
+        className="pointer-events-none fixed bottom-0 left-0 z-20 h-28 w-20 opacity-75 md:h-[min(52vh,400px)] md:w-36 md:opacity-80 lg:w-44"
         aria-hidden
       >
         <GrowingPlant progress={pageProgress} />
