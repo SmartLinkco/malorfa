@@ -76,7 +76,7 @@ export function HeroVideo({ parallaxY = 0, className }: Props) {
         <video
           ref={videoRef}
           className="absolute inset-0 h-full w-full object-cover opacity-[0.14] mix-blend-soft-light"
-          poster={media.portraitBarcelona.src}
+          poster={media.heroDualPoster.src}
           muted
           loop
           playsInline

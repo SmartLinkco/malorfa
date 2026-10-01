@@ -1,6 +1,22 @@
 import { media } from "@/content/media";
 
-export const travelStories = [
+export type TravelStory = {
+  slug: string;
+  title: string;
+  destination: string;
+  date: string;
+  excerpt: string;
+  plantsNoted: string[];
+  readTime: string;
+  featured: boolean;
+  image: string;
+  imageAlt: string;
+  midImage?: string;
+  midImageAlt?: string;
+  body: string[];
+};
+
+export const travelStories: TravelStory[] = [
   {
     slug: "barcelona-plaza-light",
     title: "Barcelona Plaza Light",
@@ -10,9 +26,11 @@ export const travelStories = [
       "Plaça de Catalunya pigeons, a denim skirt, and the quiet confidence of walking a European square alone.",
     plantsNoted: ["Plaza trees", "Balcony geraniums along the Rambla"],
     readTime: "7 min",
-    featured: false,
+    featured: true,
     image: media.travelBarcelonaPlaza.src,
     imageAlt: media.travelBarcelonaPlaza.alt,
+    midImage: media.travelDetailBarcelona2.src,
+    midImageAlt: media.travelDetailBarcelona2.alt,
     body: [
       "Solo travel is not loneliness with better lighting. It is choosing your own pace—and noticing what a shared itinerary would rush past.",
       "In Barcelona, the plaza became a studio: light, motion, and the small courage of standing still while the city moved.",
@@ -28,9 +46,11 @@ export const travelStories = [
       "Café ritual between pages—foam, wood grain, and the soft pace of a city that rewards lingering.",
     plantsNoted: ["Café greenery", "Street trees along Haussmann blocks"],
     readTime: "8 min",
-    featured: false,
+    featured: true,
     image: media.lifestyleCoffee.src,
     imageAlt: media.lifestyleCoffee.alt,
+    midImage: media.travelDetailParis2.src,
+    midImageAlt: media.travelDetailParis2.alt,
     body: [
       "Paris held both the book and the pause—proof that authorship and attention can share one table.",
       "A coffee becomes a bookmark for the day: small, warm, enough.",
@@ -49,6 +69,8 @@ export const travelStories = [
     featured: false,
     image: media.travelGiraffe.src,
     imageAlt: media.travelGiraffe.alt,
+    midImage: media.travelDetailSafari2.src,
+    midImageAlt: media.travelDetailSafari2.alt,
     body: [
       "East Africa taught scale—animals that rewrite your sense of size, and roads that reward patience.",
       "A giraffe leaning in for a bite is a better metaphor for curiosity than any workshop icebreaker.",
@@ -67,6 +89,8 @@ export const travelStories = [
     featured: false,
     image: media.travelTram.src,
     imageAlt: media.travelTram.alt,
+    midImage: media.travelMapPassport.src,
+    midImageAlt: media.travelMapPassport.alt,
     body: [
       "Some of the best travel notes happen between destinations—on a tram, in a coat pocket, before the next café.",
       "The window frames the city the way a plant pot frames a leaf: limited, intentional, enough.",
@@ -81,7 +105,7 @@ export const travelStories = [
       "Peace-sign selfie, green sweater, and zebras grazing like the day had nowhere else to be.",
     plantsNoted: ["Tall grassland"],
     readTime: "6 min",
-    featured: true,
+    featured: false,
     image: media.travelZebras.src,
     imageAlt: media.travelZebras.alt,
     body: [
@@ -98,7 +122,7 @@ export const travelStories = [
       "Hills, a green top, a striped tote—and a running list of countries that keep growing.",
     plantsNoted: ["Hillside vegetation"],
     readTime: "6 min",
-    featured: true,
+    featured: false,
     image: media.travelAfricaCountries.src,
     imageAlt: media.travelAfricaCountries.alt,
     body: [
@@ -106,7 +130,7 @@ export const travelStories = [
       "Each border is a chapter; each viewpoint a comma before the next sentence.",
     ],
   },
-] as const;
+];
 
 export function getTravelStory(slug: string) {
   return travelStories.find((s) => s.slug === slug);

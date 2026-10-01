@@ -1,6 +1,6 @@
 /**
- * Each photo is assigned to exactly one primary surface.
- * Story/book detail may reuse its own card image (teaser → detail).
+ * Semantic photo map — each primary asset has a clear owner.
+ * Generated fills live alongside real Malorfa photos.
  */
 export const media = {
   portraitOrchid: {
@@ -71,9 +71,97 @@ export const media = {
     src: "/media/about-black-dress.jpg",
     alt: "Malorfa in a black dress seated at home",
   },
+  // Generated — plants
+  plantOrchidDetail: {
+    src: "/media/plant-orchid-detail.jpg",
+    alt: "Close-up of a pink orchid in a ceramic pot",
+  },
+  plantFiddleLeaf: {
+    src: "/media/plant-fiddle-leaf.jpg",
+    alt: "Fiddle-leaf fig in a woven planter",
+  },
+  plantCalathea: {
+    src: "/media/plant-calathea.jpg",
+    alt: "Calathea with pink-pinstripe leaves",
+  },
+  plantSnake: {
+    src: "/media/plant-snake.jpg",
+    alt: "Tall snake plant in a terracotta pot",
+  },
+  plantPothos: {
+    src: "/media/plant-pothos.jpg",
+    alt: "Trailing pothos with cuttings in glass jars",
+  },
+  plantOlive: {
+    src: "/media/plant-olive.jpg",
+    alt: "Container olive tree on a sunny balcony",
+  },
+  plantsCollectionWide: {
+    src: "/media/plants-collection-wide.jpg",
+    alt: "Wide view of a styled indoor plant collection",
+  },
+  // Generated — shop
+  shopPlantA: {
+    src: "/media/shop-plant-a.jpg",
+    alt: "Starter monstera in a white nursery pot",
+  },
+  shopPlantB: {
+    src: "/media/shop-plant-b.jpg",
+    alt: "Statement Alocasia in a ceramic planter",
+  },
+  shopPlantC: {
+    src: "/media/shop-plant-c.jpg",
+    alt: "Easy-care ZZ plant in a sage pot",
+  },
+  partnerNurseryStorefront: {
+    src: "/media/partner-nursery-storefront.jpg",
+    alt: "Independent plant nursery storefront with sidewalk plants",
+  },
+  // Generated — books
+  bookCoverIWalkedAway: {
+    src: "/media/book-cover-i-walked-away.jpg",
+    alt: "Book cover for I Walked Away by Malorfa Aryee",
+  },
+  bookCoverPlants: {
+    src: "/media/book-cover-plants-title.jpg",
+    alt: "Book cover for Leaves on the Windowsill",
+  },
+  bookCoverTravel: {
+    src: "/media/book-cover-travel-title.jpg",
+    alt: "Book cover for One Seat at the Table",
+  },
+  authorSpeaking: {
+    src: "/media/author-speaking.jpg",
+    alt: "Malorfa at a speaking or book-signing appearance",
+  },
+  // Generated — travel extras
+  travelDetailBarcelona2: {
+    src: "/media/travel-detail-barcelona-2.jpg",
+    alt: "Tree-lined boulevard on La Rambla, Barcelona",
+  },
+  travelDetailParis2: {
+    src: "/media/travel-detail-paris-2.jpg",
+    alt: "Paris café table with notebook, plant, and coffee",
+  },
+  travelDetailSafari2: {
+    src: "/media/travel-detail-safari-2.jpg",
+    alt: "East African savanna at golden hour",
+  },
+  travelMapPassport: {
+    src: "/media/travel-map-or-passport.jpg",
+    alt: "Travel flat-lay with passport, tickets, and pressed leaf",
+  },
+  // Generated — brand
+  ogDefault: {
+    src: "/media/og-default.jpg",
+    alt: "Malorfa brand Open Graph image",
+  },
+  heroDualPoster: {
+    src: "/media/hero-dual-identity-poster.jpg",
+    alt: "Dual-identity still — office corridor meeting greenhouse foliage",
+  },
 } as const;
 
 export type MediaKey = keyof typeof media;
 
-/** Ordered list of every photo (for audits / galleries). */
 export const allMediaKeys = Object.keys(media) as MediaKey[];

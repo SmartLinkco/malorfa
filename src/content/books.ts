@@ -23,10 +23,10 @@ export const books: Book[] = [
     year: "2024",
     status: "Published",
     coverLabel: "I Walked Away — Malorfa Aryee",
-    image: media.authorParisBook.src,
-    imageAlt: media.authorParisBook.alt,
+    image: media.bookCoverIWalkedAway.src,
+    imageAlt: media.bookCoverIWalkedAway.alt,
     blurb:
-      "Malorfa Aryee’s published work — read at a Paris café with the Eiffel Tower behind you, or wherever you need courage to begin again.",
+      "Malorfa Aryee’s published memoir — available on Amazon, with Ghana orders via WhatsApp.",
     excerpt: "The conversation starts the moment you open the first page.",
     buyLinks: [
       {
@@ -39,11 +39,13 @@ export const books: Book[] = [
   },
   {
     slug: "leaves-on-the-windowsill",
-    title: "[PLACEHOLDER: Next title — plants]",
+    title: "Leaves on the Windowsill",
     subtitle: "A plant-tropist’s field notes for city apartments",
     year: "TBD",
     status: "In progress",
-    coverLabel: "Book cover placeholder",
+    coverLabel: "Leaves on the Windowsill",
+    image: media.bookCoverPlants.src,
+    imageAlt: media.bookCoverPlants.alt,
     blurb:
       "Practical care paired with short essays on attention, growth, and traveling without abandoning what you tend.",
     excerpt:
@@ -53,11 +55,13 @@ export const books: Book[] = [
   },
   {
     slug: "one-seat-at-the-table",
-    title: "[PLACEHOLDER: Next title — travel]",
+    title: "One Seat at the Table",
     subtitle: "Solo travel dispatches",
     year: "TBD",
     status: "In progress",
-    coverLabel: "Book cover placeholder",
+    coverLabel: "One Seat at the Table",
+    image: media.bookCoverTravel.src,
+    imageAlt: media.bookCoverTravel.alt,
     blurb:
       "Dispatches from solo journeys—Barcelona plazas, East African roads, and the confidence of a table set for one.",
     excerpt:
@@ -72,16 +76,20 @@ export const speakingPress = [
     type: "Author",
     title: "I Walked Away",
     detail: "Available on Amazon · Ghana orders via WhatsApp",
+    image: media.authorParisBook.src,
+    imageAlt: media.authorParisBook.alt,
+  },
+  {
+    type: "Speaking",
+    title: "Talks & signings",
+    detail: "Keynotes, author conversations, and book events",
+    image: media.authorSpeaking.src,
+    imageAlt: media.authorSpeaking.alt,
   },
   {
     type: "Credential",
     title: "APR",
     detail: "Accreditation in Public Relations — listed on author materials",
-  },
-  {
-    type: "Press",
-    title: "[PLACEHOLDER: Publication or podcast]",
-    detail: "Feature or interview placeholder — link TBD",
   },
 ] as const;
 

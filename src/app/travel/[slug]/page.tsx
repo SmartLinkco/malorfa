@@ -59,7 +59,21 @@ export default async function TravelStoryPage({ params }: Props) {
           priority
         />
         <div className="prose-site">
-          {story.body.map((para) => (
+          {story.body.slice(0, 1).map((para) => (
+            <p key={para.slice(0, 32)}>{para}</p>
+          ))}
+        </div>
+        {story.midImage ? (
+          <MediaPlaceholder
+            src={story.midImage}
+            alt={story.midImageAlt}
+            aspect="wide"
+            className="my-10"
+            objectPosition="center"
+          />
+        ) : null}
+        <div className="prose-site">
+          {story.body.slice(1).map((para) => (
             <p key={para.slice(0, 32)}>{para}</p>
           ))}
         </div>

@@ -75,8 +75,15 @@ export default function PlantsPage() {
           <SectionHeader
             eyebrow="Collection"
             title="Studio & balcony favorites"
-            description="Species names and notes are placeholders—swap for your real collection."
-            className="mb-12"
+            description="Real plants from the collection—care notes stay practical, never noisy."
+            className="mb-8"
+          />
+          <MediaPlaceholder
+            src={media.plantsCollectionWide.src}
+            alt={media.plantsCollectionWide.alt}
+            aspect="wide"
+            className="mb-10"
+            objectPosition="center"
           />
           <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {plantCollection.map((plant) => (
@@ -87,11 +94,11 @@ export default function PlantsPage() {
                 interactive
               >
                 <MediaPlaceholder
-                  label={`[PLACEHOLDER: Photo — ${plant.name}]`}
+                  src={plant.image}
+                  alt={plant.imageAlt}
                   aspect="square"
                   tone={plant.featured ? "sage" : "sand"}
                   className="rounded-none"
-                  showLabel
                 />
                 <div className="p-5">
                   <LeafAccent className="mb-2 opacity-60" />
@@ -136,13 +143,21 @@ export default function PlantsPage() {
             eyebrow="Shop / partner nursery"
             title={partnerNursery.name}
             description={partnerNursery.blurb}
+            className="mb-8"
+          />
+          <MediaPlaceholder
+            src={partnerNursery.image}
+            alt={partnerNursery.imageAlt}
+            aspect="wide"
             className="mb-10"
+            objectPosition="center 40%"
           />
           <ul className="grid gap-6 sm:grid-cols-3">
             {shopPlants.map((item) => (
               <Card as="li" key={item.id} className="flex flex-col">
                 <MediaPlaceholder
-                  label={`[PLACEHOLDER: ${item.name}]`}
+                  src={item.image}
+                  alt={item.imageAlt}
                   aspect="square"
                   tone="sage"
                   className="mb-4"

@@ -99,18 +99,29 @@ export default function BooksPage() {
         <div className="container-page">
           <SectionHeader
             eyebrow="Speaking & press"
-            title="Appearances (placeholders)"
-            description="Swap in real talks, podcasts, and features."
+            title="Appearances"
+            description="Talks, signings, and credentials—swap in confirmed bookings as they land."
             className="mb-8"
           />
           <ul className="grid gap-4 md:grid-cols-3">
             {speakingPress.map((item) => (
-              <Card as="li" key={item.title}>
-                <p className="text-xs uppercase tracking-[0.12em] text-sage">
-                  {item.type}
-                </p>
-                <h3 className="mt-2 font-display text-xl text-ink">{item.title}</h3>
-                <p className="mt-2 text-sm text-ink/65">{item.detail}</p>
+              <Card as="li" key={item.title} className="overflow-hidden p-0">
+                {"image" in item && item.image ? (
+                  <MediaPlaceholder
+                    src={item.image}
+                    alt={"imageAlt" in item ? item.imageAlt : undefined}
+                    aspect="wide"
+                    className="rounded-none"
+                    objectPosition="center 25%"
+                  />
+                ) : null}
+                <div className="p-5">
+                  <p className="text-xs uppercase tracking-[0.12em] text-sage">
+                    {item.type}
+                  </p>
+                  <h3 className="mt-2 font-display text-xl text-ink">{item.title}</h3>
+                  <p className="mt-2 text-sm text-ink/65">{item.detail}</p>
+                </div>
               </Card>
             ))}
           </ul>

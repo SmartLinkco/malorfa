@@ -23,7 +23,7 @@ export const site = {
   },
   newsletterNote:
     "Notes on risk, travel, books & plants — occasional, never noisy.",
-  ogImage: "/media/portrait-barcelona.jpg",
+  ogImage: "/media/og-default.jpg",
 } as const;
 
 export const navLinks = [
