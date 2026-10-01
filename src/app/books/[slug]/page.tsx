@@ -21,6 +21,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     openGraph: {
       title: `${book.title} · ${site.brand}`,
       description: book.blurb,
+      ...(book.image ? { images: [book.image] } : {}),
     },
   };
 }

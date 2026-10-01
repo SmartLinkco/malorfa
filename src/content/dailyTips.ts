@@ -1,61 +1,99 @@
-export const dailyPlantTips = [
+import { media } from "@/content/media";
+
+export type DailyPlantTip = {
+  plant: string;
+  tip: string;
+  image?: string;
+  imageAlt?: string;
+};
+
+/** Tips keyed to generated plant / shop imagery where available. */
+export const dailyPlantTips: DailyPlantTip[] = [
   {
-    plant: "[PLACEHOLDER: Monstera]",
+    plant: "Monstera starter",
     tip: "Water when the pot feels light—calendars lie, weight rarely does.",
+    image: media.shopPlantA.src,
+    imageAlt: media.shopPlantA.alt,
   },
   {
-    plant: "[PLACEHOLDER: Fiddle-leaf fig]",
+    plant: "Fiddle-leaf fig",
     tip: "Rotate a quarter-turn weekly so growth stays even toward the light.",
+    image: media.plantFiddleLeaf.src,
+    imageAlt: media.plantFiddleLeaf.alt,
   },
   {
-    plant: "[PLACEHOLDER: Calathea]",
+    plant: "Calathea",
     tip: "Group humidity lovers; a shared tray beats misting theater.",
+    image: media.plantCalathea.src,
+    imageAlt: media.plantCalathea.alt,
   },
   {
-    plant: "[PLACEHOLDER: Snake plant]",
+    plant: "Snake plant",
     tip: "Skip the winter watering urge—this one prefers a dry spell.",
+    image: media.plantSnake.src,
+    imageAlt: media.plantSnake.alt,
   },
   {
-    plant: "[PLACEHOLDER: Pothos]",
+    plant: "Pothos",
     tip: "A yellow leaf is often overwatering, not under-love.",
+    image: media.plantPothos.src,
+    imageAlt: media.plantPothos.alt,
   },
   {
-    plant: "[PLACEHOLDER: Olive (container)]",
+    plant: "Olive (container)",
     tip: "Full sun and sharp drainage; treat it like a Mediterranean guest.",
+    image: media.plantOlive.src,
+    imageAlt: media.plantOlive.alt,
   },
   {
-    plant: "[PLACEHOLDER: Peace lily]",
-    tip: "Droop is a polite reminder—water thoroughly, then let it recover.",
+    plant: "Studio orchid",
+    tip: "Bright indirect light and a thorough soak—then wait until the bark dries.",
+    image: media.plantOrchidDetail.src,
+    imageAlt: media.plantOrchidDetail.alt,
   },
   {
-    plant: "[PLACEHOLDER: ZZ plant]",
+    plant: "ZZ plant",
     tip: "Low light is fine; wet feet are not. Err on dry.",
+    image: media.shopPlantC.src,
+    imageAlt: media.shopPlantC.alt,
   },
   {
-    plant: "[PLACEHOLDER: Rubber plant]",
+    plant: "Statement Alocasia",
     tip: "Wipe dust monthly—leaves photosynthesize better when they can breathe.",
+    image: media.shopPlantB.src,
+    imageAlt: media.shopPlantB.alt,
   },
   {
-    plant: "[PLACEHOLDER: String of pearls]",
-    tip: "Bright light and sparse water; plump beads mean you’re on track.",
-  },
-  {
-    plant: "[PLACEHOLDER: Herb window box]",
-    tip: "Harvest often—pinching tips keeps basil branching instead of bolting.",
-  },
-  {
-    plant: "[PLACEHOLDER: Travel protocol]",
+    plant: "Living collection",
     tip: "Deep water the night before a trip; ask a friend only for the fussy ones.",
+    image: media.plantsCollectionWide.src,
+    imageAlt: media.plantsCollectionWide.alt,
   },
   {
-    plant: "[PLACEHOLDER: Fern]",
-    tip: "Keep the soil evenly moist and away from blasting AC vents.",
+    plant: "Nursery shelf",
+    tip: "Match light before you buy fertilizer—most mystery decline is light mismatch.",
+    image: media.partnerNurseryStorefront.src,
+    imageAlt: media.partnerNurseryStorefront.alt,
   },
   {
-    plant: "[PLACEHOLDER: Succulent mix]",
+    plant: "Propagation jar",
+    tip: "Change water weekly and keep cuttings in bright, indirect light.",
+    image: media.plantPothos.src,
+    imageAlt: media.plantPothos.alt,
+  },
+  {
+    plant: "Corner sentinel",
+    tip: "Keep the soil evenly moist only if the plant asks—most prefer a dry beat.",
+    image: media.plantFiddleLeaf.src,
+    imageAlt: media.plantFiddleLeaf.alt,
+  },
+  {
+    plant: "Balcony olive",
     tip: "More light, less water, and a pot with a real drainage hole.",
+    image: media.plantOlive.src,
+    imageAlt: media.plantOlive.alt,
   },
-] as const;
+];
 
 /** Stable daily index from YYYY-MM-DD (local timezone). */
 export function tipIndexForDate(date = new Date()): number {

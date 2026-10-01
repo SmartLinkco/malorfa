@@ -108,6 +108,8 @@ export const travelStories: TravelStory[] = [
     featured: false,
     image: media.travelZebras.src,
     imageAlt: media.travelZebras.alt,
+    midImage: media.travelDetailSafari2.src,
+    midImageAlt: media.travelDetailSafari2.alt,
     body: [
       "The van window framed both wildlife and wonder—proof that solo travel can be loud with joy.",
       "Zebras held the middle distance; the rest was sky and grass.",
@@ -125,6 +127,8 @@ export const travelStories: TravelStory[] = [
     featured: false,
     image: media.travelAfricaCountries.src,
     imageAlt: media.travelAfricaCountries.alt,
+    midImage: media.travelMapPassport.src,
+    midImageAlt: media.travelMapPassport.alt,
     body: [
       "Côte d’Ivoire, Ethiopia, Kenya, Benin, Togo, South Africa—and the road still open.",
       "Each border is a chapter; each viewpoint a comma before the next sentence.",

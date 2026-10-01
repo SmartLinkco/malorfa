@@ -70,12 +70,21 @@ export function HeroVideo({ parallaxY = 0, className }: Props) {
           style={{ objectPosition: "center 18%" }}
           priority
         />
+        {/* Dual-identity still — visible wash until a real MP4 replaces the stub */}
+        <Image
+          src={media.heroDualPoster.src}
+          alt=""
+          fill
+          sizes="(max-width: 1024px) 100vw, 480px"
+          className="object-cover opacity-[0.28] mix-blend-soft-light"
+          aria-hidden
+        />
       </div>
 
       {!reduced ? (
         <video
           ref={videoRef}
-          className="absolute inset-0 h-full w-full object-cover opacity-[0.14] mix-blend-soft-light"
+          className="absolute inset-0 h-full w-full object-cover opacity-[0.12] mix-blend-soft-light"
           poster={media.heroDualPoster.src}
           muted
           loop

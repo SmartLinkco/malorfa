@@ -10,7 +10,9 @@ import { MediaPlaceholder } from "@/components/ui/MediaPlaceholder";
 import { NewsletterForm } from "@/components/ui/NewsletterForm";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { TestimonialGrid } from "@/components/ui/TestimonialGrid";
+import { books } from "@/content/books";
 import { media } from "@/content/media";
+import { plantCollection } from "@/content/plants";
 import { services } from "@/content/services";
 import { facets, site } from "@/content/site";
 
@@ -125,34 +127,99 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Books highlight — text-led; photo lives on /books to avoid repeats */}
+      {/* Books — generated covers */}
       <section className="section-pad">
-        <div className="container-page max-w-2xl">
+        <div className="container-page">
           <SectionHeader
             eyebrow="Books"
-            title="I Walked Away"
-            description="Malorfa Aryee’s published memoir — available on Amazon, with Ghana orders via WhatsApp. More titles in progress."
-            className="mb-8"
+            title="I Walked Away — and pages in progress"
+            description="Published memoir plus forthcoming plant and travel titles."
+            className="mb-10"
           />
-          <Button href="/books" variant="secondary">
-            Browse all books
-          </Button>
+          <ul className="grid gap-8 sm:grid-cols-3">
+            {books.map((book) => (
+              <li key={book.slug}>
+                <Link href={`/books/${book.slug}`} className="group block">
+                  <MediaPlaceholder
+                    src={book.image}
+                    alt={book.imageAlt}
+                    aspect="portrait"
+                    className="mb-4 transition-transform duration-500 group-hover:-translate-y-1"
+                    objectPosition="center 20%"
+                  />
+                  <p className="text-xs uppercase tracking-[0.14em] text-sage">
+                    {book.year} · {book.status}
+                  </p>
+                  <h3 className="mt-2 font-display text-2xl text-ink group-hover:text-forest">
+                    {book.title}
+                  </h3>
+                </Link>
+              </li>
+            ))}
+          </ul>
+          <div className="mt-10">
+            <Button href="/books" variant="secondary">
+              Browse all books
+            </Button>
+          </div>
         </div>
       </section>
 
-      {/* Travel teaser — full photo set lives on /travel */}
+      {/* Travel — generated field stills */}
       <section className="section-pad bg-ink text-ivory">
-        <div className="container-page max-w-2xl">
+        <div className="container-page">
           <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-moss">
             Travel
           </p>
-          <h2 className="font-display text-3xl md:text-4xl text-balance">
+          <h2 className="max-w-2xl font-display text-3xl md:text-4xl text-balance">
             Solo field notes
           </h2>
-          <p className="mt-4 text-base text-ivory/70 md:text-lg">
+          <p className="mt-4 max-w-2xl text-base text-ivory/70 md:text-lg">
             Barcelona, Paris, East Africa, tram windows—and the plants noticed along the way.
           </p>
-          <div className="mt-8">
+          <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {[
+              {
+                href: "/travel/barcelona-plaza-light",
+                src: media.travelDetailBarcelona2.src,
+                alt: media.travelDetailBarcelona2.alt,
+                label: "Barcelona",
+              },
+              {
+                href: "/travel/paris-pages-and-green",
+                src: media.travelDetailParis2.src,
+                alt: media.travelDetailParis2.alt,
+                label: "Paris",
+              },
+              {
+                href: "/travel/east-africa-on-the-road",
+                src: media.travelDetailSafari2.src,
+                alt: media.travelDetailSafari2.alt,
+                label: "East Africa",
+              },
+              {
+                href: "/travel/tram-window-notes",
+                src: media.travelMapPassport.src,
+                alt: media.travelMapPassport.alt,
+                label: "On the road",
+              },
+            ].map((item) => (
+              <li key={item.href}>
+                <Link href={item.href} className="group block">
+                  <MediaPlaceholder
+                    src={item.src}
+                    alt={item.alt}
+                    aspect="square"
+                    className="rounded-md transition-opacity group-hover:opacity-90"
+                  />
+                  <p className="mt-3 text-sm font-medium text-ivory/85 group-hover:text-ivory">
+                    {item.label} →
+                  </p>
+                </Link>
+              </li>
+            ))}
+          </ul>
+          <div className="mt-10">
             <Button href="/travel" variant="inverse">
               Open the journal
             </Button>
@@ -160,18 +227,45 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Plants teaser — orchid photo lives on /plants */}
+      {/* Plants — generated collection */}
       <section className="section-pad">
-        <div className="container-page max-w-2xl">
+        <div className="container-page">
           <SectionHeader
             eyebrow="Plants"
             title="A living collection"
-            description="Care notes, studio favorites, and nursery partnership stubs—see the orchid and full collection on the plant hub."
+            description="Studio favorites, care notes, and a partner nursery shelf."
             className="mb-8"
           />
-          <Button href="/plants" variant="secondary">
-            Visit the plant hub
-          </Button>
+          <MediaPlaceholder
+            src={media.plantsCollectionWide.src}
+            alt={media.plantsCollectionWide.alt}
+            aspect="wide"
+            className="mb-8"
+          />
+          <ul className="grid gap-5 sm:grid-cols-3">
+            {plantCollection
+              .filter((p) => p.featured)
+              .map((plant) => (
+                <li key={plant.id}>
+                  <Link href="/plants#collection" className="group block">
+                    <MediaPlaceholder
+                      src={plant.image}
+                      alt={plant.imageAlt}
+                      aspect="square"
+                      className="mb-3"
+                    />
+                    <p className="font-display text-xl text-ink group-hover:text-forest">
+                      {plant.name}
+                    </p>
+                  </Link>
+                </li>
+              ))}
+          </ul>
+          <div className="mt-10">
+            <Button href="/plants" variant="secondary">
+              Visit the plant hub
+            </Button>
+          </div>
         </div>
       </section>
 

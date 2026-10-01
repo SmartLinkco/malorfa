@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useMemo, useState } from "react";
 import { getTodayTip } from "@/content/dailyTips";
 import { LeafAccent } from "@/components/effects/LeafAccent";
@@ -46,8 +47,25 @@ export function TodayPlantTip({ className, compact = false }: Props) {
       aria-label="Today’s plant tip"
       data-ready={ready || undefined}
     >
-      <div className="flex items-start gap-3">
-        <LeafAccent size="md" className="mt-0.5 shrink-0" />
+      <div className="flex items-start gap-3 md:gap-4">
+        {tip.image ? (
+          <div
+            className={cn(
+              "relative shrink-0 overflow-hidden rounded-sm bg-stone",
+              compact ? "h-14 w-14" : "h-20 w-20 md:h-24 md:w-24",
+            )}
+          >
+            <Image
+              src={tip.image}
+              alt={tip.imageAlt || tip.plant}
+              fill
+              sizes="96px"
+              className="object-cover"
+            />
+          </div>
+        ) : (
+          <LeafAccent size="md" className="mt-0.5 shrink-0" />
+        )}
         <div className="min-w-0 flex-1">
           <p className="text-xs font-semibold uppercase tracking-[0.16em] text-sage">
             Today’s plant tip
