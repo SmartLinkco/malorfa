@@ -1,10 +1,25 @@
-# Hero media placeholders
+# Media library — unique placements
 
-Replace these files with real client assets before launch.
+Every semantic photo is used **once** as a primary visual (story listing → detail may share the same story image).
 
-| File | Purpose |
-|------|---------|
-| `hero-dual-identity.mp4` | Muted looping dual-identity clip (boardroom ↔ greenhouse). Prefer H.264, no audio track, ~6–12s, portrait-friendly. |
-| `hero-dual-identity-poster.svg` | Poster shown before play / if video fails. Swap for `.webp` or `.jpg` and update `poster` in `src/components/effects/HeroVideo.tsx`. |
+| File | Placement |
+|------|-----------|
+| `portrait-barcelona.jpg` | Home hero |
+| `corporate-laptop.jpg` | Home → Services teaser |
+| `portrait-orchid.jpg` | Plants hero |
+| `author-paris-book.jpg` | Books (`I Walked Away`) |
+| `about-wings.jpg` | About hero |
+| `about-casual-collage.jpg` | About gallery |
+| `about-black-dress.jpg` | About gallery |
+| `travel-urban-red.jpg` | About gallery |
+| `corporate-skyline.jpg` | Services hero |
+| `travel-barcelona-pigeon.jpg` | Travel hero |
+| `travel-barcelona-plaza.jpg` | Travel story: Barcelona |
+| `lifestyle-coffee.jpg` | Travel story: Paris |
+| `travel-east-africa-giraffe.jpg` | Travel story: East Africa |
+| `travel-tram.jpg` | Travel story: Tram |
+| `travel-safari-zebras.jpg` | Travel story: Zebra hour |
+| `travel-africa-countries.jpg` | Travel story: Countries so far |
+| `travel-mustard.jpg` | Contact hero |
 
-Current MP4 is a tiny synthetic color-split placeholder for layout and autoplay testing—not final creative.
+Code map: `src/content/media.ts`

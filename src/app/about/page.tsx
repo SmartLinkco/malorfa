@@ -10,6 +10,7 @@ import {
   timeline,
   values,
 } from "@/content/about";
+import { media } from "@/content/media";
 import { site } from "@/content/site";
 
 export const metadata: Metadata = {
@@ -32,6 +33,11 @@ export default function AboutPage() {
             </p>
             <h1 className="mt-3 font-display text-4xl text-ink md:text-5xl text-balance">
               {site.name}
+              {site.credentials ? (
+                <span className="ml-2 text-2xl text-sage md:text-3xl">
+                  , {site.credentials}
+                </span>
+              ) : null}
             </h1>
             <p className="mt-5 max-w-xl text-lg leading-relaxed text-ink/70">
               {biography.lead}
@@ -46,10 +52,36 @@ export default function AboutPage() {
             </div>
           </div>
           <MediaPlaceholder
-            label="[PLACEHOLDER: About portrait]"
+            src={media.aboutWings.src}
+            alt={media.aboutWings.alt}
             aspect="portrait"
             tone="sand"
             className="mx-auto w-full max-w-md"
+            objectPosition="center 20%"
+            priority
+          />
+        </div>
+      </section>
+
+      <section className="border-b border-ink/8 bg-ivory/50">
+        <div className="container-page grid gap-4 py-10 sm:grid-cols-3">
+          <MediaPlaceholder
+            src={media.aboutCasual.src}
+            alt={media.aboutCasual.alt}
+            aspect="square"
+            objectPosition="center 15%"
+          />
+          <MediaPlaceholder
+            src={media.aboutBlackDress.src}
+            alt={media.aboutBlackDress.alt}
+            aspect="square"
+            objectPosition="center 25%"
+          />
+          <MediaPlaceholder
+            src={media.travelUrbanRed.src}
+            alt={media.travelUrbanRed.alt}
+            aspect="square"
+            objectPosition="center 20%"
           />
         </div>
       </section>

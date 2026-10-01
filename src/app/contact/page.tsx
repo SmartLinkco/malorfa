@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { Button } from "@/components/ui/Button";
 import { ContactForm } from "@/components/forms/ContactForm";
+import { MediaPlaceholder } from "@/components/ui/MediaPlaceholder";
 import { SectionHeader } from "@/components/ui/SectionHeader";
+import { media } from "@/content/media";
 import { site } from "@/content/site";
 
 export const metadata: Metadata = {
@@ -18,17 +20,27 @@ export default function ContactPage() {
   return (
     <>
       <section className="section-pad border-b border-ink/8 bg-stone/40">
-        <div className="container-page max-w-3xl">
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-sage">
-            Contact
-          </p>
-          <h1 className="mt-3 font-display text-4xl text-ink md:text-5xl text-balance">
-            Let’s find the right conversation
-          </h1>
-          <p className="mt-5 text-lg leading-relaxed text-ink/70">
-            Consulting, speaking, plant partnerships, media—or something else.
-            Choose a topic so the reply can be useful.
-          </p>
+        <div className="container-page grid items-center gap-10 lg:grid-cols-[1.1fr_0.9fr]">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-sage">
+              Contact
+            </p>
+            <h1 className="mt-3 font-display text-4xl text-ink md:text-5xl text-balance">
+              Let’s find the right conversation
+            </h1>
+            <p className="mt-5 text-lg leading-relaxed text-ink/70">
+              Consulting, speaking, plant partnerships, media—or something else.
+              Choose a topic so the reply can be useful.
+            </p>
+          </div>
+          <MediaPlaceholder
+            src={media.travelMustard.src}
+            alt={media.travelMustard.alt}
+            aspect="landscape"
+            className="w-full"
+            objectPosition="center 15%"
+            priority
+          />
         </div>
       </section>
 
@@ -63,9 +75,16 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <dt className="text-xs uppercase tracking-[0.12em] text-sage">
-                    Phone
+                    WhatsApp / phone
                   </dt>
-                  <dd className="mt-1 text-ink/80">{site.phone}</dd>
+                  <dd className="mt-1">
+                    <a
+                      href={`https://wa.me/${site.phone.replace(/\D/g, "")}`}
+                      className="text-ink/80 underline-offset-2 hover:underline"
+                    >
+                      {site.phone}
+                    </a>
+                  </dd>
                 </div>
                 <div>
                   <dt className="text-xs uppercase tracking-[0.12em] text-sage">

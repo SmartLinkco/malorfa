@@ -49,10 +49,14 @@ export default async function TravelStoryPage({ params }: Props) {
 
       <div className="container-page max-w-3xl py-10">
         <MediaPlaceholder
-          label={`[PLACEHOLDER: Hero — ${story.destination}]`}
+          src={story.image}
+          alt={story.imageAlt}
+          label={story.destination}
           aspect="wide"
           tone="forest"
           className="mb-10"
+          objectPosition="center 28%"
+          priority
         />
         <div className="prose-site">
           {story.body.map((para) => (

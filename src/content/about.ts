@@ -1,41 +1,34 @@
 export const biography = {
   lead: "I advise organizations on risk and insurance with the same attention I bring to a garden, a manuscript, and a solo itinerary: clear structure, honest tradeoffs, and room to breathe.",
   paragraphs: [
-    "[PLACEHOLDER: Opening biography paragraph — 2–4 sentences on your professional path in risk management and insurance. Keep affiliations and licenses clearly labeled as real when you replace this.]",
-    "Away from client work, I tend a living plant collection, publish essays and books, and travel alone when the calendar allows. These are not side hobbies bolted onto a résumé—they shape how I listen, how I write briefs, and how I stay grounded.",
-    "This site gathers those threads under one name. If you are here for consulting, start with Services. If you found me through a book, a plant tip, or a travel note, welcome—stay as long as it is useful.",
+    "Malorfa Aryee, APR — corporate risk and insurance counsel by vocation, with a practice shaped by clarity under pressure and language that finance and ops can actually use.",
+    "Away from client work, I tend living plants, publish (I Walked Away), and travel alone when the calendar allows—Barcelona plazas, Paris café tables, East African roads. These are not side hobbies bolted onto a résumé; they shape how I listen, write briefs, and stay grounded.",
+    "This site gathers those threads under one name. If you are here for consulting, start with Services. If you found me through the book, a plant tip, or a travel note, welcome—stay as long as it is useful.",
   ],
 };
 
 export const timeline = [
   {
-    year: "[PLACEHOLDER: Year]",
-    title: "Entered insurance / risk advisory",
+    year: "Career",
+    title: "Risk, insurance & corporate counsel",
     detail:
-      "Early roles focused on [PLACEHOLDER: lines of business / client types].",
+      "Advisory work for agents and organizations—renewals, program design, and stakeholder-ready risk language. [PLACEHOLDER: add specific years and roles.]",
   },
   {
-    year: "[PLACEHOLDER: Year]",
-    title: "Corporate agent & specialist path",
-    detail:
-      "Built expertise in [PLACEHOLDER: specialty]. Credentials listed here are fictional until you replace them.",
+    year: "Credential",
+    title: "APR",
+    detail: "Accreditation in Public Relations — listed on published author materials.",
   },
   {
-    year: "[PLACEHOLDER: Year]",
-    title: "First published book",
-    detail: "[PLACEHOLDER: Title] released — see Books for details.",
-  },
-  {
-    year: "[PLACEHOLDER: Year]",
-    title: "Independent practice / advisory studio",
-    detail:
-      "Launched [PLACEHOLDER: practice name] for retainers, workshops, and speaking.",
+    year: "2024",
+    title: "I Walked Away published",
+    detail: "Available on Amazon; Ghana orders via WhatsApp.",
   },
   {
     year: "Ongoing",
     title: "Plants, roads, and pages",
     detail:
-      "Collection grows; solo trips continue; new writing in progress.",
+      "Collection grows; solo trips continue across Africa and Europe; new writing in progress.",
   },
 ] as const;
 
@@ -60,19 +53,19 @@ export const values = [
 
 export const credentials = [
   {
+    label: "Name",
+    value: "Malorfa Aryee, APR",
+  },
+  {
+    label: "Published work",
+    value: "I Walked Away — Amazon & Ghana WhatsApp orders",
+  },
+  {
     label: "License / designation",
-    value: "[PLACEHOLDER: e.g. fictional credential — replace with real]",
+    value: "[PLACEHOLDER: insurance / risk credentials — replace with verified details]",
   },
   {
     label: "Professional membership",
-    value: "[PLACEHOLDER: Association name — fictional until replaced]",
-  },
-  {
-    label: "Education",
-    value: "[PLACEHOLDER: Degree / institution]",
-  },
-  {
-    label: "Press / features",
-    value: "[PLACEHOLDER: Outlet names — optional]",
+    value: "[PLACEHOLDER: Association name]",
   },
 ] as const;

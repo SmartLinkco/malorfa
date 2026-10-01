@@ -10,11 +10,9 @@ import { MediaPlaceholder } from "@/components/ui/MediaPlaceholder";
 import { NewsletterForm } from "@/components/ui/NewsletterForm";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { TestimonialGrid } from "@/components/ui/TestimonialGrid";
-import { books } from "@/content/books";
-import { plantCollection } from "@/content/plants";
+import { media } from "@/content/media";
 import { services } from "@/content/services";
 import { facets, site } from "@/content/site";
-import { travelStories } from "@/content/travel";
 
 export const metadata: Metadata = {
   title: {
@@ -28,10 +26,6 @@ export const metadata: Metadata = {
 };
 
 export default function HomePage() {
-  const featuredBooks = books.slice(0, 2);
-  const featuredTravel = travelStories.filter((t) => t.featured).slice(0, 2);
-  const featuredPlants = plantCollection.filter((p) => p.featured).slice(0, 3);
-
   return (
     <>
       <InteractiveHero />
@@ -96,12 +90,21 @@ export default function HomePage() {
       {/* Featured services */}
       <section className="section-pad bg-stone/50">
         <div className="container-page">
-          <div className="mb-12 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+          <div className="mb-12 grid items-end gap-8 lg:grid-cols-[1.2fr_0.8fr]">
             <SectionHeader
               eyebrow="Services"
               title="Risk & insurance counsel"
               description="Advisory, program design, workshops, and briefings for teams who need clarity—not noise."
             />
+            <MediaPlaceholder
+              src={media.corporateLaptop.src}
+              alt={media.corporateLaptop.alt}
+              aspect="wide"
+              className="hidden lg:block"
+              objectPosition="center 40%"
+            />
+          </div>
+          <div className="mb-8 lg:hidden">
             <Button href="/services" variant="secondary">
               View all services
             </Button>
@@ -114,134 +117,61 @@ export default function HomePage() {
               </Card>
             ))}
           </ul>
-        </div>
-      </section>
-
-      {/* Books highlight */}
-      <section className="section-pad">
-        <div className="container-page">
-          <SectionHeader
-            eyebrow="Books"
-            title="On the shelf"
-            description="Published works spanning judgment, plants, and solo roads."
-            className="mb-12"
-          />
-          <ul className="grid gap-8 md:grid-cols-2">
-            {featuredBooks.map((book) => (
-              <li key={book.slug} className="grid gap-5 sm:grid-cols-[140px_1fr] sm:items-start">
-                <MediaPlaceholder
-                  label={book.coverLabel}
-                  aspect="portrait"
-                  tone="sand"
-                  className="w-full max-w-[140px]"
-                />
-                <div>
-                  <p className="text-xs uppercase tracking-[0.14em] text-sage">
-                    {book.year} · {book.status}
-                  </p>
-                  <h3 className="mt-2 font-display text-2xl text-ink">
-                    <Link href={`/books/${book.slug}`} className="hover:text-forest">
-                      {book.title}
-                    </Link>
-                  </h3>
-                  <p className="mt-1 text-sm text-ink/55">{book.subtitle}</p>
-                  <p className="mt-3 text-sm leading-relaxed text-ink/70">{book.blurb}</p>
-                </div>
-              </li>
-            ))}
-          </ul>
-          <div className="mt-10">
-            <Button href="/books" variant="secondary">
-              Browse all books
+          <div className="mt-8 hidden lg:block">
+            <Button href="/services" variant="secondary">
+              View all services
             </Button>
           </div>
         </div>
       </section>
 
-      {/* Travel teaser */}
+      {/* Books highlight — text-led; photo lives on /books to avoid repeats */}
+      <section className="section-pad">
+        <div className="container-page max-w-2xl">
+          <SectionHeader
+            eyebrow="Books"
+            title="I Walked Away"
+            description="Malorfa Aryee’s published memoir — available on Amazon, with Ghana orders via WhatsApp. More titles in progress."
+            className="mb-8"
+          />
+          <Button href="/books" variant="secondary">
+            Browse all books
+          </Button>
+        </div>
+      </section>
+
+      {/* Travel teaser — full photo set lives on /travel */}
       <section className="section-pad bg-ink text-ivory">
-        <div className="container-page">
-          <div className="mb-12 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-            <div className="max-w-2xl">
-              <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-moss">
-                Travel
-              </p>
-              <h2 className="font-display text-3xl md:text-4xl text-balance">
-                Solo field notes
-              </h2>
-              <p className="mt-4 text-base text-ivory/70 md:text-lg">
-                Magazine-style dispatches—places walked alone, plants noticed along the way.
-              </p>
-            </div>
+        <div className="container-page max-w-2xl">
+          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-moss">
+            Travel
+          </p>
+          <h2 className="font-display text-3xl md:text-4xl text-balance">
+            Solo field notes
+          </h2>
+          <p className="mt-4 text-base text-ivory/70 md:text-lg">
+            Barcelona, Paris, East Africa, tram windows—and the plants noticed along the way.
+          </p>
+          <div className="mt-8">
             <Button href="/travel" variant="inverse">
               Open the journal
             </Button>
           </div>
-          <ul className="grid gap-6 md:grid-cols-2">
-            {featuredTravel.map((story) => (
-              <li key={story.slug}>
-                <Link href={`/travel/${story.slug}`} className="group block">
-                  <div className="travel-grain relative mb-4 overflow-hidden rounded-md">
-                    <MediaPlaceholder
-                      label={`[PLACEHOLDER: ${story.destination} photo]`}
-                      aspect="wide"
-                      tone="forest"
-                      className="mb-0 rounded-none transition-transform duration-500 group-hover:scale-[1.01]"
-                    />
-                  </div>
-                  <p className="text-xs uppercase tracking-[0.14em] text-moss">
-                    {story.destination} · {story.readTime}
-                  </p>
-                  <h3 className="mt-2 font-display text-2xl group-hover:text-moss">
-                    {story.title}
-                  </h3>
-                  <p className="mt-2 text-sm text-ivory/65">{story.excerpt}</p>
-                </Link>
-              </li>
-            ))}
-          </ul>
         </div>
       </section>
 
-      {/* Plants teaser */}
+      {/* Plants teaser — orchid photo lives on /plants */}
       <section className="section-pad">
-        <div className="container-page">
+        <div className="container-page max-w-2xl">
           <SectionHeader
             eyebrow="Plants"
             title="A living collection"
-            description="Favorites from the studio and balcony—care notes, not catalog noise."
-            className="mb-12"
+            description="Care notes, studio favorites, and nursery partnership stubs—see the orchid and full collection on the plant hub."
+            className="mb-8"
           />
-          <ul className="grid gap-6 sm:grid-cols-3">
-            {featuredPlants.map((plant) => (
-              <Card
-                as="li"
-                key={plant.id}
-                interactive
-                className="plant-card-hover group overflow-hidden p-0"
-              >
-                <MediaPlaceholder
-                  label={`[PLACEHOLDER: ${plant.name} photo]`}
-                  aspect="square"
-                  tone="sage"
-                  className="rounded-none rounded-t-md"
-                />
-                <div className="p-5">
-                  <LeafAccent className="mb-2 opacity-60" />
-                  <h3 className="font-display text-xl text-ink">{plant.name}</h3>
-                  <p className="mt-1 text-xs text-sage">
-                    {plant.light} · {plant.care}
-                  </p>
-                  <p className="mt-3 text-sm text-ink/65">{plant.note}</p>
-                </div>
-              </Card>
-            ))}
-          </ul>
-          <div className="mt-10">
-            <Button href="/plants" variant="secondary">
-              Visit the plant hub
-            </Button>
-          </div>
+          <Button href="/plants" variant="secondary">
+            Visit the plant hub
+          </Button>
         </div>
       </section>
 

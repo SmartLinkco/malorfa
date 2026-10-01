@@ -27,90 +27,92 @@ export function InteractiveHero() {
   const parallaxY = reduced ? 0 : (progress - 0.5) * 28;
 
   return (
-    <section
-      ref={ref as RefObject<HTMLElement>}
-      className="relative overflow-hidden border-b border-ink/8"
-      aria-label="Introduction"
-    >
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(92,122,106,0.18),transparent_55%),radial-gradient(ellipse_at_bottom_left,rgba(217,212,200,0.55),transparent_50%),linear-gradient(180deg,#f5f4f1_0%,#ebe8e2_100%)]" />
-        <div className="absolute inset-y-0 right-0 hidden w-[48%] bg-gradient-to-l from-forest/90 via-forest/75 to-transparent lg:block" />
-      </div>
+    <>
+      <section
+        ref={ref as RefObject<HTMLElement>}
+        className="relative overflow-hidden border-b border-ink/8"
+        aria-label="Introduction"
+      >
+        <div className="absolute inset-0 -z-10">
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(92,122,106,0.18),transparent_55%),radial-gradient(ellipse_at_bottom_left,rgba(217,212,200,0.55),transparent_50%),linear-gradient(180deg,#f5f4f1_0%,#ebe8e2_100%)]" />
+          <div className="absolute inset-y-0 right-0 hidden w-[48%] bg-gradient-to-l from-forest/90 via-forest/75 to-transparent lg:block" />
+        </div>
 
-      {/* Decorative growing plant — left edge */}
+        <div className="container-page relative grid min-h-[calc(100vh-4.25rem)] items-center gap-10 py-16 lg:grid-cols-[1.05fr_0.95fr] lg:gap-8 lg:py-20">
+          <motion.div
+            className="relative z-10 max-w-xl"
+            initial="hidden"
+            animate="show"
+            transition={{ staggerChildren: reduced ? 0 : 0.12, delayChildren: reduced ? 0 : 0.08 }}
+          >
+            <LeafAccent className="mb-4" />
+            <motion.p
+              variants={reveal}
+              transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+              className="font-display text-5xl leading-[0.95] tracking-tight text-ink md:text-6xl lg:text-7xl"
+            >
+              {site.brand}
+            </motion.p>
+            <motion.h1
+              variants={reveal}
+              transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+              className="mt-6 max-w-lg font-display text-2xl font-medium leading-snug text-ink/90 md:text-3xl text-balance"
+            >
+              {site.tagline}
+            </motion.h1>
+            <motion.p
+              variants={reveal}
+              transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+              className="mt-5 text-base leading-relaxed text-ink/65 md:text-lg"
+            >
+              {site.name} — {site.positioning}. One practice of attention across
+              boardrooms, bookshelves, roads, and a living collection.
+            </motion.p>
+            <motion.div
+              variants={reveal}
+              transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+              className="mt-8 flex flex-wrap gap-3"
+            >
+              <Button href="/contact" size="lg">
+                Book a consultation
+              </Button>
+              <Button href="/books" variant="secondary" size="lg">
+                Read the books
+              </Button>
+              <Button href="/plants" variant="ghost" size="lg">
+                Explore the plants
+              </Button>
+            </motion.div>
+            <motion.p
+              variants={reveal}
+              className="mt-6 text-xs text-ink/40 md:hidden"
+            >
+              Scroll to watch the plant grow
+            </motion.p>
+          </motion.div>
+
+          <motion.div
+            className="relative z-10 lg:pl-6"
+            initial={reduced ? false : { opacity: 0, y: 24, scale: 0.98 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ duration: 0.7, delay: reduced ? 0 : 0.28, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <HeroVideo parallaxY={parallaxY} />
+            {/* Mobile growing plant under video — scrolls with hero */}
+            <div className="mx-auto mt-4 h-28 w-24 md:hidden" aria-hidden>
+              <GrowingPlant progress={progress} />
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Desktop: plant stays fixed in the viewport while the page scrolls */}
       <div
-        className="pointer-events-none absolute bottom-0 left-0 hidden h-[55%] w-36 opacity-80 md:block lg:w-44"
+        className="pointer-events-none fixed bottom-0 left-0 z-20 hidden h-[min(52vh,400px)] w-36 opacity-80 md:block lg:w-44"
         aria-hidden
       >
         <GrowingPlant progress={progress} />
       </div>
-
-      <div className="container-page relative grid min-h-[calc(100vh-4.25rem)] items-center gap-10 py-16 lg:grid-cols-[1.05fr_0.95fr] lg:gap-8 lg:py-20">
-        <motion.div
-          className="relative z-10 max-w-xl"
-          initial="hidden"
-          animate="show"
-          transition={{ staggerChildren: reduced ? 0 : 0.12, delayChildren: reduced ? 0 : 0.08 }}
-        >
-          <LeafAccent className="mb-4" />
-          <motion.p
-            variants={reveal}
-            transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-            className="font-display text-5xl leading-[0.95] tracking-tight text-ink md:text-6xl lg:text-7xl"
-          >
-            {site.brand}
-          </motion.p>
-          <motion.h1
-            variants={reveal}
-            transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-            className="mt-6 max-w-lg font-display text-2xl font-medium leading-snug text-ink/90 md:text-3xl text-balance"
-          >
-            {site.tagline}
-          </motion.h1>
-          <motion.p
-            variants={reveal}
-            transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-            className="mt-5 text-base leading-relaxed text-ink/65 md:text-lg"
-          >
-            {site.name} — {site.positioning}. One practice of attention across
-            boardrooms, bookshelves, roads, and a living collection.
-          </motion.p>
-          <motion.div
-            variants={reveal}
-            transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-            className="mt-8 flex flex-wrap gap-3"
-          >
-            <Button href="/contact" size="lg">
-              Book a consultation
-            </Button>
-            <Button href="/books" variant="secondary" size="lg">
-              Read the books
-            </Button>
-            <Button href="/plants" variant="ghost" size="lg">
-              Explore the plants
-            </Button>
-          </motion.div>
-          <motion.p
-            variants={reveal}
-            className="mt-6 text-xs text-ink/40 md:hidden"
-          >
-            Scroll to watch the plant grow
-          </motion.p>
-        </motion.div>
-
-        <motion.div
-          className="relative z-10 lg:pl-6"
-          initial={reduced ? false : { opacity: 0, y: 24, scale: 0.98 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ duration: 0.7, delay: reduced ? 0 : 0.28, ease: [0.22, 1, 0.36, 1] }}
-        >
-          <HeroVideo parallaxY={parallaxY} />
-          {/* Mobile growing plant under video */}
-          <div className="mx-auto mt-4 h-28 w-24 md:hidden" aria-hidden>
-            <GrowingPlant progress={progress} />
-          </div>
-        </motion.div>
-      </div>
-    </section>
+    </>
   );
 }

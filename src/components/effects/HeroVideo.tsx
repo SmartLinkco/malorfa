@@ -1,18 +1,19 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useRef } from "react";
+import { media } from "@/content/media";
 import { usePrefersReducedMotion } from "@/hooks/useMotionPrefs";
 import { cn } from "@/lib/utils";
 
 type Props = {
-  parallaxY?: number; // px shift for mid layer
+  parallaxY?: number;
   className?: string;
 };
 
 /**
- * Muted looping dual-identity hero video.
- * Placeholder path: /media/hero-dual-identity.mp4 + poster.
- * Pauses when off-screen; never plays with sound.
+ * Home hero visual — Barcelona portrait (unique to home).
+ * Soft muted video wash remains decorative only.
  */
 export function HeroVideo({ parallaxY = 0, className }: Props) {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -32,9 +33,7 @@ export function HeroVideo({ parallaxY = 0, className }: Props) {
     const io = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting && entry.intersectionRatio > 0.2) {
-          void video.play().catch(() => {
-            /* autoplay may be blocked — poster remains */
-          });
+          void video.play().catch(() => {});
         } else {
           video.pause();
         }
@@ -54,49 +53,50 @@ export function HeroVideo({ parallaxY = 0, className }: Props) {
         className,
       )}
     >
-      {/* Background parallax layer (travel/garden hint) */}
       <div
-        className="absolute inset-[-8%] bg-gradient-to-br from-sage/40 via-forest/50 to-ink/40 will-change-transform"
+        className="absolute inset-0 will-change-transform"
         style={{
-          transform: reduced ? undefined : `translate3d(0, ${parallaxY * 0.35}px, 0)`,
+          transform: reduced
+            ? undefined
+            : `translate3d(0, ${parallaxY * 0.12}px, 0) scale(1.04)`,
         }}
-        aria-hidden
-      />
-
-      <video
-        ref={videoRef}
-        className="absolute inset-0 h-full w-full object-cover"
-        style={{
-          transform: reduced ? undefined : `translate3d(0, ${parallaxY * 0.15}px, 0) scale(1.06)`,
-        }}
-        poster="/media/hero-dual-identity-poster.svg"
-        muted
-        loop
-        playsInline
-        autoPlay={!reduced}
-        preload="metadata"
-        aria-hidden
-        tabIndex={-1}
       >
-        <source src="/media/hero-dual-identity.mp4" type="video/mp4" />
-      </video>
+        <Image
+          src={media.portraitBarcelona.src}
+          alt={media.portraitBarcelona.alt}
+          fill
+          sizes="(max-width: 1024px) 100vw, 480px"
+          className="object-cover"
+          style={{ objectPosition: "center 18%" }}
+          priority
+        />
+      </div>
 
-      {/* Foreground scrim for dual-identity framing + readable edge */}
+      {!reduced ? (
+        <video
+          ref={videoRef}
+          className="absolute inset-0 h-full w-full object-cover opacity-[0.14] mix-blend-soft-light"
+          poster={media.portraitBarcelona.src}
+          muted
+          loop
+          playsInline
+          autoPlay
+          preload="metadata"
+          aria-hidden
+          tabIndex={-1}
+        >
+          <source src="/media/hero-dual-identity.mp4" type="video/mp4" />
+        </video>
+      ) : null}
+
       <div
-        className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/55 via-ink/15 to-transparent"
+        className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/50 via-transparent to-ink/10"
         aria-hidden
       />
-      <div
-        className="pointer-events-none absolute inset-y-0 left-0 w-1/2 bg-gradient-to-r from-ink/35 to-transparent mix-blend-multiply"
-        aria-hidden
-        style={{
-          transform: reduced ? undefined : `translate3d(${parallaxY * -0.08}px, 0, 0)`,
-        }}
-      />
 
-      <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-3 p-4 md:p-5">
+      <div className="absolute inset-x-0 bottom-0 p-4 md:p-5">
         <span className="rounded-sm bg-ivory/90 px-2.5 py-1 text-[11px] font-medium tracking-wide text-ink/70 backdrop-blur-sm">
-          [PLACEHOLDER: Dual-identity hero video — boardroom ↔ greenhouse]
+          Solo roads · clear sky
         </span>
       </div>
     </div>

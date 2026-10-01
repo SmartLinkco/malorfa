@@ -1,19 +1,19 @@
 /**
- * Site-wide placeholder content.
- * Replace [PLACEHOLDER: ...] values with real details before launch.
+ * Site-wide content for Malorfa Aryee.
  */
 
 export const site = {
-  name: "[PLACEHOLDER: Full Name]",
-  shortName: "[PLACEHOLDER: First Name]",
+  name: "Malorfa Aryee",
+  shortName: "Malorfa",
   brand: "Malorfa",
+  credentials: "APR",
   tagline:
     "Risk counsel by day. Plants, pages, and solo roads when the week opens.",
   positioning:
     "Corporate risk & insurance advisor · plant-tropist · solo traveler · published author",
   email: "[PLACEHOLDER: hello@yourdomain.com]",
-  phone: "[PLACEHOLDER: +1 (555) 000-0000]",
-  location: "[PLACEHOLDER: City, Region]",
+  phone: "+233 24 355 4423",
+  location: "Ghana · on the road",
   calendarUrl: "#", // TODO: replace with Calendly / booking link
   social: {
     linkedin: "#", // PLACEHOLDER
@@ -23,7 +23,7 @@ export const site = {
   },
   newsletterNote:
     "Notes on risk, travel, books & plants — occasional, never noisy.",
-  ogImage: "/og-placeholder.svg",
+  ogImage: "/media/portrait-barcelona.jpg",
 } as const;
 
 export const navLinks = [

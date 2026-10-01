@@ -34,10 +34,14 @@ export default async function BookDetailPage({ params }: Props) {
     <article className="section-pad">
       <div className="container-page grid gap-10 lg:grid-cols-[240px_1fr] lg:gap-14">
         <MediaPlaceholder
+          src={book.image}
+          alt={book.imageAlt}
           label={book.coverLabel}
           aspect="portrait"
           tone="sand"
           className="mx-auto w-full max-w-[240px]"
+          objectPosition="center 20%"
+          priority
         />
         <div>
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-sage">

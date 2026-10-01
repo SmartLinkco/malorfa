@@ -12,6 +12,8 @@ type Story = {
   excerpt: string;
   plantsNoted: readonly string[];
   readTime: string;
+  image?: string;
+  imageAlt?: string;
 };
 
 type Props = {
@@ -19,17 +21,20 @@ type Props = {
   className?: string;
 };
 
-/** Travel card with subtle film-grain overlay (CSS only, no image weight). */
+/** Travel card with subtle film-grain overlay. */
 export function TravelGrainCard({ story, className }: Props) {
   return (
     <article className={cn("group", className)}>
       <Link href={`/travel/${story.slug}`} className="block">
         <div className="travel-grain relative mb-5 overflow-hidden rounded-md">
           <MediaPlaceholder
-            label={`[PLACEHOLDER: ${story.destination}]`}
+            src={story.image}
+            alt={story.imageAlt}
+            label={story.destination}
             aspect="wide"
             tone="forest"
             className="mb-0 rounded-none transition-transform duration-500 group-hover:scale-[1.01]"
+            objectPosition="center 30%"
           />
         </div>
         <p className="text-xs uppercase tracking-[0.14em] text-sage">

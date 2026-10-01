@@ -12,10 +12,10 @@ import { site } from "@/content/site";
 export const metadata: Metadata = {
   title: "Books",
   description:
-    "Published works, excerpts, and speaking or press placeholders for the author practice.",
+    "I Walked Away by Malorfa Aryee, APR — and forthcoming work on plants and travel.",
   openGraph: {
     title: `Books · ${site.brand}`,
-    description: "Published works on risk, plants, and solo travel.",
+    description: "I Walked Away and forthcoming titles.",
   },
 };
 
@@ -25,15 +25,20 @@ export default function BooksPage() {
       <section className="section-pad border-b border-ink/8">
         <div className="container-page max-w-3xl">
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-sage">
-            Author
+            Author · Malorfa Aryee, APR
           </p>
           <h1 className="mt-3 font-display text-4xl text-ink md:text-5xl text-balance">
             Books & pages
           </h1>
           <p className="mt-5 text-lg leading-relaxed text-ink/70">
-            Titles, covers, and buy links are placeholders. Replace with your
-            real bibliography and retailer URLs before launch.
+            Start with <em>I Walked Away</em>—available on Amazon, with Ghana
+            orders via WhatsApp. More titles in progress.
           </p>
+          <div className="mt-8">
+            <Button href="/books/i-walked-away" size="lg">
+              Read I Walked Away
+            </Button>
+          </div>
         </div>
       </section>
 
@@ -44,10 +49,14 @@ export default function BooksPage() {
               <li key={book.slug}>
                 <Link href={`/books/${book.slug}`} className="group block">
                   <MediaPlaceholder
+                    src={book.image}
+                    alt={book.imageAlt}
                     label={book.coverLabel}
                     aspect="portrait"
                     tone="sand"
                     className="mb-5 transition-transform duration-500 group-hover:-translate-y-1"
+                    objectPosition="center 22%"
+                    showLabel={!book.image}
                   />
                   <p className="text-xs uppercase tracking-[0.14em] text-sage">
                     {book.year} · {book.status}

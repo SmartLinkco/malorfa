@@ -2,8 +2,10 @@ import type { Metadata } from "next";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import { CtaBand } from "@/components/ui/CtaBand";
+import { MediaPlaceholder } from "@/components/ui/MediaPlaceholder";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { TestimonialGrid } from "@/components/ui/TestimonialGrid";
+import { media } from "@/content/media";
 import {
   caseStudies,
   faqs,
@@ -27,18 +29,28 @@ export const metadata: Metadata = {
 export default function ServicesPage() {
   return (
     <>
-      <section className="section-pad border-b border-ink/8 bg-ink text-ivory">
-        <div className="container-page max-w-3xl">
+      <section className="relative overflow-hidden border-b border-ink/8 bg-ink text-ivory">
+        <div className="absolute inset-0 opacity-30">
+          <MediaPlaceholder
+            src={media.corporateSkyline.src}
+            alt=""
+            aspect="wide"
+            className="h-full min-h-[320px] rounded-none"
+            objectPosition="center 35%"
+            priority
+          />
+        </div>
+        <div className="container-page relative section-pad max-w-3xl">
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-moss">
             Risk & Insurance
           </p>
           <h1 className="mt-3 font-display text-4xl md:text-5xl text-balance">
             Counsel that earns its seat at the table
           </h1>
-          <p className="mt-5 text-lg leading-relaxed text-ivory/70">
+          <p className="mt-5 text-lg leading-relaxed text-ivory/80">
             Structured advisory for corporate agents and organizations who need
             clear exposure maps, renewal-ready language, and workshops that stick.
-            All firm names and licenses on this page are fictional placeholders.
+            Licensing details remain placeholders until verified.
           </p>
           <div className="mt-8">
             <Button href="/contact" variant="inverse" size="lg">

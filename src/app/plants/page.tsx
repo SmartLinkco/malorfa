@@ -13,6 +13,7 @@ import {
   plantCollection,
   shopPlants,
 } from "@/content/plants";
+import { media } from "@/content/media";
 import { site } from "@/content/site";
 
 export const metadata: Metadata = {
@@ -52,10 +53,13 @@ export default function PlantsPage() {
             </div>
           </div>
           <MediaPlaceholder
-            label="[PLACEHOLDER: Studio / collection hero]"
+            src={media.portraitOrchid.src}
+            alt={media.portraitOrchid.alt}
             aspect="landscape"
             tone="sage"
             className="w-full shadow-[0_20px_50px_rgba(44,74,62,0.12)]"
+            objectPosition="center 35%"
+            priority
           />
         </div>
       </section>
@@ -87,6 +91,7 @@ export default function PlantsPage() {
                   aspect="square"
                   tone={plant.featured ? "sage" : "sand"}
                   className="rounded-none"
+                  showLabel
                 />
                 <div className="p-5">
                   <LeafAccent className="mb-2 opacity-60" />

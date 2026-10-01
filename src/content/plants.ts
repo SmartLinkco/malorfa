@@ -1,10 +1,10 @@
 export const plantCollection = [
   {
-    id: "monstera",
-    name: "[PLACEHOLDER: Monstera deliciosa ‘Albo’]",
+    id: "orchid",
+    name: "Orchid (studio)",
     light: "Bright indirect",
     care: "Moderate",
-    note: "Collected after a trip to [PLACEHOLDER: Region]. Prefers consistent moisture, never soggy.",
+    note: "The plant in the pink pot—tended between client calls and travel packing.",
     featured: true,
   },
   {
