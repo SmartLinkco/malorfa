@@ -120,7 +120,7 @@ export const media = {
   // Generated — books
   bookCoverIWalkedAway: {
     src: "/media/book-cover-i-walked-away.jpg",
-    alt: "Book cover for I Walked Away by Malorfa Aryee",
+    alt: "Cover of I Walked Away by Malorfa Aryee, APR",
   },
   bookCoverPlants: {
     src: "/media/book-cover-plants-title.jpg",

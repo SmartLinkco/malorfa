@@ -10,7 +10,7 @@ type Props = {
 };
 
 /**
- * Original SVG plant that unfurls with scroll progress through the hero.
+ * SVG plant that unfurls with scroll progress (0–1 across the page).
  * Static full-growth fallback when prefers-reduced-motion is set.
  */
 export function GrowingPlant({ progress, className }: Props) {
@@ -90,7 +90,7 @@ function Leaf({
   );
 }
 
-/** Tracks scroll progress (0–1) through a section element. */
+/** Tracks scroll progress (0–1) through a section element (hero parallax). */
 export function useSectionScrollProgress() {
   const ref = useRef<HTMLElement | null>(null);
   const [progress, setProgress] = useState(0);
@@ -129,4 +129,42 @@ export function useSectionScrollProgress() {
   }, [reduced]);
 
   return { ref, progress };
+}
+
+/** Tracks scroll progress (0–1) from the top of the document to the bottom. */
+export function usePageScrollProgress() {
+  const [progress, setProgress] = useState(0);
+  const reduced = usePrefersReducedMotion();
+
+  useEffect(() => {
+    if (reduced) {
+      setProgress(1);
+      return;
+    }
+
+    let frame = 0;
+    const update = () => {
+      frame = 0;
+      const max =
+        document.documentElement.scrollHeight - window.innerHeight;
+      const raw = max > 0 ? window.scrollY / max : 0;
+      setProgress(Math.min(1, Math.max(0, raw)));
+    };
+
+    const onScroll = () => {
+      if (frame) return;
+      frame = window.requestAnimationFrame(update);
+    };
+
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+      if (frame) cancelAnimationFrame(frame);
+    };
+  }, [reduced]);
+
+  return progress;
 }

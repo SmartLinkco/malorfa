@@ -3,7 +3,11 @@
 import type { RefObject } from "react";
 import { motion, useReducedMotion } from "motion/react";
 import { Button } from "@/components/ui/Button";
-import { GrowingPlant, useSectionScrollProgress } from "@/components/effects/GrowingPlant";
+import {
+  GrowingPlant,
+  usePageScrollProgress,
+  useSectionScrollProgress,
+} from "@/components/effects/GrowingPlant";
 import { HeroVideo } from "@/components/effects/HeroVideo";
 import { LeafAccent } from "@/components/effects/LeafAccent";
 import { site } from "@/content/site";
@@ -13,7 +17,8 @@ import { site } from "@/content/site";
  * staggered first-visit reveal. Copy stands alone if video fails.
  */
 export function InteractiveHero() {
-  const { ref, progress } = useSectionScrollProgress();
+  const { ref, progress: heroProgress } = useSectionScrollProgress();
+  const pageProgress = usePageScrollProgress();
   const reducedMotion = useReducedMotion();
   const reduced = Boolean(reducedMotion);
 
@@ -24,7 +29,7 @@ export function InteractiveHero() {
         show: { opacity: 1, y: 0 },
       };
 
-  const parallaxY = reduced ? 0 : (progress - 0.5) * 28;
+  const parallaxY = reduced ? 0 : (heroProgress - 0.5) * 28;
 
   return (
     <>
@@ -85,9 +90,9 @@ export function InteractiveHero() {
             </motion.div>
             <motion.p
               variants={reveal}
-              className="mt-6 text-xs text-ink/40 md:hidden"
+              className="mt-6 text-xs text-ink/40"
             >
-              Scroll to watch the plant grow
+              Scroll the page — the plant keeps growing
             </motion.p>
           </motion.div>
 
@@ -98,20 +103,16 @@ export function InteractiveHero() {
             transition={{ duration: 0.7, delay: reduced ? 0 : 0.28, ease: [0.22, 1, 0.36, 1] }}
           >
             <HeroVideo parallaxY={parallaxY} />
-            {/* Mobile growing plant under video — scrolls with hero */}
-            <div className="mx-auto mt-4 h-28 w-24 md:hidden" aria-hidden>
-              <GrowingPlant progress={progress} />
-            </div>
           </motion.div>
         </div>
       </section>
 
-      {/* Desktop: plant stays fixed in the viewport while the page scrolls */}
+      {/* Fixed plant — growth maps to scroll through the whole page */}
       <div
-        className="pointer-events-none fixed bottom-0 left-0 z-20 hidden h-[min(52vh,400px)] w-36 opacity-80 md:block lg:w-44"
+        className="pointer-events-none fixed bottom-0 left-0 z-20 h-28 w-20 opacity-75 md:h-[min(52vh,400px)] md:w-36 md:opacity-80 lg:w-44"
         aria-hidden
       >
-        <GrowingPlant progress={progress} />
+        <GrowingPlant progress={pageProgress} />
       </div>
     </>
   );
