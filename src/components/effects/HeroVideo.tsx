@@ -102,12 +102,6 @@ export function HeroVideo({ parallaxY = 0, className }: Props) {
         className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/50 via-transparent to-ink/10"
         aria-hidden
       />
-
-      <div className="absolute inset-x-0 bottom-0 p-4 md:p-5">
-        <span className="rounded-sm bg-ivory/90 px-2.5 py-1 text-[11px] font-medium tracking-wide text-ink/70 backdrop-blur-sm">
-          Solo roads · clear sky
-        </span>
-      </div>
     </div>
   );
 }

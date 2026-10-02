@@ -56,14 +56,14 @@ export const books: Book[] = [
   {
     slug: "one-seat-at-the-table",
     title: "One Seat at the Table",
-    subtitle: "Solo travel dispatches",
+    subtitle: "Travel dispatches",
     year: "TBD",
     status: "In progress",
     coverLabel: "One Seat at the Table",
     image: media.bookCoverTravel.src,
     imageAlt: media.bookCoverTravel.alt,
     blurb:
-      "Dispatches from solo journeys—Barcelona plazas, East African roads, and the confidence of a table set for one.",
+      "Dispatches from journeys—Barcelona plazas, East African roads, and the confidence of a table set for one.",
     excerpt:
       "Eating alone in a new city is a skill. So is asking for directions without outsourcing your courage.",
     buyLinks: [{ label: "Notify me", href: "/contact" }],

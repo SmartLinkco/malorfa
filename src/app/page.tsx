@@ -152,7 +152,7 @@ export default function HomePage() {
             Travel
           </p>
           <h2 className="max-w-2xl font-display text-3xl md:text-4xl text-balance">
-            Solo field notes
+            Field notes
           </h2>
           <p className="mt-4 max-w-2xl text-base text-ivory/70 md:text-lg">
             Barcelona, Paris, East Africa, tram windows—and the plants noticed along the way.

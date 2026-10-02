@@ -8,9 +8,9 @@ export const site = {
   brand: "Malorfa",
   credentials: "APR",
   tagline:
-    "Risk counsel by day. Plants, pages, and solo roads when the week opens.",
+    "Risk counsel by day. Plants, pages, and open roads when the week opens.",
   positioning:
-    "Corporate risk & insurance advisor · plant-tropist · solo traveler · published author",
+    "Corporate risk & insurance advisor · plant-tropist · traveler · published author",
   email: "[PLACEHOLDER: hello@yourdomain.com]",
   phone: "+233 24 355 4423",
   location: "Ghana · on the road",
@@ -57,7 +57,7 @@ export const facets = [
   },
   {
     id: "travel",
-    label: "Solo Travel",
+    label: "Travel",
     href: "/travel",
     blurb: "Editorial field notes from roads walked alone—and well.",
     image: "/media/travel-detail-barcelona-2.jpg",

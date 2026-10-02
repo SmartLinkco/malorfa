@@ -1,5 +1,5 @@
 export const biography = {
-  lead: "I advise organizations on risk and insurance with the same attention I bring to a garden, a manuscript, and a solo itinerary: clear structure, honest tradeoffs, and room to breathe.",
+  lead: "I advise organizations on risk and insurance with the same attention I bring to a garden, a manuscript, and an itinerary: clear structure, honest tradeoffs, and room to breathe.",
   paragraphs: [
     "Malorfa Aryee, APR — corporate risk and insurance counsel by vocation, with a practice shaped by clarity under pressure and language that finance and ops can actually use.",
     "Away from client work, I tend living plants, publish (I Walked Away), and travel alone when the calendar allows—Barcelona plazas, Paris café tables, East African roads. These are not side hobbies bolted onto a résumé; they shape how I listen, write briefs, and stay grounded.",
@@ -28,7 +28,7 @@ export const timeline = [
     year: "Ongoing",
     title: "Plants, roads, and pages",
     detail:
-      "Collection grows; solo trips continue across Africa and Europe; new writing in progress.",
+      "Collection grows; trips continue across Africa and Europe; new writing in progress.",
   },
 ] as const;
 
@@ -43,7 +43,7 @@ export const values = [
   },
   {
     title: "Independence with warmth",
-    body: "Solo travel taught self-reliance; hospitality taught generosity. Both belong in professional work.",
+    body: "Travel taught self-reliance; hospitality taught generosity. Both belong in professional work.",
   },
   {
     title: "Steady growth",

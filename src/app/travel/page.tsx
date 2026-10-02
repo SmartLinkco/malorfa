@@ -11,10 +11,10 @@ import { travelStories } from "@/content/travel";
 export const metadata: Metadata = {
   title: "Travel",
   description:
-    "Solo travel journal — Barcelona, Paris, East Africa, and field notes from the road.",
+    "Travel journal — Barcelona, Paris, East Africa, and field notes from the road.",
   openGraph: {
     title: `Travel · ${site.brand}`,
-    description: "Editorial solo travel dispatches.",
+    description: "Editorial travel dispatches.",
   },
 };
 
@@ -34,7 +34,7 @@ export default function TravelPage() {
         </div>
         <div className="container-page relative section-pad max-w-3xl">
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-moss">
-            Solo travel journal
+            Travel journal
           </p>
           <h1 className="mt-3 font-display text-4xl md:text-5xl text-balance">
             Roads walked alone—and well

@@ -32,7 +32,7 @@ export const travelStories: TravelStory[] = [
     midImage: media.travelDetailBarcelona2.src,
     midImageAlt: media.travelDetailBarcelona2.alt,
     body: [
-      "Solo travel is not loneliness with better lighting. It is choosing your own pace—and noticing what a shared itinerary would rush past.",
+      "Travel is not loneliness with better lighting. It is choosing your own pace—and noticing what a shared itinerary would rush past.",
       "In Barcelona, the plaza became a studio: light, motion, and the small courage of standing still while the city moved.",
       "Pigeons, white stone, and a sky that asked nothing of you except attention.",
     ],
