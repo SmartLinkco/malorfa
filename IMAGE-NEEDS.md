@@ -44,6 +44,7 @@ Suggested specs: **JPEG or WebP**, sRGB, longest edge **1600–2400px**. Prefer 
 | # | File | Slot | Status |
 |---|------|------|--------|
 | 29 | `book-cover-i-walked-away.jpg` | *I Walked Away* cover | **Real cover** (user-provided) |
+| 29b | `book-cover-rooted.jpeg` | *Rooted* cover | **Real cover** (user-provided) |
 | 30 | `book-cover-plants-title.jpg` | *Leaves on the Windowsill* | Done |
 | 31 | `book-cover-travel-title.jpg` | *One Seat at the Table* | Done |
 | 32 | `author-speaking.jpg` | Speaking / press | Done |

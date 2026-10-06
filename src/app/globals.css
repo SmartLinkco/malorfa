@@ -132,6 +132,17 @@
   }
 }
 
+@keyframes brand-cursor {
+  0%,
+  49% {
+    opacity: 0.85;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -150,6 +161,11 @@
   .plant-card-hover:hover .leaf-accent {
     transition: none;
     transform: none;
+  }
+
+  .animate-\[brand-cursor_1s_steps\(1\)_infinite\] {
+    animation: none !important;
+    opacity: 0.85;
   }
 
   html.has-custom-cursor,

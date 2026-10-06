@@ -1,7 +1,7 @@
 export const biography = {
   lead: "I advise organizations on risk and insurance with the same attention I bring to a garden, a manuscript, and an itinerary: clear structure, honest tradeoffs, and room to breathe.",
   paragraphs: [
-    "Malorfa Aryee, APR — corporate risk and insurance counsel by vocation, with a practice shaped by clarity under pressure and language that finance and ops can actually use.",
+    "Malorfa Aryee — underwriting expert and IPR Ghana Accredited professional — brings corporate risk and insurance counsel shaped by clarity under pressure and language that finance and ops can actually use.",
     "Away from client work, I tend living plants, publish (I Walked Away), and travel alone when the calendar allows—Barcelona plazas, Paris café tables, East African roads. These are not side hobbies bolted onto a résumé; they shape how I listen, write briefs, and stay grounded.",
     "This site gathers those threads under one name. If you are here for consulting, start with Services. If you found me through the book, a plant tip, or a travel note, welcome—stay as long as it is useful.",
   ],
@@ -10,14 +10,21 @@ export const biography = {
 export const timeline = [
   {
     year: "Career",
-    title: "Risk, insurance & corporate counsel",
+    title: "Underwriting, risk & insurance counsel",
     detail:
-      "Advisory work for agents and organizations—renewals, program design, and stakeholder-ready risk language. [PLACEHOLDER: add specific years and roles.]",
+      "Nearly two decades across underwriting, claims, reinsurance, and risk communication—advisory work for agents and organizations who need stakeholder-ready clarity.",
   },
   {
     year: "Credential",
-    title: "APR",
-    detail: "Accreditation in Public Relations — listed on published author materials.",
+    title: "IPR Ghana Accredited",
+    detail:
+      "Accredited by the Institute of Public Relations, Ghana — professional standing alongside published author work.",
+  },
+  {
+    year: "Expertise",
+    title: "Underwriting Expert",
+    detail:
+      "Deep practice pricing risk, designing programs, and translating underwriting judgment into decisions leaders can act on.",
   },
   {
     year: "2024",
@@ -54,18 +61,18 @@ export const values = [
 export const credentials = [
   {
     label: "Name",
-    value: "Malorfa Aryee, APR",
+    value: "Malorfa Aryee",
+  },
+  {
+    label: "Expertise",
+    value: "Underwriting Expert",
+  },
+  {
+    label: "Accreditation",
+    value: "IPR Ghana Accredited",
   },
   {
     label: "Published work",
     value: "I Walked Away — Amazon & Ghana WhatsApp orders",
-  },
-  {
-    label: "License / designation",
-    value: "[PLACEHOLDER: insurance / risk credentials — replace with verified details]",
-  },
-  {
-    label: "Professional membership",
-    value: "[PLACEHOLDER: Association name]",
   },
 ] as const;

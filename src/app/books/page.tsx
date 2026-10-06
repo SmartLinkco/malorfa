@@ -12,7 +12,7 @@ import { site } from "@/content/site";
 export const metadata: Metadata = {
   title: "Books",
   description:
-    "I Walked Away by Malorfa Aryee, APR — and forthcoming work on plants and travel.",
+    "I Walked Away by Malorfa Aryee — underwriting expert, IPR Ghana Accredited — and forthcoming work on plants and travel.",
   openGraph: {
     title: `Books · ${site.brand}`,
     description: "I Walked Away and forthcoming titles.",
@@ -25,7 +25,7 @@ export default function BooksPage() {
       <section className="section-pad border-b border-ink/8">
         <div className="container-page max-w-3xl">
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-sage">
-            Author · Malorfa Aryee, APR
+            Author · Malorfa Aryee
           </p>
           <h1 className="mt-3 font-display text-4xl text-ink md:text-5xl text-balance">
             Books & pages
@@ -44,7 +44,7 @@ export default function BooksPage() {
 
       <section className="section-pad">
         <div className="container-page">
-          <ul className="grid gap-10 md:grid-cols-3">
+          <ul className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
             {books.map((book) => (
               <li key={book.slug}>
                 <Link href={`/books/${book.slug}`} className="group block">
@@ -80,7 +80,7 @@ export default function BooksPage() {
             title="A few lines from the work"
             className="mb-10"
           />
-          <ul className="grid gap-6 md:grid-cols-3">
+          <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {books.map((book) => (
               <Card as="li" key={`${book.slug}-excerpt`}>
                 <p className="font-display text-xl leading-snug text-ink">

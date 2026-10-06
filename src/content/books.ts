@@ -38,6 +38,22 @@ export const books: Book[] = [
     themes: ["Memoir", "Courage", "Self-trust"],
   },
   {
+    slug: "rooted",
+    title: "Rooted",
+    subtitle: "What I didn't walk away from",
+    year: "TBD",
+    status: "In progress",
+    coverLabel: "Rooted — Malorfa Aryee",
+    image: media.bookCoverRooted.src,
+    imageAlt: media.bookCoverRooted.alt,
+    blurb:
+      "A companion to I Walked Away — on what remains, what holds, and why growth doesn’t always look like blooming.",
+    excerpt:
+      "Growth doesn’t always look like blooming. Sometimes it looks like staying — and learning what the roots were for.",
+    buyLinks: [{ label: "Notify me", href: "/contact" }],
+    themes: ["Memoir", "Growth", "Belonging"],
+  },
+  {
     slug: "leaves-on-the-windowsill",
     title: "Leaves on the Windowsill",
     subtitle: "A plant-tropist’s field notes for city apartments",
@@ -88,8 +104,8 @@ export const speakingPress = [
   },
   {
     type: "Credential",
-    title: "APR",
-    detail: "Accreditation in Public Relations — listed on author materials",
+    title: "IPR Ghana Accredited",
+    detail: "Institute of Public Relations, Ghana — underwriting expert & published author",
   },
 ] as const;
 

@@ -39,14 +39,11 @@ export default function HomePage() {
             Trusted for
           </p>
           <ul className="flex flex-wrap gap-x-8 gap-y-2 text-sm text-ink/70">
+            <li>Underwriting expertise</li>
             <li>Corporate risk briefings</li>
-            <li>Insurance program design</li>
+            <li>IPR Ghana Accredited</li>
             <li>Author talks & media</li>
-            <li>Plant care notes</li>
           </ul>
-          <p className="text-xs text-ink/45">
-            Credentials are placeholders — replace before launch
-          </p>
         </div>
       </section>
 
@@ -116,7 +113,7 @@ export default function HomePage() {
             description="Published memoir plus forthcoming plant and travel titles."
             className="mb-10"
           />
-          <ul className="grid gap-8 sm:grid-cols-3">
+          <ul className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
             {books.map((book) => (
               <li key={book.slug}>
                 <Link href={`/books/${book.slug}`} className="group block">

@@ -6,6 +6,8 @@ import { site } from "@/content/site";
 
 const topics = [
   { value: "consulting", label: "Consulting / risk & insurance" },
+  { value: "underwriting", label: "Underwriting" },
+  { value: "pr", label: "PR" },
   { value: "speaking", label: "Speaking" },
   { value: "plants", label: "Plants / nursery partnership" },
   { value: "media", label: "Media / press" },

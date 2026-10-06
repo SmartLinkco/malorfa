@@ -6,12 +6,12 @@ export const site = {
   name: "Malorfa Aryee",
   shortName: "Malorfa",
   brand: "Malorfa",
-  credentials: "APR",
+  credentials: "Underwriting Expert · IPR Ghana Accredited",
   tagline:
     "Risk counsel by day. Plants, pages, and open roads when the week opens.",
   positioning:
-    "Corporate risk & insurance advisor · plant-tropist · traveler · published author",
-  email: "[PLACEHOLDER: hello@yourdomain.com]",
+    "Underwriting expert · corporate risk & insurance advisor · IPR Ghana Accredited · plant-tropist · traveler · published author",
+  email: "hello@malorfa.com",
   phone: "+233 24 355 4423",
   location: "Ghana · on the road",
   calendarUrl: "#", // TODO: replace with Calendly / booking link
@@ -41,7 +41,7 @@ export const facets = [
     label: "Risk & Insurance",
     href: "/services",
     blurb:
-      "Boardroom-ready counsel for corporate agents and growing organizations.",
+      "Boardroom-ready underwriting and risk counsel for corporate agents and growing organizations.",
     image: "/media/corporate-skyline.jpg",
     imageAlt: "Urban skyline framed by tree branches — boardroom and nature",
     cue: "Counsel",

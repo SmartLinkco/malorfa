@@ -3,6 +3,10 @@
  * Generated fills live alongside real Malorfa photos.
  */
 export const media = {
+  portraitHero: {
+    src: "/media/Malorfa.png",
+    alt: "Malorfa Aryee, seated portrait",
+  },
   portraitOrchid: {
     src: "/media/portrait-orchid.jpg",
     alt: "Malorfa Aryee in a pink blazer tending an orchid at home",
@@ -121,6 +125,10 @@ export const media = {
   bookCoverIWalkedAway: {
     src: "/media/book-cover-i-walked-away.jpg",
     alt: "Cover of I Walked Away by Malorfa Aryee, APR",
+  },
+  bookCoverRooted: {
+    src: "/media/book-cover-rooted.jpeg",
+    alt: "Cover of Rooted by Malorfa Aryee — What I didn't walk away from",
   },
   bookCoverPlants: {
     src: "/media/book-cover-plants-title.jpg",
