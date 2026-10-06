@@ -142,6 +142,31 @@ export const media = {
     src: "/media/author-speaking.jpg",
     alt: "Malorfa at a speaking or book-signing appearance",
   },
+  // Lifestyle gallery (recent additions)
+  galleryStudio: {
+    src: "/media/gallery-01.jpeg",
+    alt: "Malorfa in a light blue blouse at her desk with a small plant nearby",
+  },
+  galleryHistoricBuilding: {
+    src: "/media/gallery-02.jpeg",
+    alt: "Malorfa outside a grand historic building on a sunny day",
+  },
+  galleryWhiteSuit: {
+    src: "/media/gallery-03.jpeg",
+    alt: "Malorfa in a white suit working on a laptop at home",
+  },
+  galleryAirportBench: {
+    src: "/media/gallery-04.jpeg",
+    alt: "Malorfa smiling at an airport terminal with travel bags nearby",
+  },
+  galleryAirportGate: {
+    src: "/media/gallery-05.jpeg",
+    alt: "Malorfa at an airport gate with a white suitcase",
+  },
+  galleryStudioPortrait: {
+    src: "/media/gallery-06-studio.jpeg",
+    alt: "Malorfa in a light blue top, studio portrait",
+  },
   // Generated — travel extras
   travelDetailBarcelona2: {
     src: "/media/travel-detail-barcelona-2.jpg",

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { InteractiveHero } from "@/components/effects/InteractiveHero";
 import { TodayPlantTip } from "@/components/effects/TodayPlantTip";
 import { FacetShowcase } from "@/components/effects/FacetShowcase";
+import { GalleryMarquee } from "@/components/effects/GalleryMarquee";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import { CtaBand } from "@/components/ui/CtaBand";
@@ -245,6 +246,8 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      <GalleryMarquee />
 
       <TestimonialGrid limit={3} />
 

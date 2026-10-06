@@ -119,6 +119,15 @@
     mix-blend-mode: overlay;
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
   }
+
+  /* Infinite lifestyle gallery — right to left */
+  .gallery-marquee-track {
+    animation: gallery-marquee 72s linear infinite;
+  }
+
+  .gallery-marquee:hover .gallery-marquee-track {
+    animation-play-state: paused;
+  }
 }
 
 @keyframes fade-up {
@@ -140,6 +149,15 @@
   50%,
   100% {
     opacity: 0;
+  }
+}
+
+@keyframes gallery-marquee {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
   }
 }
 
@@ -166,6 +184,11 @@
   .animate-\[brand-cursor_1s_steps\(1\)_infinite\] {
     animation: none !important;
     opacity: 0.85;
+  }
+
+  .gallery-marquee-track {
+    animation: none !important;
+    transform: none !important;
   }
 
   html.has-custom-cursor,
