@@ -113,7 +113,7 @@ export default function HomePage() {
             description="Published memoir plus forthcoming plant and travel titles."
             className="mb-10"
           />
-          <ul className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+          <ul className="grid grid-cols-2 gap-6 lg:grid-cols-4 lg:gap-8">
             {books.map((book) => (
               <li key={book.slug}>
                 <Link href={`/books/${book.slug}`} className="group block">
@@ -154,7 +154,7 @@ export default function HomePage() {
           <p className="mt-4 max-w-2xl text-base text-ivory/70 md:text-lg">
             Barcelona, Paris, East Africa, tram windows—and the plants noticed along the way.
           </p>
-          <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <ul className="mt-10 grid grid-cols-2 gap-4 lg:grid-cols-4">
             {[
               {
                 href: "/travel/barcelona-plaza-light",

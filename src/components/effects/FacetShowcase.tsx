@@ -19,7 +19,7 @@ export function FacetShowcase({ className }: Props) {
   return (
     <ul
       className={cn(
-        "grid gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6",
+        "grid grid-cols-2 gap-6 lg:grid-cols-4 lg:gap-6",
         className,
       )}
     >
