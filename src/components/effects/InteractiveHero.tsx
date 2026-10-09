@@ -56,8 +56,8 @@ export function InteractiveHero() {
                 fill
                 preload
                 quality={90}
-                sizes="(min-resolution: 3dppx) min(100vw, 270px), (min-resolution: 2dppx) min(100vw, 405px), min(100vw, 810px)"
-                className="object-cover object-[center_18%] drop-shadow-[0_18px_40px_rgba(26,31,28,0.22)]"
+                sizes="(min-resolution: 3dppx) min(100vw, calc(1400px / 3)), (min-resolution: 2dppx) min(100vw, 700px), min(100vw, 1400px)"
+                className="object-cover object-[center_25%] drop-shadow-[0_18px_40px_rgba(26,31,28,0.22)]"
               />
             </div>
             <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-canvas to-transparent" />

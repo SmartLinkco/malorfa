@@ -59,22 +59,22 @@
     @apply mx-auto w-full max-w-6xl px-5 md:px-8;
   }
 
-  /* gallery-02.jpeg is 810×1080 — never paint it larger than the file. */
+  /* author-speaking.jpg is 1400×1050 — never paint it larger than the file. */
   .hero-portrait-frame {
-    width: min(100%, 810px);
-    aspect-ratio: 810 / 1080;
+    width: min(100%, 1400px);
+    aspect-ratio: 1400 / 1050;
     max-height: 100%;
   }
 
   @media (min-resolution: 2dppx) {
     .hero-portrait-frame {
-      width: min(100%, 405px);
+      width: min(100%, 700px);
     }
   }
 
   @media (min-resolution: 3dppx) {
     .hero-portrait-frame {
-      width: min(100%, 270px);
+      width: min(100%, calc(1400px / 3));
     }
   }
 

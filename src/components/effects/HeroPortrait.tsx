@@ -47,8 +47,8 @@ export function HeroPortrait({ parallaxY = 0, className }: Props) {
           fill
           preload
           quality={90}
-          sizes="(min-width: 1024px) and (min-resolution: 3dppx) 270px, (min-width: 1024px) and (min-resolution: 2dppx) 405px, (min-width: 1024px) min(52vw, 810px), 270px"
-          className="object-cover object-[center_18%] drop-shadow-[0_20px_40px_rgba(26,31,28,0.16)]"
+          sizes="(min-width: 1024px) and (min-resolution: 3dppx) calc(1400px / 3), (min-width: 1024px) and (min-resolution: 2dppx) 700px, (min-width: 1024px) min(52vw, 1400px), calc(1400px / 3)"
+          className="object-cover object-[center_25%] drop-shadow-[0_20px_40px_rgba(26,31,28,0.16)]"
         />
       </div>
 
