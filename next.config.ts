@@ -5,6 +5,10 @@ const nextConfig: NextConfig = {
   turbopack: {
     root: process.cwd(),
   },
+  images: {
+    // Hero portrait requests 90; everything else stays on the default 75.
+    qualities: [75, 90],
+  },
 };
 
 export default nextConfig;

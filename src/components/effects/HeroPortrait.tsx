@@ -11,7 +11,7 @@ type Props = {
 };
 
 /**
- * Desktop landing portrait — bottom-anchored cutout that fades into the canvas.
+ * Desktop landing portrait — top-weighted crop that fades into the canvas.
  */
 export function HeroPortrait({ parallaxY = 0, className }: Props) {
   const reduced = usePrefersReducedMotion();
@@ -30,7 +30,7 @@ export function HeroPortrait({ parallaxY = 0, className }: Props) {
       />
 
       <div
-        className="absolute inset-x-0 bottom-0 top-[4%] mx-auto w-full max-w-none will-change-transform"
+        className="hero-portrait-frame absolute right-0 bottom-0 top-[4%] will-change-transform"
         style={{
           transform: reduced
             ? undefined
@@ -45,9 +45,10 @@ export function HeroPortrait({ parallaxY = 0, className }: Props) {
           src={media.portraitHero.src}
           alt={media.portraitHero.alt}
           fill
-          priority
-          sizes="(max-width: 1280px) 50vw, 640px"
-          className="object-contain object-bottom drop-shadow-[0_20px_40px_rgba(26,31,28,0.16)]"
+          preload
+          quality={90}
+          sizes="(min-width: 1024px) and (min-resolution: 3dppx) 430px, (min-width: 1024px) and (min-resolution: 2dppx) 645px, (min-width: 1024px) min(52vw, 1290px), 430px"
+          className="object-cover object-top drop-shadow-[0_20px_40px_rgba(26,31,28,0.16)]"
         />
       </div>
 
