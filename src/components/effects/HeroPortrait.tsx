@@ -30,7 +30,7 @@ export function HeroPortrait({ parallaxY = 0, className }: Props) {
       />
 
       <div
-        className="hero-portrait-frame absolute right-0 bottom-0 top-[4%] will-change-transform"
+        className="hero-portrait-frame absolute right-0 bottom-0 will-change-transform"
         style={{
           transform: reduced
             ? undefined
@@ -47,8 +47,8 @@ export function HeroPortrait({ parallaxY = 0, className }: Props) {
           fill
           preload
           quality={90}
-          sizes="(min-width: 1024px) and (min-resolution: 3dppx) 430px, (min-width: 1024px) and (min-resolution: 2dppx) 645px, (min-width: 1024px) min(52vw, 1290px), 430px"
-          className="object-cover object-top drop-shadow-[0_20px_40px_rgba(26,31,28,0.16)]"
+          sizes="(min-width: 1024px) and (min-resolution: 3dppx) calc(1400px / 3), (min-width: 1024px) and (min-resolution: 2dppx) 700px, (min-width: 1024px) min(52vw, 1400px), calc(1400px / 3)"
+          className="object-cover object-[center_25%] drop-shadow-[0_20px_40px_rgba(26,31,28,0.16)]"
         />
       </div>
 

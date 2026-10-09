@@ -4,8 +4,8 @@
  */
 export const media = {
   portraitHero: {
-    src: "/media/about-black-dress.jpg",
-    alt: "Malorfa in a black dress seated at home",
+    src: "/media/author-speaking.jpg",
+    alt: "Malorfa at a speaking or book-signing appearance",
   },
   portraitOrchid: {
     src: "/media/portrait-orchid.jpg",
