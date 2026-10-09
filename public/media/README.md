@@ -1,15 +1,16 @@
 # Media library — unique placements
 
-Every semantic photo is used **once** as a primary visual (story listing → detail may share the same story image). The home hero reuses the About gallery portrait.
+Every semantic photo is used **once** as a primary visual (story listing → detail may share the same story image). The home hero reuses a home-gallery frame.
 
 | File | Placement |
 |------|-----------|
-| `about-black-dress.jpg` | Home hero, and About gallery |
+| `gallery-02.jpeg` | Home hero, and home gallery |
 | `corporate-laptop.jpg` | Home → Services teaser |
 | `portrait-orchid.jpg` | Plants hero |
 | `author-paris-book.jpg` | Books (`I Walked Away`) |
 | `about-wings.jpg` | About hero |
 | `about-casual-collage.jpg` | About gallery |
+| `about-black-dress.jpg` | About gallery |
 | `travel-urban-red.jpg` | About gallery |
 | `corporate-skyline.jpg` | Services hero |
 | `travel-barcelona-pigeon.jpg` | Travel hero |
