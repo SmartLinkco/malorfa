@@ -59,6 +59,23 @@
     @apply mx-auto w-full max-w-6xl px-5 md:px-8;
   }
 
+  /* about-black-dress.jpg is 1290px wide — never paint it larger than the file. */
+  .hero-portrait-frame {
+    width: min(100%, 1290px);
+  }
+
+  @media (min-resolution: 2dppx) {
+    .hero-portrait-frame {
+      width: min(100%, 645px);
+    }
+  }
+
+  @media (min-resolution: 3dppx) {
+    .hero-portrait-frame {
+      width: min(100%, 430px);
+    }
+  }
+
   .section-pad {
     @apply py-16 md:py-24;
   }
