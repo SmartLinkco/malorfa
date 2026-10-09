@@ -45,28 +45,19 @@ export function InteractiveHero() {
           <div className="absolute inset-y-0 left-0 hidden w-[52%] bg-gradient-to-r from-forest via-forest/85 to-transparent lg:block" />
         </div>
 
-        {/* Mobile: full-bleed portrait wash + bottom-anchored crop */}
+        {/* Mobile: capped portrait, same pixels as the file */}
         <div className="pointer-events-none absolute inset-0 lg:hidden" aria-hidden>
-          <Image
-            src={media.portraitHero.src}
-            alt=""
-            fill
-            preload
-            quality={90}
-            sizes="(min-resolution: 3dppx) min(100vw, 430px), (min-resolution: 2dppx) min(100vw, 645px), min(100vw, 1290px)"
-            className="object-cover object-[center_12%] opacity-[0.22]"
-          />
           <div className="absolute inset-0 bg-gradient-to-b from-canvas/85 via-canvas/55 to-canvas/90" />
-          <div className="absolute inset-x-0 bottom-0 h-[48%]">
-            <div className="hero-portrait-frame relative mx-auto h-full">
+          <div className="absolute inset-x-0 bottom-0 flex h-[48%] items-end justify-center">
+            <div className="hero-portrait-frame relative">
               <Image
                 src={media.portraitHero.src}
                 alt=""
                 fill
                 preload
                 quality={90}
-                sizes="(min-resolution: 3dppx) min(100vw, 430px), (min-resolution: 2dppx) min(100vw, 645px), min(100vw, 1290px)"
-                className="object-cover object-top drop-shadow-[0_18px_40px_rgba(26,31,28,0.22)]"
+                sizes="(min-resolution: 3dppx) min(100vw, 270px), (min-resolution: 2dppx) min(100vw, 405px), min(100vw, 810px)"
+                className="object-cover object-[center_18%] drop-shadow-[0_18px_40px_rgba(26,31,28,0.22)]"
               />
             </div>
             <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-canvas to-transparent" />
