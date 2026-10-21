@@ -167,6 +167,55 @@ export const media = {
     src: "/media/gallery-06-studio.jpeg",
     alt: "Malorfa in a light blue top, studio portrait",
   },
+  // Incoming travel stills (renamed WhatsApp set)
+  travelSagradaFull: {
+    src: "/media/travel-malorfa-sagrada-familia-full.jpeg",
+    alt: "Malorfa at the Sagrada Família in Barcelona",
+  },
+  travelAmsterdamBike: {
+    src: "/media/travel-malorfa-amsterdam-bike-canal-bridge.jpeg",
+    alt: "Malorfa with a bicycle on a canal bridge in Amsterdam",
+  },
+  travelParisEiffelNight: {
+    src: "/media/travel-malorfa-paris-eiffel-tower-night.jpeg",
+    alt: "Malorfa at the Eiffel Tower at night",
+  },
+  travelGiraffeFeeding: {
+    src: "/media/travel-malorfa-giraffe-hand-feeding.jpeg",
+    alt: "Malorfa hand-feeding a giraffe from a sanctuary walkway",
+  },
+  travelTimesSquare: {
+    src: "/media/travel-malorfa-times-square-nyc.jpeg",
+    alt: "Malorfa in Times Square, New York City",
+  },
+  travelKotokaNight: {
+    src: "/media/travel-malorfa-kotoka-airport-night.jpeg",
+    alt: "Malorfa at Kotoka International Airport at dusk",
+  },
+  travelZaragozaCathedral: {
+    src: "/media/travel-malorfa-zaragoza-cathedral-plaza.jpeg",
+    alt: "Malorfa in a plaza before Zaragoza’s cathedral",
+  },
+  travelDcStreet: {
+    src: "/media/travel-malorfa-dc-17th-street-lamppost.jpeg",
+    alt: "Malorfa on 17th Street NW in Washington, D.C.",
+  },
+  travelAirlinkTarmac: {
+    src: "/media/travel-malorfa-airlink-tarmac.jpeg",
+    alt: "Malorfa on the tarmac beside an Airlink aircraft",
+  },
+  travelBarcelonaHarbor: {
+    src: "/media/travel-malorfa-barcelona-harbor-boat.jpeg",
+    alt: "Malorfa on a boat deck in Barcelona’s harbor",
+  },
+  travelAmsterdamTram: {
+    src: "/media/travel-malorfa-amsterdam-tram-street.jpeg",
+    alt: "Malorfa beside a tram on an Amsterdam street",
+  },
+  travelCafeCake: {
+    src: "/media/lifestyle-malorfa-cafe-cake-tea.jpeg",
+    alt: "Malorfa at a European café with cake and tea",
+  },
   // Generated — travel extras
   travelDetailBarcelona2: {
     src: "/media/travel-detail-barcelona-2.jpg",

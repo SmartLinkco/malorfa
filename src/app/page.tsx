@@ -16,6 +16,7 @@ import { media } from "@/content/media";
 import { plantCollection } from "@/content/plants";
 import { services } from "@/content/services";
 import { site } from "@/content/site";
+import { countriesVisitedCount } from "@/content/travel";
 
 export const metadata: Metadata = {
   title: {
@@ -143,43 +144,51 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Travel — generated field stills */}
+      {/* Travel — countries + field stills */}
       <section className="section-pad bg-ink text-ivory">
         <div className="container-page">
           <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-moss">
             Travel
           </p>
-          <h2 className="max-w-2xl font-display text-3xl md:text-4xl text-balance">
-            Field notes
-          </h2>
-          <p className="mt-4 max-w-2xl text-base text-ivory/70 md:text-lg">
-            Barcelona, Paris, East Africa, tram windows—and the plants noticed along the way.
-          </p>
+          <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+            <div className="max-w-2xl">
+              <h2 className="font-display text-3xl md:text-4xl text-balance">
+                {countriesVisitedCount} countries — and counting
+              </h2>
+              <p className="mt-4 text-base text-ivory/70 md:text-lg">
+                Measured, as <em>Rooted</em> puts it, at least in part by their
+                flowers—Barcelona, Amsterdam, Paris, Accra, and the roads between.
+              </p>
+            </div>
+            <p className="font-display text-5xl text-moss md:text-6xl">
+              {countriesVisitedCount}
+            </p>
+          </div>
           <ul className="mt-10 grid grid-cols-2 gap-4 lg:grid-cols-4">
             {[
               {
                 href: "/travel/barcelona-plaza-light",
-                src: media.travelDetailBarcelona2.src,
-                alt: media.travelDetailBarcelona2.alt,
+                src: media.travelSagradaFull.src,
+                alt: media.travelSagradaFull.alt,
                 label: "Barcelona",
               },
               {
+                href: "/travel/amsterdam-trams-and-tulips",
+                src: media.travelAmsterdamBike.src,
+                alt: media.travelAmsterdamBike.alt,
+                label: "Amsterdam",
+              },
+              {
                 href: "/travel/paris-pages-and-green",
-                src: media.travelDetailParis2.src,
-                alt: media.travelDetailParis2.alt,
+                src: media.travelParisEiffelNight.src,
+                alt: media.travelParisEiffelNight.alt,
                 label: "Paris",
               },
               {
-                href: "/travel/east-africa-on-the-road",
-                src: media.travelDetailSafari2.src,
-                alt: media.travelDetailSafari2.alt,
-                label: "East Africa",
-              },
-              {
-                href: "/travel/tram-window-notes",
-                src: media.travelMapPassport.src,
-                alt: media.travelMapPassport.alt,
-                label: "On the road",
+                href: "/travel/countries-so-far",
+                src: media.travelGiraffeFeeding.src,
+                alt: media.travelGiraffeFeeding.alt,
+                label: "Countries so far",
               },
             ].map((item) => (
               <li key={item.href}>
