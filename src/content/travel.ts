@@ -17,26 +17,36 @@ export type TravelStory = {
 };
 
 /**
- * Countries named in Rooted (“The Traveler’s Eye”) plus destinations
- * evidenced in the travel photo set and earlier dispatches.
- * Update this list as new borders are crossed.
+ * Countries and cities from Malorfa’s own “Countries & cities visited” note.
+ * `note` is only the cities or states she recorded — empty when the note
+ * names the country alone. Update this list as new borders are crossed.
  */
 export const countriesVisited = [
-  { name: "Ghana", region: "Africa", note: "Home — Accra, Kotoka, the compound" },
-  { name: "Spain", region: "Europe", note: "Barcelona, Zaragoza, and the Spain chapter" },
-  { name: "Netherlands", region: "Europe", note: "Amsterdam, Schiphol, tulips & sunflowers" },
-  { name: "France", region: "Europe", note: "Paris, Charles de Gaulle, courtyard roses" },
-  { name: "Germany", region: "Europe", note: "Hamburg & Bonn — roses carried home" },
-  { name: "Switzerland", region: "Europe", note: "Geneva — flower clock & alpine gardens" },
-  { name: "United States", region: "Americas", note: "Washington, D.C., New York, the Bronx" },
-  { name: "Eswatini", region: "Africa", note: "King Mswati III International Airport" },
-  { name: "Côte d’Ivoire", region: "Africa", note: "West African roads" },
-  { name: "Ethiopia", region: "Africa", note: "East African chapter" },
-  { name: "Kenya", region: "Africa", note: "Safari light & giraffes at the rail" },
-  { name: "Benin", region: "Africa", note: "West African chapter" },
-  { name: "Togo", region: "Africa", note: "West African chapter" },
-  { name: "South Africa", region: "Africa", note: "Southern routes" },
+  { name: "Belgium", region: "Europe", note: "" },
+  { name: "Luxembourg", region: "Europe", note: "" },
+  { name: "Switzerland", region: "Europe", note: "Geneva, Zurich" },
+  { name: "France", region: "Europe", note: "" },
+  { name: "Spain", region: "Europe", note: "Barcelona, Zaragoza, Madrid" },
+  { name: "Germany", region: "Europe", note: "Bonn, Cologne, Hamburg" },
+  { name: "Netherlands", region: "Europe", note: "Amsterdam" },
+  { name: "Ivory Coast", region: "Africa", note: "" },
+  { name: "Benin", region: "Africa", note: "" },
+  { name: "Togo", region: "Africa", note: "" },
+  { name: "Portugal", region: "Europe", note: "Lisbon" },
+  { name: "South Africa", region: "Africa", note: "" },
+  { name: "UAE", region: "Asia", note: "Dubai" },
+  { name: "Sweden", region: "Europe", note: "Stockholm" },
+  { name: "Kenya", region: "Africa", note: "Nairobi" },
+  { name: "Ethiopia", region: "Africa", note: "Addis Ababa" },
+  { name: "Eswatini", region: "Africa", note: "" },
+  {
+    name: "United States",
+    region: "Americas",
+    note: "Virginia, New York, New Jersey, Maryland, Washington DC",
+  },
 ] as const;
+
+export const countryRegions = ["Africa", "Europe", "Americas", "Asia"] as const;
 
 export const countriesVisitedCount = countriesVisited.length;
 

@@ -1,18 +1,28 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { TravelGrainCard } from "@/components/effects/TravelGrainCard";
+import { TravelHeroSlideshow } from "@/components/effects/TravelHeroSlideshow";
 import { Button } from "@/components/ui/Button";
 import { CtaBand } from "@/components/ui/CtaBand";
-import { MediaPlaceholder } from "@/components/ui/MediaPlaceholder";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { media } from "@/content/media";
 import { site } from "@/content/site";
 import {
   countriesVisited,
+  countryRegions,
   countriesVisitedCount,
   travelerEyeInterlude,
   travelStories,
 } from "@/content/travel";
+
+const travelHeroSlides = [
+  { src: media.travelSagradaFull.src },
+  { src: "/media/travel-malorfa-amsterdam-canal-skyline.jpeg" },
+  { src: media.travelParisEiffelNight.src },
+  { src: media.travelTimesSquare.src },
+  { src: media.travelGiraffeFeeding.src },
+  { src: "/media/travel-malorfa-waterfall-overlook.jpeg" },
+];
 
 export const metadata: Metadata = {
   title: "Travel",
@@ -24,25 +34,15 @@ export const metadata: Metadata = {
 };
 
 export default function TravelPage() {
-  const byRegion = {
-    Africa: countriesVisited.filter((c) => c.region === "Africa"),
-    Europe: countriesVisited.filter((c) => c.region === "Europe"),
-    Americas: countriesVisited.filter((c) => c.region === "Americas"),
-  };
+  const byRegion = countryRegions.map((region) => ({
+    region,
+    list: countriesVisited.filter((c) => c.region === region),
+  }));
 
   return (
     <>
       <section className="relative overflow-hidden border-b border-ink/8 bg-ink text-ivory">
-        <div className="absolute inset-0 opacity-45">
-          <MediaPlaceholder
-            src={media.travelSagradaFull.src}
-            alt=""
-            aspect="wide"
-            className="h-full min-h-[420px] rounded-none"
-            objectPosition="center 28%"
-            priority
-          />
-        </div>
+        <TravelHeroSlideshow slides={travelHeroSlides} />
         <div className="absolute inset-0 bg-gradient-to-r from-ink/90 via-ink/70 to-ink/40" />
         <div className="container-page relative section-pad grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
           <div className="max-w-2xl">
@@ -66,8 +66,8 @@ export default function TravelPage() {
               {countriesVisitedCount}
             </p>
             <p className="mt-3 text-sm text-ivory/65">
-              Named destinations across Africa, Europe, and the Americas—and
-              growing.
+              Named destinations across Africa, Europe, Asia, and the
+              Americas—and growing.
             </p>
             <Link
               href="#countries"
@@ -84,17 +84,11 @@ export default function TravelPage() {
           <SectionHeader
             eyebrow="The map"
             title={`${countriesVisitedCount} countries — so far`}
-            description="Compiled from Rooted’s travel interlude and the roads documented in these photographs. The list updates as new borders open."
+            description="Cities and states are shown where they were recorded. The list updates as new borders open."
             className="mb-10 max-w-2xl"
           />
-          <div className="grid gap-10 md:grid-cols-3">
-            {(
-              [
-                ["Africa", byRegion.Africa],
-                ["Europe", byRegion.Europe],
-                ["Americas", byRegion.Americas],
-              ] as const
-            ).map(([region, list]) => (
+          <div className="grid gap-10 md:grid-cols-2 xl:grid-cols-4">
+            {byRegion.map(({ region, list }) => (
               <div key={region}>
                 <p className="text-xs font-semibold uppercase tracking-[0.14em] text-sage">
                   {region} · {list.length}
@@ -103,7 +97,9 @@ export default function TravelPage() {
                   {list.map((c) => (
                     <li key={c.name} className="border-t border-ink/8 pt-3">
                       <p className="font-display text-xl text-ink">{c.name}</p>
-                      <p className="mt-1 text-sm text-ink/55">{c.note}</p>
+                      {c.note ? (
+                        <p className="mt-1 text-sm text-ink/55">{c.note}</p>
+                      ) : null}
                     </li>
                   ))}
                 </ul>

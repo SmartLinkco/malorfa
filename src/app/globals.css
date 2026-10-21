@@ -147,6 +147,17 @@
   .gallery-marquee:hover .gallery-marquee-track {
     animation-play-state: paused;
   }
+
+  /* Travel hero crossfade. Duration stays in sync with TRAVEL_HERO_FADE_MS. */
+  .travel-hero-slide {
+    transition: opacity 1400ms ease-in-out;
+  }
+
+  /* Subtle Ken Burns. 7400ms = 6000ms hold + 1400ms fade. */
+  .travel-hero-kenburns {
+    animation: travel-hero-kenburns 7400ms ease-out forwards;
+    will-change: transform;
+  }
 }
 
 @keyframes fade-up {
@@ -180,6 +191,15 @@
   }
 }
 
+@keyframes travel-hero-kenburns {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.06);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -206,6 +226,15 @@
   }
 
   .gallery-marquee-track {
+    animation: none !important;
+    transform: none !important;
+  }
+
+  .travel-hero-slide {
+    transition: none;
+  }
+
+  .travel-hero-kenburns {
     animation: none !important;
     transform: none !important;
   }
