@@ -65,6 +65,8 @@ describe("validation", () => {
   it("rejects header-breaking addresses", () => {
     assert.equal(validateNewsletterEmail({ email: "a@b.com\nBcc: x" }).ok, false);
     assert.equal(validateNewsletterEmail({ email: "not-an-email" }).ok, false);
+    assert.equal(validateNewsletterEmail({ email: "user@localhost" }).ok, false);
+    assert.equal(validateNewsletterEmail({ email: "a@b.c" }).ok, false);
     const ok = validateNewsletterEmail({ email: "reader@example.com" });
     assert.equal(ok.ok, true);
   });

@@ -7,8 +7,12 @@ import { site } from "@/content/site";
  */
 export const emailSiteUrl = "https://malorfa.com";
 
-/** PNG mark served from the site. SVG is unreliable in email clients. */
-export const emailMarkUrl = `${emailSiteUrl}/icons/icon-192.png`;
+/**
+ * PNG mark. The apex domain 308s to www, and many email clients do not
+ * follow image redirects, so this URL is the one that returns the file.
+ * SVG is unreliable in email clients.
+ */
+export const emailMarkUrl = "https://www.malorfa.com/icons/icon-192.png";
 
 export const emailColors = {
   canvas: "#f5f4f1",

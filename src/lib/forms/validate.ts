@@ -25,6 +25,8 @@ export function normalizeEmail(value: unknown): string | null {
   if (email.includes("..") || /[\s<>]/.test(email)) return null;
   const [local, domain] = email.split("@");
   if (!local || !domain || local.length > 64) return null;
+  const tld = domain.slice(domain.lastIndexOf(".") + 1);
+  if (tld.length < 2) return null;
   if (!emailPattern.test(email)) return null;
   return email;
 }
