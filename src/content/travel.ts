@@ -17,32 +17,33 @@ export type TravelStory = {
 };
 
 /**
- * Countries and cities from Malorfa’s own “Countries & cities visited” note.
- * `note` is only the cities or states she recorded — empty when the note
- * names the country alone. Update this list as new borders are crossed.
+ * Eighteen countries from Malorfa’s “Countries & cities visited” note.
+ * `note` is the city list she sent, in her order and spelling.
+ * Country count stays `countriesVisited.length`. Do not derive a city total
+ * until the owner confirms how the “30 cities” figure is counted.
  */
 export const countriesVisited = [
-  { name: "Belgium", region: "Europe", note: "" },
-  { name: "Luxembourg", region: "Europe", note: "" },
-  { name: "Switzerland", region: "Europe", note: "Geneva, Zurich" },
-  { name: "France", region: "Europe", note: "" },
-  { name: "Spain", region: "Europe", note: "Barcelona, Zaragoza, Madrid" },
-  { name: "Germany", region: "Europe", note: "Bonn, Cologne, Hamburg" },
-  { name: "Netherlands", region: "Europe", note: "Amsterdam" },
-  { name: "Ivory Coast", region: "Africa", note: "" },
-  { name: "Benin", region: "Africa", note: "" },
-  { name: "Togo", region: "Africa", note: "" },
+  { name: "Belgium", region: "Europe", note: "Brussels" },
+  { name: "Luxembourg", region: "Europe", note: "Luxembourg City" },
+  { name: "Switzerland", region: "Europe", note: "Zurich, Geneva" },
+  { name: "France", region: "Europe", note: "Paris" },
+  { name: "Spain", region: "Europe", note: "Madrid, Barcelona, Zaragoza" },
+  { name: "Germany", region: "Europe", note: "Cologne, Hamburg, Bonn, Berlin" },
+  { name: "Netherlands", region: "Europe", note: "Amsterdam, Utrecht, Rotterdam" },
+  { name: "Ivory Coast", region: "Africa", note: "Abidjan" },
+  { name: "Benin", region: "Africa", note: "Cotonou" },
+  { name: "Togo", region: "Africa", note: "Lomé" },
   { name: "Portugal", region: "Europe", note: "Lisbon" },
-  { name: "South Africa", region: "Africa", note: "" },
-  { name: "UAE", region: "Asia", note: "Dubai" },
+  { name: "South Africa", region: "Africa", note: "Johannesburg" },
+  { name: "UAE", region: "Asia", note: "Dubai, Abu Dhabi" },
   { name: "Sweden", region: "Europe", note: "Stockholm" },
   { name: "Kenya", region: "Africa", note: "Nairobi" },
   { name: "Ethiopia", region: "Africa", note: "Addis Ababa" },
-  { name: "Eswatini", region: "Africa", note: "" },
+  { name: "Eswatini", region: "Africa", note: "Mbabane" },
   {
     name: "United States",
     region: "Americas",
-    note: "Virginia, New York, New Jersey, Maryland, Washington DC",
+    note: "Washington DC, New York City (Manhattan, The Bronx), New Jersey, Baltimore (Maryland), Virginia",
   },
 ] as const;
 
