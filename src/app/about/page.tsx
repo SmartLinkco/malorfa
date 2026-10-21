@@ -12,15 +12,13 @@ import {
 } from "@/content/about";
 import { media } from "@/content/media";
 import { site } from "@/content/site";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "About",
-  description: `Biography and values for ${site.name} — risk advisor, plant-tropist, traveler, author.`,
-  openGraph: {
-    title: `About · ${site.brand}`,
-    description: biography.lead,
-  },
-};
+  description: biography.lead,
+  path: "/about",
+});
 
 export default function AboutPage() {
   return (

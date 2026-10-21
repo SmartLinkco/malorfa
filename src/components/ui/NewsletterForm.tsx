@@ -18,7 +18,7 @@ export function NewsletterForm({ compact = false }: { compact?: boolean }) {
     <div className={compact ? "" : "rounded-md border border-ink/8 bg-stone/60 p-6 md:p-8"}>
       {!compact ? (
         <>
-          <h3 className="font-display text-2xl text-ink">Stay in the loop</h3>
+          <h2 className="font-display text-2xl text-ink">Stay in the loop</h2>
           <p className="mt-2 max-w-md text-sm leading-relaxed text-ink/65">
             {site.newsletterNote}
           </p>

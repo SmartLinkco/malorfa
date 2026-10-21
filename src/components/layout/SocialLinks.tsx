@@ -38,7 +38,6 @@ export function SocialLinks({ className, iconClassName }: Props) {
             href={href}
             target="_blank"
             rel="noopener noreferrer"
-            aria-label={label}
             className={cn(
               "inline-flex opacity-70 transition-opacity hover:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-moss/50",
               iconClassName,
@@ -46,7 +45,7 @@ export function SocialLinks({ className, iconClassName }: Props) {
           >
             <Image
               src={src}
-              alt=""
+              alt={`${label} logo`}
               width={20}
               height={20}
               className="h-5 w-5 brightness-0 invert"

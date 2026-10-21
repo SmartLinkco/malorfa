@@ -14,17 +14,14 @@ import {
   shopPlants,
 } from "@/content/plants";
 import { media } from "@/content/media";
-import { site } from "@/content/site";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Plants",
   description:
-    "Plant-tropist hub: collection showcase, care tips, favorites by light, and partner nursery catalog stubs.",
-  openGraph: {
-    title: `Plants · ${site.brand}`,
-    description: "A living collection and practical care notes.",
-  },
-};
+    "A living collection tended with patience — studio favorites, care notes, and a partner nursery shelf.",
+  path: "/plants",
+});
 
 export default function PlantsPage() {
   return (

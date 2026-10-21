@@ -46,13 +46,16 @@ export function InteractiveHero() {
         </div>
 
         {/* Mobile: capped portrait, same pixels as the file */}
-        <div className="pointer-events-none absolute inset-0 lg:hidden" aria-hidden>
-          <div className="absolute inset-0 bg-gradient-to-b from-canvas/85 via-canvas/55 to-canvas/90" />
+        <div className="pointer-events-none absolute inset-0 lg:hidden">
+          <div
+            className="absolute inset-0 bg-gradient-to-b from-canvas/85 via-canvas/55 to-canvas/90"
+            aria-hidden
+          />
           <div className="absolute inset-x-0 bottom-0 flex h-[48%] items-end justify-center">
             <div className="hero-portrait-frame relative">
               <Image
                 src={media.portraitHero.src}
-                alt=""
+                alt={media.portraitHero.alt}
                 fill
                 preload
                 quality={90}
@@ -60,7 +63,10 @@ export function InteractiveHero() {
                 className="object-cover object-[center_25%] drop-shadow-[0_18px_40px_rgba(26,31,28,0.22)]"
               />
             </div>
-            <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-canvas to-transparent" />
+            <div
+              className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-canvas to-transparent"
+              aria-hidden
+            />
           </div>
         </div>
 

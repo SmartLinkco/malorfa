@@ -1,9 +1,11 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Cormorant_Garamond, Source_Sans_3 } from "next/font/google";
 import { CustomCursor } from "@/components/effects/CustomCursor";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { SiteJsonLd } from "@/components/seo/SiteJsonLd";
 import { site } from "@/content/site";
+import { defaultTitle, ogImage, siteUrl, titleTemplate } from "@/lib/seo";
 import "./globals.css";
 
 const display = Cormorant_Garamond({
@@ -21,24 +23,34 @@ const sans = Source_Sans_3({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://malorfa.example"),
+  metadataBase: new URL(siteUrl),
   title: {
-    default: `${site.brand} · Risk, plants, travel & books`,
-    template: `%s · ${site.brand}`,
+    default: defaultTitle,
+    template: titleTemplate,
   },
   description: site.tagline,
+  applicationName: site.brand,
+  authors: [{ name: site.name, url: siteUrl }],
+  creator: site.name,
   openGraph: {
-    title: site.brand,
-    description: site.tagline,
-    images: [site.ogImage],
     type: "website",
+    locale: "en_US",
+    siteName: site.brand,
+    title: defaultTitle,
+    description: site.tagline,
+    url: "/",
+    images: [ogImage],
   },
   twitter: {
     card: "summary_large_image",
-    title: site.brand,
+    title: defaultTitle,
     description: site.tagline,
-    images: [site.ogImage],
+    images: [ogImage.url],
   },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#2c4a3e",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
@@ -51,6 +63,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         >
           Skip to content
         </a>
+        <SiteJsonLd />
         <CustomCursor />
         <Header />
         <main id="main" className="flex-1">

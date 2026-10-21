@@ -65,9 +65,9 @@ export function FacetShowcase({ className }: Props) {
             </div>
 
             <div className="flex flex-1 flex-col pt-4">
-              <p className="font-display text-2xl leading-tight text-ink transition-colors duration-300 group-hover:text-forest md:text-[1.65rem]">
+              <h3 className="font-display text-2xl leading-tight text-ink transition-colors duration-300 group-hover:text-forest md:text-[1.65rem]">
                 {f.label}
-              </p>
+              </h3>
               <p className="mt-2 text-sm leading-relaxed text-ink/65 group-hover:text-ink/80">
                 {f.blurb}
               </p>

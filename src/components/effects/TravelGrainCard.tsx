@@ -40,9 +40,9 @@ export function TravelGrainCard({ story, className }: Props) {
         <p className="text-xs uppercase tracking-[0.14em] text-sage">
           {story.destination} · {story.date} · {story.readTime}
         </p>
-        <h2 className="mt-2 font-display text-3xl text-ink group-hover:text-forest">
+        <h3 className="mt-2 font-display text-3xl text-ink group-hover:text-forest">
           {story.title}
-        </h2>
+        </h3>
         <p className="mt-3 text-sm leading-relaxed text-ink/65">{story.excerpt}</p>
         {story.plantsNoted.length ? (
           <p className="mt-3 text-xs text-sage">

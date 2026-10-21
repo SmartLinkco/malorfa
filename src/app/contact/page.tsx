@@ -5,16 +5,14 @@ import { MediaPlaceholder } from "@/components/ui/MediaPlaceholder";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { media } from "@/content/media";
 import { site } from "@/content/site";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Contact",
   description:
-    "Get in touch for consulting, speaking, plants, media, or other inquiries.",
-  openGraph: {
-    title: `Contact · ${site.brand}`,
-    description: "Consulting, speaking, plants, media, and more.",
-  },
-};
+    "Consulting, speaking, plant partnerships, media — or something else. Write to Malorfa Aryee.",
+  path: "/contact",
+});
 
 export default function ContactPage() {
   return (

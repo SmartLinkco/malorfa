@@ -13,18 +13,14 @@ import {
   services,
   whoItsFor,
 } from "@/content/services";
-import { site } from "@/content/site";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Services · Risk & Insurance",
+export const metadata: Metadata = pageMetadata({
+  title: "Risk & insurance",
   description:
-    "Corporate risk advisory, insurance program design, claims readiness workshops, and speaking.",
-  openGraph: {
-    title: `Services · ${site.brand}`,
-    description:
-      "Boardroom-credible risk and insurance offerings for corporate and agency clients.",
-  },
-};
+    "Structured risk and insurance advisory for corporate agents and organizations — exposure maps, renewal-ready language, and workshops.",
+  path: "/services",
+});
 
 export default function ServicesPage() {
   return (
@@ -33,7 +29,7 @@ export default function ServicesPage() {
         <div className="absolute inset-0 opacity-30">
           <MediaPlaceholder
             src={media.corporateSkyline.src}
-            alt=""
+            alt={media.corporateSkyline.alt}
             aspect="wide"
             className="h-full min-h-[320px] rounded-none"
             objectPosition="center 35%"

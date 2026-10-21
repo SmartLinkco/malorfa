@@ -15,19 +15,16 @@ import { books } from "@/content/books";
 import { media } from "@/content/media";
 import { plantCollection } from "@/content/plants";
 import { services } from "@/content/services";
-import { site } from "@/content/site";
 import { countriesVisitedCount } from "@/content/travel";
+import { defaultTitle, pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: {
-    absolute: `${site.brand} · Risk, plants, travel & books`,
-  },
-  description: site.tagline,
-  openGraph: {
-    title: `${site.brand} — personal brand home`,
-    description: site.tagline,
-  },
-};
+export const metadata: Metadata = pageMetadata({
+  title: "Home",
+  absoluteTitle: defaultTitle,
+  description:
+    "Risk counsel by day. Plants, pages, and open roads when the week opens. Underwriting expert, IPR Ghana Accredited, plant-tropist, traveler, and published author.",
+  path: "/",
+});
 
 export default function HomePage() {
   return (

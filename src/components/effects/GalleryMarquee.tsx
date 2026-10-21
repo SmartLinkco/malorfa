@@ -45,7 +45,8 @@ export function GalleryMarquee({ className }: Props) {
             >
               <Image
                 src={item.src}
-                alt={i < galleryItems.length ? item.alt : ""}
+                alt={item.alt}
+                aria-hidden={i >= galleryItems.length ? true : undefined}
                 fill
                 sizes="(max-width: 768px) 40vw, 224px"
                 className="object-cover"

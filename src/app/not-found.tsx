@@ -1,5 +1,17 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
+import { site } from "@/content/site";
+import { pageMetadata } from "@/lib/seo";
+
+export const metadata: Metadata = pageMetadata({
+  title: "Page not found",
+  absoluteTitle: `Page not found · ${site.brand}`,
+  description: "That page is not on Malorfa Aryee’s site.",
+  path: "/",
+  index: false,
+  canonical: false,
+});
 
 export default function NotFound() {
   return (

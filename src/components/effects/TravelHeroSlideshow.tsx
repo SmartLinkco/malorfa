@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react";
 
 export type TravelHeroSlide = {
   src: string;
+  alt: string;
 };
 
 /** How long each photo stays before the next crossfade begins. */
@@ -68,10 +69,11 @@ export function TravelHeroSlideshow({ slides }: { slides: TravelHeroSlide[] }) {
   }, [holding]);
 
   return (
-    <div className="absolute inset-0 overflow-hidden opacity-45" aria-hidden="true">
+    <div className="absolute inset-0 overflow-hidden opacity-45">
       {slides.map((slide, i) => {
         const active = i === index;
         const playing = motionReady && (active || holding === i);
+        const visible = active || holding === i;
         return (
           <div
             key={slide.src}
@@ -79,6 +81,7 @@ export function TravelHeroSlideshow({ slides }: { slides: TravelHeroSlide[] }) {
               "travel-hero-slide absolute inset-0 " +
               (active ? "opacity-100" : "opacity-0")
             }
+            aria-hidden={visible ? undefined : true}
           >
             <div
               className={
@@ -87,7 +90,7 @@ export function TravelHeroSlideshow({ slides }: { slides: TravelHeroSlide[] }) {
             >
               <Image
                 src={slide.src}
-                alt=""
+                alt={slide.alt}
                 fill
                 sizes="100vw"
                 preload={i === 0}

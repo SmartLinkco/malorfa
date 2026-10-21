@@ -7,17 +7,14 @@ import { MediaPlaceholder } from "@/components/ui/MediaPlaceholder";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { TestimonialGrid } from "@/components/ui/TestimonialGrid";
 import { books, speakingPress } from "@/content/books";
-import { site } from "@/content/site";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Books",
   description:
-    "I Walked Away by Malorfa Aryee — underwriting expert, IPR Ghana Accredited — and forthcoming work on plants and travel.",
-  openGraph: {
-    title: `Books · ${site.brand}`,
-    description: "I Walked Away and forthcoming titles.",
-  },
-};
+    "I Walked Away by Malorfa Aryee — available on Amazon, with Ghana orders via WhatsApp — plus forthcoming plant and travel titles.",
+  path: "/books",
+});
 
 export default function BooksPage() {
   return (

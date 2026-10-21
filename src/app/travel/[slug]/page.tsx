@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { Button } from "@/components/ui/Button";
 import { MediaPlaceholder } from "@/components/ui/MediaPlaceholder";
 import { getTravelStory, travelStories } from "@/content/travel";
-import { site } from "@/content/site";
+import { pageMetadata } from "@/lib/seo";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -16,14 +16,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const story = getTravelStory(slug);
   if (!story) return { title: "Story" };
-  return {
+  return pageMetadata({
     title: story.title,
     description: story.excerpt,
-    openGraph: {
-      title: `${story.title} · ${site.brand}`,
-      description: story.excerpt,
-    },
-  };
+    path: `/travel/${story.slug}`,
+    ogType: "article",
+    image: { url: story.image, alt: story.imageAlt },
+  });
 }
 
 export default async function TravelStoryPage({ params }: Props) {
@@ -107,9 +106,9 @@ export default async function TravelStoryPage({ params }: Props) {
 
         {others.length ? (
           <div className="mt-14">
-            <p className="text-xs font-semibold uppercase tracking-[0.14em] text-sage">
+            <h2 className="text-xs font-semibold uppercase tracking-[0.14em] text-sage">
               Keep reading
-            </p>
+            </h2>
             <ul className="mt-4 space-y-4">
               {others.map((s) => (
                 <li key={s.slug}>
