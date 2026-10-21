@@ -73,11 +73,10 @@ export function HeroVideo({ parallaxY = 0, className }: Props) {
         {/* Dual-identity still — visible wash until a real MP4 replaces the stub */}
         <Image
           src={media.heroDualPoster.src}
-          alt=""
+          alt={media.heroDualPoster.alt}
           fill
           sizes="(max-width: 1024px) 100vw, 480px"
           className="object-cover opacity-[0.28] mix-blend-soft-light"
-          aria-hidden
         />
       </div>
 

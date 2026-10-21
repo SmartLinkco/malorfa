@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { Button } from "@/components/ui/Button";
 import { MediaPlaceholder } from "@/components/ui/MediaPlaceholder";
 import { books, getBook } from "@/content/books";
-import { site } from "@/content/site";
+import { pageMetadata } from "@/lib/seo";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -15,15 +15,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const book = getBook(slug);
   if (!book) return { title: "Book" };
-  return {
+  return pageMetadata({
     title: book.title,
     description: book.blurb,
-    openGraph: {
-      title: `${book.title} · ${site.brand}`,
-      description: book.blurb,
-      ...(book.image ? { images: [book.image] } : {}),
-    },
-  };
+    path: `/books/${book.slug}`,
+    ogType: "article",
+    image: book.image
+      ? { url: book.image, alt: book.imageAlt ?? `${book.title} cover` }
+      : undefined,
+  });
 }
 
 export default async function BookDetailPage({ params }: Props) {

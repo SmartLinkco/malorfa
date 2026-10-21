@@ -176,6 +176,14 @@ export const media = {
     src: "/media/travel-malorfa-amsterdam-bike-canal-bridge.jpeg",
     alt: "Malorfa with a bicycle on a canal bridge in Amsterdam",
   },
+  travelAmsterdamCanalSkyline: {
+    src: "/media/travel-malorfa-amsterdam-canal-skyline.jpeg",
+    alt: "Malorfa on a canal bridge in Amsterdam, with gabled houses across the water",
+  },
+  travelWaterfallOverlook: {
+    src: "/media/travel-malorfa-waterfall-overlook.jpeg",
+    alt: "Malorfa in a white dress at a waterfall overlook, arms open",
+  },
   travelParisEiffelNight: {
     src: "/media/travel-malorfa-paris-eiffel-tower-night.jpeg",
     alt: "Malorfa at the Eiffel Tower at night",
@@ -236,7 +244,7 @@ export const media = {
   // Generated — brand
   ogDefault: {
     src: "/media/og-default.jpg",
-    alt: "Malorfa brand Open Graph image",
+    alt: "Portrait of Malorfa Aryee with the word Malorfa",
   },
   heroDualPoster: {
     src: "/media/hero-dual-identity-poster.jpg",

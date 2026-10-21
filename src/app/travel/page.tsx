@@ -6,7 +6,6 @@ import { Button } from "@/components/ui/Button";
 import { CtaBand } from "@/components/ui/CtaBand";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { media } from "@/content/media";
-import { site } from "@/content/site";
 import {
   countriesVisited,
   countryRegions,
@@ -14,24 +13,25 @@ import {
   travelerEyeInterlude,
   travelStories,
 } from "@/content/travel";
+import { pageMetadata } from "@/lib/seo";
 
 const travelHeroSlides = [
-  { src: media.travelSagradaFull.src },
-  { src: "/media/travel-malorfa-amsterdam-canal-skyline.jpeg" },
-  { src: media.travelParisEiffelNight.src },
-  { src: media.travelTimesSquare.src },
-  { src: media.travelGiraffeFeeding.src },
-  { src: "/media/travel-malorfa-waterfall-overlook.jpeg" },
+  { src: media.travelSagradaFull.src, alt: media.travelSagradaFull.alt },
+  {
+    src: media.travelAmsterdamCanalSkyline.src,
+    alt: media.travelAmsterdamCanalSkyline.alt,
+  },
+  { src: media.travelParisEiffelNight.src, alt: media.travelParisEiffelNight.alt },
+  { src: media.travelTimesSquare.src, alt: media.travelTimesSquare.alt },
+  { src: media.travelGiraffeFeeding.src, alt: media.travelGiraffeFeeding.alt },
+  { src: media.travelWaterfallOverlook.src, alt: media.travelWaterfallOverlook.alt },
 ];
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Travel",
-  description: `${countriesVisitedCount} countries so far — field notes from roads, airports, and what grows along the way.`,
-  openGraph: {
-    title: `Travel · ${site.brand}`,
-    description: `${countriesVisitedCount} countries visited — measured, in part, by their flowers.`,
-  },
-};
+  description: `${countriesVisitedCount} countries so far. Field notes from plazas, airports, and the plants noticed between borders.`,
+  path: "/travel",
+});
 
 export default function TravelPage() {
   const byRegion = countryRegions.map((region) => ({
@@ -90,9 +90,9 @@ export default function TravelPage() {
           <div className="grid gap-10 md:grid-cols-2 xl:grid-cols-4">
             {byRegion.map(({ region, list }) => (
               <div key={region}>
-                <p className="text-xs font-semibold uppercase tracking-[0.14em] text-sage">
+                <h3 className="text-xs font-semibold uppercase tracking-[0.14em] text-sage">
                   {region} · {list.length}
-                </p>
+                </h3>
                 <ul className="mt-4 space-y-3">
                   {list.map((c) => (
                     <li key={c.name} className="border-t border-ink/8 pt-3">
