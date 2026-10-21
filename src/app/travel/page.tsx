@@ -7,6 +7,7 @@ import { CtaBand } from "@/components/ui/CtaBand";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { media } from "@/content/media";
 import {
+  citiesVisitedCount,
   countriesVisited,
   countryRegions,
   countriesVisitedCount,
@@ -59,12 +60,20 @@ export default function TravelPage() {
             </p>
           </div>
           <div className="rounded-md border border-ivory/15 bg-ink/50 p-6 backdrop-blur-sm md:p-8">
-            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-moss">
-              Countries so far
-            </p>
-            <p className="mt-3 font-display text-6xl leading-none text-ivory md:text-7xl">
-              {countriesVisitedCount}
-            </p>
+            <div className="grid grid-cols-2 items-end gap-4 sm:gap-8">
+              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-moss">
+                Countries so far
+              </p>
+              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-moss">
+                Cities so far
+              </p>
+              <p className="font-display text-6xl leading-none text-ivory md:text-7xl">
+                {countriesVisitedCount}
+              </p>
+              <p className="font-display text-6xl leading-none text-ivory md:text-7xl">
+                {citiesVisitedCount}
+              </p>
+            </div>
             <p className="mt-3 text-sm text-ivory/65">
               Named destinations across Africa, Europe, Asia, and the
               Americas—and growing.

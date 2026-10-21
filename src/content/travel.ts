@@ -19,8 +19,7 @@ export type TravelStory = {
 /**
  * Eighteen countries from Malorfa’s “Countries & cities visited” note.
  * `note` is the city list she sent, in her order and spelling.
- * Country count stays `countriesVisited.length`. Do not derive a city total
- * until the owner confirms how the “30 cities” figure is counted.
+ * Country count stays `countriesVisited.length`.
  */
 export const countriesVisited = [
   { name: "Belgium", region: "Europe", note: "Brussels" },
@@ -50,6 +49,101 @@ export const countriesVisited = [
 export const countryRegions = ["Africa", "Europe", "Americas", "Asia"] as const;
 
 export const countriesVisitedCount = countriesVisited.length;
+
+/**
+ * A note entry that is only a US state, with no city named.
+ * Washington DC is a city and is not in this set. Maryland appears only
+ * as the parenthetical on Baltimore, so it never reaches this check.
+ */
+const US_STATE_NAMES = new Set([
+  "Alabama",
+  "Alaska",
+  "Arizona",
+  "Arkansas",
+  "California",
+  "Colorado",
+  "Connecticut",
+  "Delaware",
+  "Florida",
+  "Georgia",
+  "Hawaii",
+  "Idaho",
+  "Illinois",
+  "Indiana",
+  "Iowa",
+  "Kansas",
+  "Kentucky",
+  "Louisiana",
+  "Maine",
+  "Maryland",
+  "Massachusetts",
+  "Michigan",
+  "Minnesota",
+  "Mississippi",
+  "Missouri",
+  "Montana",
+  "Nebraska",
+  "Nevada",
+  "New Hampshire",
+  "New Jersey",
+  "New Mexico",
+  "New York",
+  "North Carolina",
+  "North Dakota",
+  "Ohio",
+  "Oklahoma",
+  "Oregon",
+  "Pennsylvania",
+  "Rhode Island",
+  "South Carolina",
+  "South Dakota",
+  "Tennessee",
+  "Texas",
+  "Utah",
+  "Vermont",
+  "Virginia",
+  "Washington",
+  "West Virginia",
+  "Wisconsin",
+  "Wyoming",
+]);
+
+/** Comma-separated places, keeping parenthetical text on the same place. */
+function placesInNote(note: string): string[] {
+  const places: string[] = [];
+  let current = "";
+  let depth = 0;
+  for (const char of note) {
+    if (char === "(") depth += 1;
+    else if (char === ")" && depth > 0) depth -= 1;
+    else if (char === "," && depth === 0) {
+      const place = current.trim();
+      if (place) places.push(place);
+      current = "";
+      continue;
+    }
+    current += char;
+  }
+  const last = current.trim();
+  if (last) places.push(last);
+  return places;
+}
+
+function isCity(place: string): boolean {
+  const name = place.replace(/\s*\([^)]*\)\s*/g, " ").replace(/\s+/g, " ").trim();
+  return name.length > 0 && !US_STATE_NAMES.has(name);
+}
+
+/**
+ * Cities named in `countriesVisited`, not a separate tally.
+ * "New York City (Manhattan, The Bronx)" is one city. "Baltimore (Maryland)"
+ * is one city. A bare state such as New Jersey or Virginia is not a city.
+ */
+export const citiesVisitedCount = countriesVisited.reduce(
+  (total, country) =>
+    total + placesInNote(country.note).filter(isCity).length,
+  0,
+);
 
 export const travelerEyeInterlude = {
   title: "The Traveler’s Eye",
