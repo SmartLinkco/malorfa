@@ -1,8 +1,25 @@
 import type { Metadata } from "next";
 import { site } from "@/content/site";
 
-/** Canonical origin. The repo has no other production domain configured. */
-export const siteUrl = "https://malorfa.vercel.app";
+const DEFAULT_SITE_URL = "https://malorfa.com";
+
+function resolveSiteUrl(value: string | undefined): string {
+  const raw = value?.trim();
+  if (!raw) return DEFAULT_SITE_URL;
+  try {
+    const url = new URL(raw);
+    if (url.protocol !== "http:" && url.protocol !== "https:") return DEFAULT_SITE_URL;
+    return url.href.replace(/\/$/, "");
+  } catch {
+    return DEFAULT_SITE_URL;
+  }
+}
+
+/**
+ * Production origin for canonicals, Open Graph, JSON-LD, sitemap, and robots.
+ * Override with NEXT_PUBLIC_SITE_URL (no trailing slash required).
+ */
+export const siteUrl = resolveSiteUrl(process.env.NEXT_PUBLIC_SITE_URL);
 
 /** Home title. The root layout template does not apply to this same segment. */
 export const defaultTitle = `${site.name} · Risk, plants, travel & books`;
