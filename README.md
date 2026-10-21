@@ -22,7 +22,7 @@ npm run build   # production build
 npm start       # serve production build
 ```
 
-Deploy on Vercel: connect the repo and use the default Next.js preset (no env vars required for the UI stubs).
+Deploy on Vercel: connect the repo and use the default Next.js preset. The pages render without environment variables. The contact form and newsletter need the keys in [Environment variables](#environment-variables) before submissions succeed.
 
 ---
 
@@ -40,7 +40,7 @@ Deploy on Vercel: connect the repo and use the default Next.js preset (no env va
 | `/books` | Author works grid, excerpts, speaking/press stubs |
 | `/books/[slug]` | Book detail |
 | `/author` | Alias → `/books` |
-| `/contact` | Form (UI-only) + email / calendar stubs |
+| `/contact` | Contact form (Resend) + email / calendar stubs |
 
 ---
 
@@ -48,7 +48,7 @@ Deploy on Vercel: connect the repo and use the default Next.js preset (no env va
 
 ```
 src/
-  app/                 # App Router pages + layout
+  app/                 # App Router pages, layout, and form route handlers
   components/
     layout/            # Header, Footer
     ui/                # Button, Card, SectionHeader, etc.
@@ -116,13 +116,45 @@ Visual language drew structure, typography hierarchy, spacing, and section *idea
 
 ---
 
+## Environment variables
+
+Copy `.env.example` to `.env.local` for local development. Set the same names in Vercel (Project → Settings → Environment Variables) for Production, and for Preview if those deployments should accept submissions. Never commit real keys. The site builds without them; a missing key returns a clear error and does not print the secret.
+
+| Name | Required | Purpose |
+|------|----------|---------|
+| `RESEND_API_KEY` | Contact form | Resend API key with sending access on `notifications.malorfa.com`. |
+| `BUTTONDOWN_API_KEY` | Newsletter | Buttondown API token (`Authorization: Token …`). |
+| `RESEND_FROM_EMAIL` | No | From address for both contact emails. Default: `Malorfa Aryee <hello@notifications.malorfa.com>` |
+| `CONTACT_ADMIN_EMAIL` | No | Inbox that receives contact notes, and the reply-to on the confirmation. Default: `hello@malorfa.com` |
+
+Contact submissions send two emails through Resend: an admin notification (reply-to is the sender) and a confirmation to the sender (reply-to is `CONTACT_ADMIN_EMAIL`). Newsletter signups call Buttondown `POST /v1/subscribers`. New subscribers stay on Buttondown’s double opt-in unless you later change that in the request. An address that is already subscribed gets a friendly confirmation instead of an error.
+
+Both forms validate on the server, include a hidden honeypot, reject instant submits, and apply a small in-memory rate limit (5 attempts per 10 minutes per IP, per server instance).
+
+Preview the contact emails locally:
+
+```bash
+npx tsx scripts/render-email-previews.ts
+```
+
+HTML and plain-text files are written to `email-previews/`.
+
+### Resend and Buttondown setup
+
+- Resend: the sending domain `notifications.malorfa.com` must stay verified, and the from address must be on that domain. `hello@malorfa.com` is the destination inbox, not the Resend from address.
+- Buttondown: create an API key for the newsletter. Subscribers receive a confirmation email before they are counted as regular. Passing the visitor IP helps Buttondown’s firewall; do not enable the bypass-firewall header.
+
+---
+
 ## TODOs before launch
 
 - [ ] Replace all `[PLACEHOLDER: …]` copy, photos, and credentials with real (verified) details
 - [ ] Replace hero dual-identity **video** + **poster** in `public/media/`
-- [ ] Wire **contact form** backend (Formspree, Resend + Server Action, etc.)
-- [ ] Wire **newsletter** provider (Buttondown, ConvertKit, …)
-- [ ] Set `site.calendarUrl`, social links, and `metadataBase` to your domain
+- [x] Wire **contact form** through Resend (`RESEND_API_KEY`)
+- [x] Wire **newsletter** through Buttondown (`BUTTONDOWN_API_KEY`)
+- [ ] Add `RESEND_API_KEY` and `BUTTONDOWN_API_KEY` in Vercel
+- [ ] Set `site.calendarUrl` and any remaining social placeholders
+- [ ] Point `metadataBase` / `siteUrl` at `https://malorfa.com` (still `https://malorfa.vercel.app` in `src/lib/seo.ts`)
 - [ ] Add real OG images; replace `public/og-placeholder.svg`
 - [ ] Optional: partner nursery deep links or a lightweight commerce integration
 - [ ] Legal pages (privacy / terms) beyond footer stubs
@@ -138,7 +170,7 @@ Ship the multi-route site, design tokens, reusable components, and placeholder c
 Real name, photography, biography, verified credentials, book metadata, and plant collection. Tighten SEO titles/descriptions per page.
 
 ### Phase 2 — Lead capture
-Connect contact form + newsletter; add scheduling link; optional CRM tagging by topic (consulting / speaking / plants / media).
+Contact form and newsletter are connected (Resend and Buttondown). Still to do: scheduling link, and optional CRM tagging by topic (consulting / speaking / plants / media).
 
 ### Phase 3 — Editorial depth
 Expand travel and plant journal (MDX or CMS). Add more case studies (with client approval). Speaking calendar.

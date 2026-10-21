@@ -1,37 +1,74 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Button } from "@/components/ui/Button";
+import { Honeypot, useFormStartedAt } from "@/components/forms/FormGuards";
+import { contactTopics, fieldLimits, honeypotField } from "@/lib/forms/constants";
+import { postForm } from "@/lib/forms/submit";
 import { site } from "@/content/site";
 
-const topics = [
-  { value: "consulting", label: "Consulting / risk & insurance" },
-  { value: "underwriting", label: "Underwriting" },
-  { value: "pr", label: "PR" },
-  { value: "speaking", label: "Speaking" },
-  { value: "plants", label: "Plants / nursery partnership" },
-  { value: "media", label: "Media / press" },
-  { value: "other", label: "Other" },
-] as const;
+type Status = "idle" | "submitting" | "success" | "error";
+type FieldName = "name" | "email" | "topic" | "message";
+
+const fields: FieldName[] = ["name", "email", "topic", "message"];
 
 export function ContactForm() {
-  const [status, setStatus] = useState<"idle" | "done">("idle");
+  const startedAt = useFormStartedAt();
+  const pending = useRef(false);
+  const [status, setStatus] = useState<Status>("idle");
+  const [message, setMessage] = useState("");
+  const [fieldErrors, setFieldErrors] = useState<Partial<Record<FieldName, string>>>({});
 
-  function onSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    // TODO: connect form backend (Formspree, Resend, server action, etc.)
-    setStatus("done");
+  async function onSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    if (pending.current) return;
+
+    const form = event.currentTarget;
+    const data = new FormData(form);
+    pending.current = true;
+    setStatus("submitting");
+    setFieldErrors({});
+    setMessage("");
+
+    const result = await postForm("/api/contact", {
+      name: data.get("name"),
+      email: data.get("email"),
+      topic: data.get("topic"),
+      message: data.get("message"),
+      [honeypotField]: data.get(honeypotField),
+      startedAt,
+    });
+
+    pending.current = false;
+
+    if (result.ok) {
+      setMessage(result.message);
+      setStatus("success");
+      return;
+    }
+
+    const nextErrors: Partial<Record<FieldName, string>> = {};
+    for (const field of fields) {
+      const value = result.fieldErrors?.[field];
+      if (value) nextErrors[field] = value;
+    }
+    setFieldErrors(nextErrors);
+    setMessage(result.message);
+    setStatus("error");
+
+    const first = fields.find((field) => nextErrors[field]);
+    if (first) {
+      document.getElementById(first)?.focus();
+    }
   }
 
-  if (status === "done") {
+  if (status === "success") {
     return (
-      <div
-        className="rounded-md border border-forest/20 bg-sage/10 p-6"
-        role="status"
-      >
-        <p className="font-display text-2xl text-ink">Message noted</p>
-        <p className="mt-2 text-sm text-ink/70">
-          This form is UI-only for now. Wire a backend before launch, or email{" "}
+      <div className="rounded-md border border-forest/20 bg-sage/10 p-6" role="status">
+        <p className="font-display text-2xl text-ink">Message received</p>
+        <p className="mt-2 text-sm leading-relaxed text-ink/75">{message}</p>
+        <p className="mt-4 text-sm text-ink/60">
+          You can also write directly to{" "}
           <a className="underline underline-offset-2" href={`mailto:${site.email}`}>
             {site.email}
           </a>
@@ -41,59 +78,89 @@ export function ContactForm() {
     );
   }
 
+  const submitting = status === "submitting";
+
   return (
-    <form onSubmit={onSubmit} className="space-y-5">
+    <form onSubmit={onSubmit} className="relative space-y-5" aria-busy={submitting}>
+      <Honeypot id="contact-hp" />
+      {status === "error" ? (
+        <p className="rounded-sm border border-forest/20 bg-sage/10 px-3 py-2 text-sm text-ink" role="alert">
+          {message}
+        </p>
+      ) : null}
       <div className="grid gap-5 sm:grid-cols-2">
-        <Field label="Name" htmlFor="name">
+        <Field label="Name" htmlFor="name" error={fieldErrors.name}>
           <input
             id="name"
             name="name"
             required
+            maxLength={fieldLimits.name.max}
             autoComplete="name"
-            className="field-input"
+            disabled={submitting}
+            aria-invalid={fieldErrors.name ? true : undefined}
+            aria-describedby={fieldErrors.name ? "name-error" : undefined}
+            className="field-input disabled:opacity-60"
             placeholder="Your name"
           />
         </Field>
-        <Field label="Email" htmlFor="email">
+        <Field label="Email" htmlFor="email" error={fieldErrors.email}>
           <input
             id="email"
             name="email"
             type="email"
             required
+            maxLength={fieldLimits.email.max}
             autoComplete="email"
-            className="field-input"
+            disabled={submitting}
+            aria-invalid={fieldErrors.email ? true : undefined}
+            aria-describedby={fieldErrors.email ? "email-error" : undefined}
+            className="field-input disabled:opacity-60"
             placeholder="you@company.com"
           />
         </Field>
       </div>
-      <Field label="Topic" htmlFor="topic">
-        <select id="topic" name="topic" required className="field-input" defaultValue="">
+      <Field label="Topic" htmlFor="topic" error={fieldErrors.topic}>
+        <select
+          id="topic"
+          name="topic"
+          required
+          defaultValue=""
+          disabled={submitting}
+          aria-invalid={fieldErrors.topic ? true : undefined}
+          aria-describedby={fieldErrors.topic ? "topic-error" : undefined}
+          className="field-input disabled:opacity-60"
+        >
           <option value="" disabled>
             Select a topic
           </option>
-          {topics.map((t) => (
-            <option key={t.value} value={t.value}>
-              {t.label}
+          {contactTopics.map((topic) => (
+            <option key={topic.value} value={topic.value}>
+              {topic.label}
             </option>
           ))}
         </select>
       </Field>
-      <Field label="Message" htmlFor="message">
+      <Field label="Message" htmlFor="message" error={fieldErrors.message}>
         <textarea
           id="message"
           name="message"
           required
+          minLength={fieldLimits.message.min}
+          maxLength={fieldLimits.message.max}
           rows={5}
-          className="field-input resize-y"
+          disabled={submitting}
+          aria-invalid={fieldErrors.message ? true : undefined}
+          aria-describedby={fieldErrors.message ? "message-error" : undefined}
+          className="field-input resize-y disabled:opacity-60"
           placeholder="How can I help?"
         />
       </Field>
       <div className="flex flex-wrap items-center gap-4">
-        <Button type="submit" size="lg">
-          Send message
+        <Button type="submit" size="lg" disabled={submitting}>
+          {submitting ? "Sending…" : "Send message"}
         </Button>
         <p className="text-xs text-ink/50">
-          TODO: form backend · no messages are stored yet
+          This note is emailed to Malorfa. It is not added to the newsletter.
         </p>
       </div>
     </form>
@@ -103,10 +170,12 @@ export function ContactForm() {
 function Field({
   label,
   htmlFor,
+  error,
   children,
 }: {
   label: string;
   htmlFor: string;
+  error?: string;
   children: React.ReactNode;
 }) {
   return (
@@ -115,6 +184,11 @@ function Field({
         {label}
       </label>
       {children}
+      {error ? (
+        <p id={`${htmlFor}-error`} className="mt-1.5 text-xs font-medium text-forest">
+          {error}
+        </p>
+      ) : null}
     </div>
   );
 }
