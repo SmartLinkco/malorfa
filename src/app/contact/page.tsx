@@ -48,7 +48,7 @@ export default function ContactPage() {
             <SectionHeader
               eyebrow="Message"
               title="Send a note"
-              description="UI-only form — connect a backend before launch (see README)."
+              description="Consulting, speaking, plant partnerships, media — or something else. Your note comes straight to my inbox."
               className="mb-8"
             />
             <ContactForm />

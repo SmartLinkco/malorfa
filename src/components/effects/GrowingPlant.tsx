@@ -113,10 +113,7 @@ export function useSectionScrollProgress() {
   const reduced = usePrefersReducedMotion();
 
   useEffect(() => {
-    if (reduced) {
-      setProgress(1);
-      return;
-    }
+    if (reduced) return;
 
     let frame = 0;
     const update = () => {
@@ -144,7 +141,7 @@ export function useSectionScrollProgress() {
     };
   }, [reduced]);
 
-  return { ref, progress };
+  return { ref, progress: reduced ? 1 : progress };
 }
 
 /** Tracks scroll progress (0–1) from the top of the document to the bottom. */
@@ -153,10 +150,7 @@ export function usePageScrollProgress() {
   const reduced = usePrefersReducedMotion();
 
   useEffect(() => {
-    if (reduced) {
-      setProgress(1);
-      return;
-    }
+    if (reduced) return;
 
     let frame = 0;
     const update = () => {
@@ -182,5 +176,5 @@ export function usePageScrollProgress() {
     };
   }, [reduced]);
 
-  return progress;
+  return reduced ? 1 : progress;
 }

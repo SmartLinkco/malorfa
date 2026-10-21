@@ -42,8 +42,8 @@ export function Footer() {
               Newsletter
             </p>
             <p className="mt-3 mb-4 text-sm text-ivory/60">{site.newsletterNote}</p>
-            <div className="rounded-md bg-ivory/5 p-4 [&_h2]:hidden [&_p]:hidden [&_input]:border-ivory/20 [&_input]:bg-ink [&_input]:text-ivory [&_input]:placeholder:text-ivory/40">
-              <NewsletterForm compact />
+            <div className="rounded-md bg-ivory/5 p-4">
+              <NewsletterForm compact tone="dark" />
             </div>
           </div>
         </div>
