@@ -18,22 +18,18 @@ type Props = {
  * Persists the day key in localStorage; no backend.
  */
 export function TodayPlantTip({ className, compact = false }: Props) {
-  const [tip, setTip] = useState(() => getTodayTip());
-  const [ready, setReady] = useState(false);
+  const [tip] = useState(() => getTodayTip());
 
   useEffect(() => {
-    const today = getTodayTip();
     try {
       const stored = localStorage.getItem(STORAGE_KEY);
-      if (stored !== today.key) {
-        localStorage.setItem(STORAGE_KEY, today.key);
+      if (stored !== tip.key) {
+        localStorage.setItem(STORAGE_KEY, tip.key);
       }
     } catch {
       /* private mode — still show tip */
     }
-    setTip(today);
-    setReady(true);
-  }, []);
+  }, [tip.key]);
 
   const label = useMemo(() => `Tip for ${tip.key}`, [tip.key]);
 
@@ -45,7 +41,6 @@ export function TodayPlantTip({ className, compact = false }: Props) {
         className,
       )}
       aria-label="Today’s plant tip"
-      data-ready={ready || undefined}
     >
       <div className="flex items-start gap-3 md:gap-4">
         {tip.image ? (

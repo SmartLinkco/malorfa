@@ -16,14 +16,12 @@ type Props = {
  */
 export function TypewriterBrand({ text, className, cursorClassName }: Props) {
   const reduced = usePrefersReducedMotion();
-  const [shown, setShown] = useState(reduced ? text : "");
+  const [shown, setShown] = useState("");
   const [phase, setPhase] = useState<"typing" | "holding" | "deleting">("typing");
+  const visible = reduced ? text : shown;
 
   useEffect(() => {
-    if (reduced) {
-      setShown(text);
-      return;
-    }
+    if (reduced) return;
 
     let timer: ReturnType<typeof setTimeout>;
 
@@ -50,7 +48,7 @@ export function TypewriterBrand({ text, className, cursorClassName }: Props) {
 
   return (
     <span className={cn("inline-flex items-baseline", className)} aria-label={text}>
-      <span aria-hidden>{shown}</span>
+      <span aria-hidden>{visible}</span>
       {!reduced ? (
         <span
           aria-hidden
