@@ -14,7 +14,13 @@ export const site = {
   email: "hello@malorfa.com",
   phone: "+233 24 355 4423",
   location: "Ghana · on the road",
-  calendarUrl: "#", // TODO: replace with Calendly / booking link
+  calendarUrl: "https://calendly.com/hellomalorfa/30min",
+  /**
+   * Inline embed — brand tokens from globals.css (no # in Calendly params):
+   * canvas #f5f4f1 · ink #1a1f1c · forest #2c4a3e
+   */
+  calendlyEmbedUrl:
+    "https://calendly.com/hellomalorfa/30min?hide_event_type_details=1&background_color=f5f4f1&text_color=1a1f1c&primary_color=2c4a3e",
   social: {
     linkedin: "https://www.linkedin.com/in/malorfa-bsc-mpr-apr-a52754114/",
     instagram: "https://www.instagram.com/call_me_malorfa/",

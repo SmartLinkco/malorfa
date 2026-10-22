@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Button } from "@/components/ui/Button";
+import { CalendlyEmbed } from "@/components/forms/CalendlyEmbed";
 import { ContactForm } from "@/components/forms/ContactForm";
 import { MediaPlaceholder } from "@/components/ui/MediaPlaceholder";
 import { SectionHeader } from "@/components/ui/SectionHeader";
@@ -93,22 +93,38 @@ export default function ContactPage() {
               </dl>
             </div>
 
-            <div className="rounded-md border border-forest/20 bg-forest p-6 text-ivory">
-              <h2 className="font-display text-2xl">Calendar stub</h2>
-              <p className="mt-3 text-sm text-ivory/75">
-                Prefer to book time directly? Link your scheduling tool here
-                (Calendly, SavvyCal, etc.).
-              </p>
-              <div className="mt-5">
-                <Button href={site.calendarUrl} variant="inverse">
-                  Open calendar (placeholder)
-                </Button>
-              </div>
-              <p className="mt-3 text-xs text-ivory/45">
-                TODO: replace site.calendarUrl in content/site.ts
-              </p>
-            </div>
           </aside>
+        </div>
+      </section>
+
+      <section className="section-pad border-t border-ink/8 bg-stone/40">
+        <div className="container-page">
+          <header className="mb-8 max-w-2xl">
+            <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-sage">
+              Calendar
+            </p>
+            <h2 className="font-display text-3xl leading-tight text-ink md:text-4xl text-balance">
+              Book 30 minutes
+            </h2>
+            <p className="mt-4 text-base leading-relaxed text-ink/70 md:text-lg">
+              Pick a time that works — consulting, speaking, or a short intro
+              call.
+            </p>
+          </header>
+          <div className="overflow-hidden rounded-md border border-ink/8 bg-canvas shadow-sm">
+            <CalendlyEmbed url={site.calendlyEmbedUrl} />
+          </div>
+          <p className="mt-4 text-center text-sm text-ink/50">
+            Prefer the full page?{" "}
+            <a
+              href={site.calendarUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-forest underline-offset-2 hover:underline"
+            >
+              Open Calendly
+            </a>
+          </p>
         </div>
       </section>
     </>
