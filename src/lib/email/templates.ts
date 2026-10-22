@@ -65,8 +65,7 @@ function shell({ preheader, eyebrow, title, intro, bodyHtml, footerNote }: Shell
                     <img src="${emailMarkUrl}" width="48" height="48" alt="Malorfa" style="display:block;border:0;border-radius:12px;width:48px;height:48px;">
                   </td>
                   <td style="vertical-align:middle;padding-left:14px;">
-                    <p style="margin:0;font-family:${f.display};font-size:28px;line-height:1;font-weight:500;color:${c.ivory};letter-spacing:0.01em;">Malorfa</p>
-                    <p style="margin:6px 0 0;font-family:${f.sans};font-size:11px;line-height:1;letter-spacing:0.16em;text-transform:uppercase;color:${c.moss};">Aryee</p>
+                    <p style="margin:0;font-family:${f.sans};font-size:12px;line-height:1;letter-spacing:0.16em;text-transform:uppercase;color:${c.moss};">Aryee</p>
                   </td>
                 </tr>
               </table>
