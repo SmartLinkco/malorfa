@@ -135,6 +135,20 @@ describe("email templates", () => {
     assert.match(payloads.confirmation.text, /I'll be in touch/);
     assert.match(payloads.confirmation.html, /Consulting \/ risk &amp; insurance/);
   });
+
+  it("never repeats submitted text in the confirmation", () => {
+    const marker = "visit-attacker-site.example";
+    const { admin, confirmation } = contactPayloads(
+      { ...mail, name: `Name ${marker}`, message: `Your account is locked. Go to ${marker} now.` },
+      { from: defaultFromEmail, admin: defaultAdminEmail },
+    );
+
+    assert.equal(confirmation.subject.includes(marker), false);
+    assert.equal(confirmation.html.includes(marker), false);
+    assert.equal(confirmation.text.includes(marker), false);
+    assert.equal(admin.html.includes(marker), true);
+    assert.equal(admin.text.includes(marker), true);
+  });
 });
 
 describe("configuration", () => {
