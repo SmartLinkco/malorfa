@@ -4,7 +4,7 @@ Production-ready MVP for a multifaceted professional brand: **corporate risk & i
 
 Stack: **Next.js (App Router) · TypeScript · Tailwind CSS v4**
 
-All personal details, credentials, book titles, plant species, destinations, and contact info are clearly marked `[PLACEHOLDER: …]` so you can swap real content safely. Nothing on this site implies a real insurance license or firm affiliation.
+Sample content still to replace: the scenarios in `src/content/services.ts` (labelled as illustrative on `/services`) and the draft quotes in `src/content/testimonials.ts` (hidden until a real quote is added and set to `published: true`). Have `/privacy` and `/terms` reviewed before relying on them.
 
 ---
 
@@ -148,7 +148,7 @@ HTML and plain-text files are written to `email-previews/`.
 
 ## TODOs before launch
 
-- [ ] Replace all `[PLACEHOLDER: …]` copy, photos, and credentials with real (verified) details
+- [ ] Replace sample scenarios and draft testimonials with real, approved ones; verify credentials and service claims
 - [ ] Replace hero dual-identity **video** + **poster** in `public/media/`
 - [x] Wire **contact form** through Resend (`RESEND_API_KEY`)
 - [x] Wire **newsletter** through Buttondown (`BUTTONDOWN_API_KEY`)

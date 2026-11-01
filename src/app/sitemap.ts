@@ -12,6 +12,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/travel",
     "/books",
     "/contact",
+    "/privacy",
+    "/terms",
   ] as const;
 
   return [

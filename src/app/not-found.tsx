@@ -21,7 +21,7 @@ export default function NotFound() {
       </p>
       <h1 className="mt-3 font-display text-4xl text-ink">Page not found</h1>
       <p className="mt-4 text-ink/65">
-        That route does not exist yet—or the placeholder link still needs a real URL.
+        This page may have moved, or the link may be out of date. These should get you back on track.
       </p>
       <div className="mt-8 flex justify-center gap-3">
         <Button href="/">Home</Button>
