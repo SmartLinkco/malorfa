@@ -75,37 +75,41 @@ export const whoItsFor = [
   "Teams wanting workshops without a multi-year consulting engagement",
 ] as const;
 
+/**
+ * Illustrative scenarios, labelled as such on the page. When a client approves a real
+ * story, replace one here and change the section heading in services/page.tsx.
+ */
 export const caseStudies = [
   {
     id: "cs-1",
-    clientType: "[PLACEHOLDER: Mid-market manufacturer]",
+    clientType: "Scenario · Mid-sized manufacturer",
     title: "Renewal clarity before a hard market",
     result:
-      "A single briefing deck that aligned ops, finance, and broker—renewal closed with fewer surprises.",
-    metric: "[PLACEHOLDER: Outcome metric]",
+      "Premiums are rising and ops, finance, and the broker each tell a different story. We map the exposures and bring everyone to one account of the risk before renewal talks begin.",
+    deliverable: "You leave with: one briefing deck everyone can sign off on",
   },
   {
     id: "cs-2",
-    clientType: "[PLACEHOLDER: Professional services firm]",
+    clientType: "Scenario · Professional services firm",
     title: "Claims readiness for a lean team",
     result:
-      "Named owners, a shared checklist, and a tabletop that surfaced gaps before a real incident.",
-    metric: "[PLACEHOLDER: Outcome metric]",
+      "Nobody is sure who calls whom when something goes wrong. A tabletop session walks through a realistic incident and surfaces the gaps while they are still cheap to fix.",
+    deliverable: "You leave with: named owners and a shared claims checklist",
   },
   {
     id: "cs-3",
-    clientType: "[PLACEHOLDER: Regional agency]",
-    title: "Program redesign for specialty growth",
+    clientType: "Scenario · Regional agency",
+    title: "Program design for specialty growth",
     result:
-      "Coverage map and talking points that helped producers explain value without overselling.",
-    metric: "[PLACEHOLDER: Outcome metric]",
+      "Producers are moving into specialty lines faster than their explanations can keep up. We build a coverage map and plain talking points so they can explain value without overselling.",
+    deliverable: "You leave with: a coverage map and producer talking points",
   },
 ] as const;
 
 export const faqs = [
   {
     q: "Do you sell insurance policies directly?",
-    a: "This site presents advisory and workshop offerings. Licensing and placement details are placeholders—replace with your real credentials and placement model before launch.",
+    a: "No. My work is advisory: risk reviews, program design, workshops, and briefings. Policies stay with your broker or carrier, and I'm glad to work alongside them.",
   },
   {
     q: "Who is a good fit for a discovery call?",
@@ -120,7 +124,7 @@ export const faqs = [
     a: "Yes—use the contact form with topic “Speaking.” Share audience size, format, and desired takeaways.",
   },
   {
-    q: "Are credentials and firm affiliations listed here real?",
-    a: "No. All licenses, firm names, and affiliations on this MVP are fictional placeholders for you to replace.",
+    q: "What is your professional background?",
+    a: "I work as an underwriting expert and am accredited by the Institute of Public Relations, Ghana. If your engagement calls for specific credentials, ask on our first call and I'll share the details.",
   },
 ] as const;

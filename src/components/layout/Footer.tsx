@@ -53,11 +53,11 @@ export function Footer() {
             © {year} {site.brand}. All rights reserved.
           </p>
           <div className="flex flex-wrap gap-5">
-            <Link href="/contact" className="hover:text-ivory">
-              Privacy stub
+            <Link href="/privacy" className="hover:text-ivory">
+              Privacy
             </Link>
-            <Link href="/contact" className="hover:text-ivory">
-              Terms stub
+            <Link href="/terms" className="hover:text-ivory">
+              Terms
             </Link>
           </div>
         </div>

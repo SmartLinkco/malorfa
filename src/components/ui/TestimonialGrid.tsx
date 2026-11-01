@@ -15,11 +15,9 @@ export function TestimonialGrid({
   eyebrow = "Voices",
   title = "What clients and readers say",
 }: Props) {
-  const items = (
-    facet
-      ? testimonials.filter((t) => t.facet === facet)
-      : testimonials
-  ).slice(0, limit);
+  const items = testimonials
+    .filter((t) => t.published && (!facet || t.facet === facet))
+    .slice(0, limit);
 
   if (!items.length) return null;
 

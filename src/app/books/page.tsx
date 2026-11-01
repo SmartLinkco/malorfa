@@ -97,7 +97,7 @@ export default function BooksPage() {
           <SectionHeader
             eyebrow="Speaking & press"
             title="Appearances"
-            description="Talks, signings, and credentials—swap in confirmed bookings as they land."
+            description="Talks, signings, and author conversations. Get in touch to plan one."
             className="mb-8"
           />
           <ul className="grid gap-4 md:grid-cols-3">
@@ -134,8 +134,8 @@ export default function BooksPage() {
 
       <CtaBand
         eyebrow="Reading list"
-        title="Start with a title—or ask for a signed copy stub"
-        description="Buy links are placeholders. Contact for media kits and speaking."
+        title="Start with a title—or start a conversation"
+        description="I Walked Away is on Amazon, with Ghana orders via WhatsApp. Get in touch for media kits and speaking."
         primary={{ href: "/contact", label: "Media & speaking" }}
         secondary={{ href: "/about", label: "About the author" }}
       />

@@ -144,9 +144,9 @@ export const shopPlants: ShopPlant[] = [
 export const partnerNursery = {
   name: "Partner nursery shelf",
   blurb:
-    "A curated shelf of plants I actually grow—fulfilled by a local partner. Showcase only; no live checkout in this MVP.",
-  cta: "Visit partner nursery",
-  href: "#",
+    "A curated shelf of plants I actually grow—fulfilled by a local partner. There's no checkout here yet, so get in touch to ask about a plant.",
+  cta: "Ask about a plant",
+  href: "/contact",
   image: media.partnerNurseryStorefront.src,
   imageAlt: media.partnerNurseryStorefront.alt,
 };

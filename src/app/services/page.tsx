@@ -46,7 +46,6 @@ export default function ServicesPage() {
           <p className="mt-5 text-lg leading-relaxed text-ivory/80">
             Structured advisory for corporate agents and organizations who need
             clear exposure maps, renewal-ready language, and workshops that stick.
-            Licensing details remain placeholders until verified.
           </p>
           <div className="mt-8">
             <Button href="/contact" variant="inverse" size="lg">
@@ -119,9 +118,9 @@ export default function ServicesPage() {
           </div>
           <div>
             <SectionHeader
-              eyebrow="Outcomes"
-              title="Case-study style notes"
-              description="Composite / placeholder examples—replace with approved client stories."
+              eyebrow="Examples"
+              title="What an engagement can look like"
+              description="Illustrative scenarios based on common situations, not specific client results."
               className="mb-8"
             />
             <ul className="space-y-4">
@@ -132,7 +131,7 @@ export default function ServicesPage() {
                   </p>
                   <h3 className="mt-2 font-display text-xl text-ink">{cs.title}</h3>
                   <p className="mt-2 text-sm text-ink/70">{cs.result}</p>
-                  <p className="mt-3 text-xs font-medium text-brass">{cs.metric}</p>
+                  <p className="mt-3 text-xs font-medium text-brass">{cs.deliverable}</p>
                 </Card>
               ))}
             </ul>

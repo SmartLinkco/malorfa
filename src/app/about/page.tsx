@@ -111,8 +111,7 @@ export default function AboutPage() {
           <aside>
             <SectionHeader
               eyebrow="Credentials"
-              title="Placeholders"
-              description="Replace with real licenses, memberships, and press. Nothing here implies a real affiliation."
+              title="At a glance"
               className="mb-6"
             />
             <ul className="space-y-4">

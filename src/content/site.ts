@@ -25,7 +25,6 @@ export const site = {
     linkedin: "https://www.linkedin.com/in/malorfa-bsc-mpr-apr-a52754114/",
     instagram: "https://www.instagram.com/call_me_malorfa/",
     goodreads: "https://www.goodreads.com/book/show/254752922-i-walked-away",
-    substack: "#", // PLACEHOLDER
   },
   newsletterNote:
     "Notes on risk, travel, books & plants — occasional, never noisy.",
