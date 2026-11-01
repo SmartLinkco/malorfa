@@ -1,106 +1,95 @@
 "use client";
 
-import Image from "next/image";
-import { useEffect, useRef } from "react";
-import { media } from "@/content/media";
+import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { usePrefersReducedMotion } from "@/hooks/useMotionPrefs";
 import { cn } from "@/lib/utils";
 
-type Props = {
-  parallaxY?: number;
-  className?: string;
+const DESKTOP_QUERY = "(min-width: 1024px)";
+
+/** Fades the video into the green panel and out before it reaches the portrait's soft base. */
+const edgeMask =
+  "linear-gradient(to bottom, #000 30%, transparent 60%), linear-gradient(to right, transparent, #000 30%)";
+const edgeFade: CSSProperties = {
+  WebkitMaskImage: edgeMask,
+  maskImage: edgeMask,
+  WebkitMaskComposite: "source-in",
+  maskComposite: "intersect",
 };
 
 /**
- * Home hero visual — Barcelona portrait (unique to home).
- * Soft muted video wash remains decorative only.
+ * Decorative loop behind the desktop portrait. Phones skip it entirely so they never
+ * download the file, and reduced-motion visitors get the still first frame.
  */
-export function HeroVideo({ parallaxY = 0, className }: Props) {
+export function HeroVideo({ className }: { className?: string }) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const reduced = usePrefersReducedMotion();
+  const [desktop, setDesktop] = useState(false);
+  const [paused, setPaused] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia(DESKTOP_QUERY);
+    const update = () => setDesktop(mq.matches);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, []);
+
+  const shouldPlay = desktop && !reduced && !paused;
 
   useEffect(() => {
     const video = videoRef.current;
     const container = containerRef.current;
     if (!video || !container) return;
 
-    if (reduced) {
+    if (!shouldPlay) {
       video.pause();
       return;
     }
 
-    const io = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && entry.intersectionRatio > 0.2) {
-          void video.play().catch(() => {});
-        } else {
-          video.pause();
-        }
-      },
-      { threshold: [0, 0.2, 0.5] },
-    );
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) void video.play().catch(() => {});
+      else video.pause();
+    });
+    observer.observe(container);
+    return () => observer.disconnect();
+  }, [shouldPlay, desktop]);
 
-    io.observe(container);
-    return () => io.disconnect();
-  }, [reduced]);
+  if (!desktop) return null;
 
   return (
-    <div
-      ref={containerRef}
-      className={cn(
-        "relative aspect-[3/4] w-full max-h-[70vh] overflow-hidden rounded-md shadow-[0_24px_60px_rgba(26,31,28,0.18)] lg:ml-auto lg:max-w-md",
-        className,
-      )}
-    >
-      <div
-        className="absolute inset-0 will-change-transform"
-        style={{
-          transform: reduced
-            ? undefined
-            : `translate3d(0, ${parallaxY * 0.12}px, 0) scale(1.04)`,
-        }}
-      >
-        <Image
-          src={media.portraitBarcelona.src}
-          alt={media.portraitBarcelona.alt}
-          fill
-          sizes="(max-width: 1024px) 100vw, 480px"
-          className="object-cover"
-          style={{ objectPosition: "center 18%" }}
-          priority
-        />
-        {/* Dual-identity still — visible wash until a real MP4 replaces the stub */}
-        <Image
-          src={media.heroDualPoster.src}
-          alt={media.heroDualPoster.alt}
-          fill
-          sizes="(max-width: 1024px) 100vw, 480px"
-          className="object-cover opacity-[0.28] mix-blend-soft-light"
-        />
-      </div>
-
-      {!reduced ? (
-        <video
-          ref={videoRef}
-          className="absolute inset-0 h-full w-full object-cover opacity-[0.12] mix-blend-soft-light"
-          poster={media.heroDualPoster.src}
-          muted
-          loop
-          playsInline
-          autoPlay
-          preload="metadata"
-          aria-hidden
-          tabIndex={-1}
-        >
-          <source src="/media/hero-dual-identity.mp4" type="video/mp4" />
-        </video>
-      ) : null}
-
-      <div
-        className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/50 via-transparent to-ink/10"
+    <div ref={containerRef} className={cn("absolute inset-0", className)}>
+      <video
+        ref={videoRef}
+        className="absolute inset-0 h-full w-full object-cover object-top"
+        style={edgeFade}
+        poster="/media/hero-dual-identity-first-frame.jpg"
+        muted
+        loop
+        playsInline
+        preload={reduced ? "none" : "auto"}
         aria-hidden
-      />
+        tabIndex={-1}
+      >
+        {reduced ? null : <source src="/media/hero-dual-identity.mp4" type="video/mp4" />}
+      </video>
+      {reduced ? null : (
+        <button
+          type="button"
+          onClick={() => setPaused((value) => !value)}
+          aria-label={paused ? "Play background video" : "Pause background video"}
+          aria-pressed={paused}
+          className="pointer-events-auto absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full bg-ink/70 text-ivory transition-colors hover:bg-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ivory"
+        >
+          <svg viewBox="0 0 16 16" className="h-4 w-4" fill="currentColor" aria-hidden>
+            {paused ? (
+              <path d="M4 2.5v11l9-5.5z" />
+            ) : (
+              <path d="M4 2.5h3v11H4zM9 2.5h3v11H9z" />
+            )}
+          </svg>
+        </button>
+      )}
     </div>
   );
 }

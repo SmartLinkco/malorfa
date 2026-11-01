@@ -83,12 +83,12 @@ Existing `corporate-laptop.jpg` and `corporate-skyline.jpg` remain in use.
 
 ---
 
-## 8. Motion / dual-identity — **poster done; video stub remains**
+## 8. Motion / dual-identity — **done**
 
 | # | File | Slot | Status |
 |---|------|------|--------|
-| 42 | `hero-dual-identity.mp4` | Hero wash | Stub (replace with real 6–12s muted H.264 when ready) |
-| 43 | `hero-dual-identity-poster.jpg` | Video poster | Done |
+| 42 | `hero-dual-identity.mp4` | Home hero, desktop | Done (built from site photos; replace with filmed footage if wanted) |
+| 43 | `hero-dual-identity-poster.jpg` | Home gallery marquee | Done |
 
 ---
 

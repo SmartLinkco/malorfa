@@ -79,8 +79,8 @@ public/
 
 First-visit enhancements layered onto the core IA (not separate microsites):
 
-1. **Interactive hero (plant growth + light parallax)** — An original SVG plant unfurls as you scroll through the hero; the dual-identity video layers shift subtly. Static full-growth plant + frozen video when `prefers-reduced-motion` is on.
-2. **Hero dual-identity video** — Muted, looping, `playsInline` autoplay video contrasting boardroom ↔ greenhouse tones (`/public/media/hero-dual-identity.mp4` + `hero-dual-identity-poster.svg`). Pauses when off-screen; never plays with sound. Hero copy remains readable via scrim and stands alone if the video fails.
+1. **Interactive hero (plant growth + light parallax)** — An original SVG plant unfurls as you scroll through the hero. Static full-growth plant when `prefers-reduced-motion` is on.
+2. **Hero video** — A silent 9-second loop above the portrait on desktop (`HeroVideo.tsx`), crossfading between photos already on the site. Phones don't download it, reduced-motion visitors see its first frame, and it has a pause button and pauses when off-screen.
 3. **Micro-interactions** — Leaf accents rustle on hover (nav, facets, plant cards). **Today’s plant tip** widget on Home and `/plants` rotates from a local 14-tip array by calendar day (`YYYY-MM-DD`), with `localStorage` day key.
 4. **Signature detail — custom cursor** — Soft leaf/dot cursor on fine-pointer desktops only; default cursor restored on touch devices and when reduced motion is preferred. (Ambient audio toggle was not added—cursor is the single signature.)
 5. **Extra moment — soft page-load reveal** — Hero brand, headline, support copy, CTAs, and media stagger in once on first paint (disabled under reduced motion). Travel cards also use a lightweight CSS film-grain overlay for editorial texture.
@@ -89,8 +89,7 @@ First-visit enhancements layered onto the core IA (not separate microsites):
 
 | Asset | Path | Notes |
 |-------|------|--------|
-| Dual-identity video | `public/media/hero-dual-identity.mp4` | Replace with 6–12s muted H.264 clip (boardroom ↔ greenhouse/garden). Keep poster aspect similar to avoid CLS. |
-| Video poster | `public/media/hero-dual-identity-poster.svg` | Replace with `.webp`/`.jpg` and update `poster` in `HeroVideo.tsx` if needed. |
+| Hero video | `public/media/hero-dual-identity.mp4` | Square H.264, no audio, about 1 MB. To replace it, also update `hero-dual-identity-first-frame.jpg` to match its first frame. Keep the top of the frame free of logos and of single subjects that would sit behind the portrait's head. |
 | Tips | `src/content/dailyTips.ts` | Edit the 14 sample tips / plant names. |
 
 ### Accessibility & motion

@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { HeroVideo } from "@/components/effects/HeroVideo";
 import { media } from "@/content/media";
 import { usePrefersReducedMotion } from "@/hooks/useMotionPrefs";
 import { cn } from "@/lib/utils";
@@ -29,6 +30,8 @@ export function HeroPortrait({ parallaxY = 0, className }: Props) {
         aria-hidden
       />
 
+      <HeroVideo />
+
       <div
         className="hero-portrait-frame absolute right-0 bottom-0 will-change-transform"
         style={{
@@ -36,9 +39,9 @@ export function HeroPortrait({ parallaxY = 0, className }: Props) {
             ? undefined
             : `translate3d(0, ${parallaxY * 0.08}px, 0)`,
           WebkitMaskImage:
-            "linear-gradient(to bottom, #000 0%, #000 62%, rgba(0,0,0,0.65) 78%, rgba(0,0,0,0.2) 90%, transparent 100%)",
+            "linear-gradient(to bottom, transparent 0%, #000 14%, #000 62%, rgba(0,0,0,0.65) 78%, rgba(0,0,0,0.2) 90%, transparent 100%)",
           maskImage:
-            "linear-gradient(to bottom, #000 0%, #000 62%, rgba(0,0,0,0.65) 78%, rgba(0,0,0,0.2) 90%, transparent 100%)",
+            "linear-gradient(to bottom, transparent 0%, #000 14%, #000 62%, rgba(0,0,0,0.65) 78%, rgba(0,0,0,0.2) 90%, transparent 100%)",
         }}
       >
         <Image
