@@ -42,7 +42,7 @@ export function InteractiveHero() {
         {/* Base atmosphere — green panel on the left (desktop) */}
         <div className="absolute inset-0 -z-10">
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(92,122,106,0.22),transparent_55%),radial-gradient(ellipse_at_bottom_right,rgba(217,212,200,0.55),transparent_50%),linear-gradient(180deg,#f5f4f1_0%,#ebe8e2_100%)]" />
-          <div className="absolute inset-y-0 left-0 hidden w-[52%] bg-gradient-to-r from-forest via-forest/85 to-transparent lg:block" />
+          <div className="absolute inset-y-0 left-0 hidden w-[52%] bg-gradient-to-r from-forest from-90% to-transparent lg:block" />
         </div>
 
         {/* Mobile: capped portrait, same pixels as the file */}
@@ -72,7 +72,7 @@ export function InteractiveHero() {
 
         <div className="container-page relative grid min-h-[calc(100vh-4.25rem)] items-center gap-8 py-14 lg:grid-cols-[1.05fr_0.95fr] lg:gap-8 lg:py-20">
           <motion.div
-            className="relative z-10 max-w-xl pb-[42vh] lg:pb-0 lg:text-ivory"
+            className="relative z-10 max-w-xl pb-[42vh] lg:max-w-[calc(48vw-max(2rem,50vw-34rem)-2rem)] lg:pb-0 lg:text-ivory"
             initial="hidden"
             animate="show"
             transition={{
@@ -148,7 +148,7 @@ export function InteractiveHero() {
       </section>
 
       <div
-        className="pointer-events-none fixed bottom-0 left-0 z-20 h-28 w-20 opacity-75 md:h-[min(52vh,400px)] md:w-36 md:opacity-80 lg:w-44"
+        className="pointer-events-none fixed bottom-0 left-0 z-20 h-28 w-20 opacity-75 md:h-[min(52vh,400px)] md:w-36 md:opacity-80 lg:w-44 lg:translate-y-[4.5rem]"
         aria-hidden
       >
         <GrowingPlant progress={pageProgress} />
