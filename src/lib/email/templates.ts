@@ -163,34 +163,41 @@ export function renderAdminNotification(input: ContactMail): RenderedEmail {
   return { subject, html, text };
 }
 
-export function renderClientConfirmation(input: ContactMail): RenderedEmail {
+/**
+ * Goes to an address nobody has verified, so it must never repeat submitted text.
+ * Otherwise anyone could send their own words to a stranger from this domain.
+ * Only server-defined values belong here: the topic label and the time.
+ */
+export function renderClientConfirmation(
+  input: Pick<ContactMail, "topicLabel" | "submittedAt">,
+): RenderedEmail {
   const when = formatSubmittedAt(input.submittedAt);
   const subject = "I received your note";
   const html = shell({
-    preheader: `Thank you, ${input.name}. I'll be in touch about ${input.topicLabel}.`,
+    preheader: `Thank you. I'll be in touch about ${input.topicLabel}.`,
     eyebrow: "Message received",
-    title: `Thank you, ${input.name}`,
-    intro: "I have your note and I'll be in touch. A copy of what you sent is below.",
-    footerNote: "You received this because you wrote through malorfa.com.",
+    title: "Thank you",
+    intro: "I have your note and I'll be in touch.",
+    footerNote:
+      "You received this because this address was entered on the contact form at malorfa.com. If that wasn't you, you can ignore this email.",
     bodyHtml: `${detailTable([
       { label: "Topic", valueHtml: escapeHtml(input.topicLabel) },
       { label: "Sent", valueHtml: escapeHtml(when) },
-    ])}${messageBlock(input.message)}
+    ])}
     <p style="margin:18px 0 0;font-family:${f.sans};font-size:15px;line-height:1.6;color:${c.inkSoft};">If you need to add anything, reply to this email and it comes to me.</p>`,
   });
 
   const text = [
-    `Thank you, ${plainText(input.name)}`,
+    "Thank you",
     "",
-    "I have your note and I'll be in touch. A copy of what you sent is below.",
+    "I have your note and I'll be in touch.",
     "",
     `Topic: ${input.topicLabel}`,
     `Sent: ${when}`,
     "",
-    "Message:",
-    plainText(input.message),
-    "",
     "If you need to add anything, reply to this email.",
+    "",
+    "You received this because this address was entered on the contact form at malorfa.com. If that wasn't you, you can ignore this email.",
     "",
     site.name,
     emailSiteUrl,
