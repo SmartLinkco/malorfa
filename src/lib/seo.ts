@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { site } from "@/content/site";
 
-const DEFAULT_SITE_URL = "https://malorfa.com";
+/** The live host. `malorfa.com` redirects here, so canonicals must not point at it. */
+const DEFAULT_SITE_URL = "https://www.malorfa.com";
 
 function resolveSiteUrl(value: string | undefined): string {
   const raw = value?.trim();

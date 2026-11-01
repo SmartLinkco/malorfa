@@ -1,4 +1,4 @@
-import { honeypotField, maxSubmitMs, minSubmitMs, rateLimits } from "@/lib/forms/constants";
+import { honeypotField, maxSubmitMs, minSubmitMs } from "@/lib/forms/constants";
 import { isRecord } from "@/lib/forms/validate";
 
 const allowedHosts = new Set(["malorfa.com", "www.malorfa.com", "malorfa.vercel.app"]);
@@ -32,7 +32,7 @@ export function clientIp(request: Request): string {
   return candidate;
 }
 
-/** Best-effort, per server instance. Paired with the honeypot and minimum submit time. */
+/** Per server instance. Used by `consumeLimit` when shared storage isn't available. */
 export function rateLimit(
   key: string,
   limit: number,
@@ -61,11 +61,6 @@ export function rateLimit(
 
 export function resetRateLimits(): void {
   hits.clear();
-}
-
-export function limitFor(kind: keyof typeof rateLimits, ip: string, now = Date.now()) {
-  const rule = rateLimits[kind];
-  return rateLimit(`${kind}:${ip}`, rule.limit, rule.windowMs, now);
 }
 
 function readStartedAt(value: unknown): number | null {

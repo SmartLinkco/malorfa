@@ -3,7 +3,10 @@ import { afterEach, describe, it } from "node:test";
 import { defaultAdminEmail, defaultFromEmail, emailSiteUrl, emailSocials } from "@/lib/email/brand";
 import { contactPayloads, renderAdminNotification } from "@/lib/email/templates";
 import { readResendConfig, sendContactEmails } from "@/lib/email/resend";
-import { checkSpam, isAllowedOrigin, limitFor, resetRateLimits } from "@/lib/forms/guard";
+import { POST as contactPost } from "@/app/api/contact/route";
+import { checkSpam, isAllowedOrigin, resetRateLimits } from "@/lib/forms/guard";
+import { consumeLimit } from "@/lib/forms/limits";
+import { verifyTurnstile } from "@/lib/forms/turnstile";
 import { validateContact, validateNewsletterEmail } from "@/lib/forms/validate";
 import { subscribeToNewsletter } from "@/lib/newsletter/buttondown";
 import type { ContactMail } from "@/lib/email/templates";
@@ -87,13 +90,13 @@ describe("spam guards", () => {
     assert.equal(checkSpam(validBody).action, "allow");
   });
 
-  it("rate limits a burst from one address", () => {
+  it("rate limits a burst from one address without shared storage", async () => {
     resetRateLimits();
     for (let i = 0; i < 5; i += 1) {
-      assert.equal(limitFor("contact", "203.0.113.5").ok, true);
+      assert.equal((await consumeLimit("contact", "203.0.113.5", {})).ok, true);
     }
-    assert.equal(limitFor("contact", "203.0.113.5").ok, false);
-    assert.equal(limitFor("contact", "203.0.113.9").ok, true);
+    assert.equal((await consumeLimit("contact", "203.0.113.5", {})).ok, false);
+    assert.equal((await consumeLimit("contact", "203.0.113.9", {})).ok, true);
   });
 
   it("accepts the site origin and rejects a foreign one", () => {
@@ -101,6 +104,125 @@ describe("spam guards", () => {
     assert.equal(isAllowedOrigin("https://malorfa.com", "malorfa.com"), true);
     assert.equal(isAllowedOrigin("https://preview.vercel.app", "preview.vercel.app"), true);
     assert.equal(isAllowedOrigin("https://evil.example", "malorfa.com"), false);
+  });
+});
+
+describe("shared rate limits", () => {
+  const redisEnv = { UPSTASH_REDIS_REST_URL: "https://redis.example", UPSTASH_REDIS_REST_TOKEN: secret };
+
+  it("counts in Redis and never sends the raw identifier", async () => {
+    const original = globalThis.fetch;
+    let sent = "";
+    globalThis.fetch = async (input, init) => {
+      assert.equal(String(input), "https://redis.example/pipeline");
+      assert.equal(new Headers(init?.headers).get("authorization"), `Bearer ${secret}`);
+      sent = String(init?.body);
+      return new Response(JSON.stringify([{ result: 4 }, { result: 1 }]));
+    };
+    try {
+      assert.equal((await consumeLimit("contactRecipient", "abena@example.com", redisEnv)).ok, false);
+      assert.equal(sent.includes("abena@example.com"), false);
+      assert.match(sent, /INCR/);
+    } finally {
+      globalThis.fetch = original;
+    }
+  });
+
+  it("falls back to the local limiter when Redis is unreachable", async () => {
+    resetRateLimits();
+    const original = globalThis.fetch;
+    globalThis.fetch = async () => {
+      throw new Error("down");
+    };
+    try {
+      assert.equal((await consumeLimit("contact", "203.0.113.20", redisEnv)).ok, true);
+    } finally {
+      globalThis.fetch = original;
+    }
+  });
+});
+
+describe("turnstile", () => {
+  it("is skipped until a secret is set", async () => {
+    assert.deepEqual(await verifyTurnstile(undefined, "203.0.113.5", {}), { ok: true, skipped: true });
+  });
+
+  it("refuses a missing token without calling Cloudflare", async () => {
+    const original = globalThis.fetch;
+    globalThis.fetch = async () => assert.fail("should not call Cloudflare");
+    try {
+      const result = await verifyTurnstile("", "203.0.113.5", { TURNSTILE_SECRET_KEY: secret });
+      assert.equal(result.ok, false);
+    } finally {
+      globalThis.fetch = original;
+    }
+  });
+
+  it("accepts a valid token and refuses when Cloudflare is unreachable", async () => {
+    const original = globalThis.fetch;
+    const env = { TURNSTILE_SECRET_KEY: secret };
+    try {
+      globalThis.fetch = async () => new Response(JSON.stringify({ success: true }));
+      assert.equal((await verifyTurnstile("token", "203.0.113.5", env)).ok, true);
+      globalThis.fetch = async () => {
+        throw new Error("down");
+      };
+      assert.equal((await verifyTurnstile("token", "203.0.113.5", env)).ok, false);
+    } finally {
+      globalThis.fetch = original;
+    }
+  });
+});
+
+describe("contact route", () => {
+  const post = (body: unknown) =>
+    contactPost(
+      new Request("https://www.malorfa.com/api/contact", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+          origin: "https://www.malorfa.com",
+          "x-forwarded-for": "203.0.113.40",
+        },
+        body: JSON.stringify(body),
+      }),
+    );
+
+  it("doesn't use up attempts on validation errors", async () => {
+    resetRateLimits();
+    process.env.TURNSTILE_SECRET_KEY = secret;
+    try {
+      for (let i = 0; i < 8; i += 1) {
+        const response = await post({ ...validBody, startedAt: Date.now() - 10_000, message: "short" });
+        assert.equal(response.status, 400);
+      }
+      const blockedByTurnstile = await post({ ...validBody, startedAt: Date.now() - 10_000 });
+      assert.equal(blockedByTurnstile.status, 403);
+    } finally {
+      delete process.env.TURNSTILE_SECRET_KEY;
+    }
+  });
+
+  it("stops sending to one address after the daily allowance", async () => {
+    resetRateLimits();
+    process.env.RESEND_API_KEY = secret;
+    const original = globalThis.fetch;
+    let emails = 0;
+    globalThis.fetch = async () => {
+      emails += 1;
+      return new Response(JSON.stringify({ id: "email" }));
+    };
+    try {
+      const statuses: number[] = [];
+      for (let i = 0; i < 4; i += 1) {
+        const response = await post({ ...validBody, startedAt: Date.now() - 10_000 });
+        statuses.push(response.status);
+      }
+      assert.deepEqual(statuses, [200, 200, 200, 429]);
+      assert.equal(emails, 6);
+    } finally {
+      globalThis.fetch = original;
+    }
   });
 });
 
