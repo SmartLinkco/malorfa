@@ -43,3 +43,6 @@ next-env.d.ts
 
 # generated contact-email previews
 /email-previews/
+
+# media kept locally, not deployed or published
+/unreleased-media/

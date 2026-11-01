@@ -18,6 +18,10 @@ const sections = [
     body: "When you subscribe, your email address and IP address go to Buttondown, which runs the mailing list and helps filter out abuse. You will be asked to confirm your subscription, and you can unsubscribe at any time.",
   },
   {
+    title: "Form protection",
+    body: "To block automated abuse, both forms use Cloudflare Turnstile, which loads once you start filling one in and checks technical signals from your browser and IP address. Attempt counts are kept for a short time with Upstash, using scrambled (hashed) versions of email and IP addresses rather than the addresses themselves.",
+  },
+  {
     title: "Booking a call",
     body: "The contact page embeds Calendly for scheduling. Calendly loads on that page, may set its own cookies, and handles any details you enter under its own privacy policy.",
   },

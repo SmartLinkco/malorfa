@@ -26,7 +26,16 @@ export const maxSubmitMs = 24 * 60 * 60 * 1000;
 
 export const honeypotField = "hp_field";
 
+const tenMinutes = 10 * 60 * 1000;
+const oneDay = 24 * 60 * 60 * 1000;
+
 export const rateLimits = {
-  contact: { limit: 5, windowMs: 10 * 60 * 1000 },
-  newsletter: { limit: 5, windowMs: 10 * 60 * 1000 },
+  contact: { limit: 5, windowMs: tenMinutes },
+  newsletter: { limit: 5, windowMs: tenMinutes },
+  /** One address can only be emailed so many times, however many IPs are used. */
+  contactRecipient: { limit: 3, windowMs: oneDay },
+  newsletterRecipient: { limit: 3, windowMs: oneDay },
+  /** Site-wide ceilings. Each contact note sends two emails. */
+  contactDaily: { limit: 50, windowMs: oneDay },
+  newsletterDaily: { limit: 200, windowMs: oneDay },
 } as const;

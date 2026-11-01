@@ -3,6 +3,7 @@
 import { useRef, useState } from "react";
 import { Button } from "@/components/ui/Button";
 import { Honeypot, useFormStartedAt } from "@/components/forms/FormGuards";
+import { useTurnstile } from "@/components/forms/Turnstile";
 import { contactTopics, fieldLimits, honeypotField } from "@/lib/forms/constants";
 import { postForm } from "@/lib/forms/submit";
 import { site } from "@/content/site";
@@ -14,6 +15,7 @@ const fields: FieldName[] = ["name", "email", "topic", "message"];
 
 export function ContactForm() {
   const startedAt = useFormStartedAt();
+  const { slotRef, prepare, getToken, discard } = useTurnstile();
   const pending = useRef(false);
   const [status, setStatus] = useState<Status>("idle");
   const [message, setMessage] = useState("");
@@ -30,6 +32,15 @@ export function ContactForm() {
     setFieldErrors({});
     setMessage("");
 
+    const turnstileToken = await getToken();
+    if (turnstileToken === null) {
+      pending.current = false;
+      discard();
+      setMessage(`We couldn't complete the security check. Please try again, or email ${site.email}.`);
+      setStatus("error");
+      return;
+    }
+
     const result = await postForm("/api/contact", {
       name: data.get("name"),
       email: data.get("email"),
@@ -37,9 +48,11 @@ export function ContactForm() {
       message: data.get("message"),
       [honeypotField]: data.get(honeypotField),
       startedAt,
+      turnstileToken,
     });
 
     pending.current = false;
+    discard();
 
     if (result.ok) {
       setMessage(result.message);
@@ -81,7 +94,12 @@ export function ContactForm() {
   const submitting = status === "submitting";
 
   return (
-    <form onSubmit={onSubmit} className="relative space-y-5" aria-busy={submitting}>
+    <form
+      onSubmit={onSubmit}
+      onFocusCapture={() => void prepare()}
+      className="relative space-y-5"
+      aria-busy={submitting}
+    >
       <Honeypot id="contact-hp" />
       {status === "error" ? (
         <p className="rounded-sm border border-forest/20 bg-sage/10 px-3 py-2 text-sm text-ink" role="alert">
@@ -155,6 +173,7 @@ export function ContactForm() {
           placeholder="How can I help?"
         />
       </Field>
+      <div ref={slotRef} />
       <div className="flex flex-wrap items-center gap-4">
         <Button type="submit" size="lg" disabled={submitting}>
           {submitting ? "Sending…" : "Send message"}

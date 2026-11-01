@@ -3,6 +3,7 @@
 import { useId, useRef, useState } from "react";
 import { Button } from "@/components/ui/Button";
 import { Honeypot, useFormStartedAt } from "@/components/forms/FormGuards";
+import { useTurnstile } from "@/components/forms/Turnstile";
 import { site } from "@/content/site";
 import { fieldLimits, honeypotField } from "@/lib/forms/constants";
 import { postForm } from "@/lib/forms/submit";
@@ -20,6 +21,7 @@ export function NewsletterForm({
   const emailId = useId();
   const honeypotId = useId();
   const startedAt = useFormStartedAt();
+  const { slotRef, prepare, getToken, discard } = useTurnstile();
   const pending = useRef(false);
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<Status>("idle");
@@ -34,13 +36,24 @@ export function NewsletterForm({
     setStatus("submitting");
     setMessage("");
 
+    const turnstileToken = await getToken();
+    if (turnstileToken === null) {
+      pending.current = false;
+      discard();
+      setMessage("We couldn't complete the security check. Please try again.");
+      setStatus("error");
+      return;
+    }
+
     const result = await postForm("/api/newsletter", {
       email: data.get("email"),
       [honeypotField]: data.get(honeypotField),
       startedAt,
+      turnstileToken,
     });
 
     pending.current = false;
+    discard();
     setMessage(result.message);
     setStatus(result.ok ? "success" : "error");
   }
@@ -81,10 +94,12 @@ export function NewsletterForm({
       ) : (
         <form
           onSubmit={onSubmit}
+          onFocusCapture={() => void prepare()}
           className={cn("relative flex flex-col gap-3", compact ? "" : "mt-5")}
           aria-busy={submitting}
         >
           <Honeypot id={honeypotId} />
+          <div ref={slotRef} />
           <div className="flex flex-col gap-3 sm:flex-row">
             <label className="sr-only" htmlFor={emailId}>
               Email address
