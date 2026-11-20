@@ -12,7 +12,7 @@ import {
 import { HeroPortrait } from "@/components/effects/HeroPortrait";
 import { TypewriterBrand } from "@/components/effects/TypewriterBrand";
 import { media } from "@/content/media";
-import { site } from "@/content/site";
+import { accreditation, site } from "@/content/site";
 
 /**
  * Home hero: Malorfa cutout (mobile background / desktop float) + scroll plant.
@@ -101,6 +101,13 @@ export function InteractiveHero() {
             >
               {site.name} — {site.positioning}. One practice of attention across
               boardrooms, bookshelves, roads, and a living collection.
+            </motion.p>
+            <motion.p
+              variants={reveal}
+              transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+              className="mt-4 text-xs font-semibold uppercase tracking-[0.16em] text-sage lg:text-moss"
+            >
+              PR Strategist · {accreditation}
             </motion.p>
             <motion.div
               variants={reveal}

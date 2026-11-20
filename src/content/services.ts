@@ -109,7 +109,7 @@ export const caseStudies = [
 export const faqs = [
   {
     q: "Do you sell insurance policies directly?",
-    a: "No. My work is advisory: risk reviews, program design, workshops, and briefings. Policies stay with your broker or carrier, and I'm glad to work alongside them.",
+    a: "Yes. I sell insurance policies directly. Risk reviews, program design, workshops, and briefings sit alongside that work, and I'm glad to work alongside your broker or carrier when you already have one.",
   },
   {
     q: "Who is a good fit for a discovery call?",
@@ -125,6 +125,6 @@ export const faqs = [
   },
   {
     q: "What is your professional background?",
-    a: "I work as an underwriting expert and am accredited by the Institute of Public Relations, Ghana. If your engagement calls for specific credentials, ask on our first call and I'll share the details.",
+    a: "I work as a Risk Advisor and PR Strategist, and I am an Author, Traveler, and Plant lover. I am accredited by the Institute of Public Relations, Ghana. If your engagement calls for specific credentials, ask on our first call and I'll share the details.",
   },
 ] as const;

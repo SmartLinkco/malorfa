@@ -4,7 +4,7 @@ import { ContactForm } from "@/components/forms/ContactForm";
 import { MediaPlaceholder } from "@/components/ui/MediaPlaceholder";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { media } from "@/content/media";
-import { site } from "@/content/site";
+import { accreditation, site } from "@/content/site";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
@@ -30,6 +30,9 @@ export default function ContactPage() {
               Consulting, speaking, plant partnerships, media—or something else.
               Choose a topic so the reply can be useful.
             </p>
+            <p className="mt-4 text-xs font-semibold uppercase tracking-[0.16em] text-sage">
+              {accreditation}
+            </p>
           </div>
           <MediaPlaceholder
             src={media.travelMustard.src}
@@ -48,7 +51,7 @@ export default function ContactPage() {
             <SectionHeader
               eyebrow="Message"
               title="Send a note"
-              description="Consulting, speaking, plant partnerships, media — or something else. Your note comes straight to my inbox."
+              description="Your note comes straight to my inbox."
               className="mb-8"
             />
             <ContactForm />

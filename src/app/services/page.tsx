@@ -6,6 +6,7 @@ import { MediaPlaceholder } from "@/components/ui/MediaPlaceholder";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { TestimonialGrid } from "@/components/ui/TestimonialGrid";
 import { media } from "@/content/media";
+import { accreditation } from "@/content/site";
 import {
   caseStudies,
   faqs,
@@ -47,7 +48,10 @@ export default function ServicesPage() {
             Structured advisory for corporate agents and organizations who need
             clear exposure maps, renewal-ready language, and workshops that stick.
           </p>
-          <div className="mt-8">
+          <p className="mt-6 text-xs font-semibold uppercase tracking-[0.16em] text-moss">
+            PR Strategist · {accreditation}
+          </p>
+          <div className="mt-4">
             <Button href="/contact" variant="inverse" size="lg">
               Book a consultation
             </Button>
@@ -66,6 +70,11 @@ export default function ServicesPage() {
             {services.map((s) => (
               <Card as="li" key={s.id} className="flex flex-col">
                 <h3 className="font-display text-2xl text-ink">{s.title}</h3>
+                {s.id === "speaking" ? (
+                  <p className="mt-2 text-xs font-semibold uppercase tracking-[0.14em] text-sage">
+                    {accreditation}
+                  </p>
+                ) : null}
                 <p className="mt-3 text-sm leading-relaxed text-ink/70">{s.summary}</p>
                 <ul className="mt-5 space-y-2 border-t border-ink/8 pt-5">
                   {s.outcomes.map((o) => (

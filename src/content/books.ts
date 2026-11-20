@@ -56,7 +56,7 @@ export const books: Book[] = [
   {
     slug: "leaves-on-the-windowsill",
     title: "Leaves on the Windowsill",
-    subtitle: "A plant-tropist’s field notes for city apartments",
+    subtitle: "A plant lover’s field notes for city apartments",
     year: "Forthcoming",
     status: "In progress",
     coverLabel: "Leaves on the Windowsill",
@@ -105,7 +105,8 @@ export const speakingPress = [
   {
     type: "Credential",
     title: "IPR Ghana Accredited",
-    detail: "Institute of Public Relations, Ghana — underwriting expert & published author",
+    detail:
+      "Institute of Public Relations, Ghana — Risk Advisor, PR Strategist, Author, Traveler, and Plant lover",
   },
 ] as const;
 

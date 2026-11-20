@@ -70,10 +70,10 @@ export default function AboutPage() {
             objectPosition="center 15%"
           />
           <MediaPlaceholder
-            src={media.aboutBlackDress.src}
-            alt={media.aboutBlackDress.alt}
+            src={media.corporateLaptop.src}
+            alt={media.corporateLaptop.alt}
             aspect="square"
-            objectPosition="center 25%"
+            objectPosition="center 45%"
           />
           <MediaPlaceholder
             src={media.travelUrbanRed.src}

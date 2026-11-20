@@ -31,7 +31,7 @@ export default function PlantsPage() {
         <div className="container-page section-pad grid items-center gap-10 lg:grid-cols-2">
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-sage">
-              Plant-tropist
+              Plant lover
             </p>
             <h1 className="mt-3 font-display text-4xl text-ink md:text-5xl text-balance">
               A collection tended with patience

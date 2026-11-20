@@ -1,4 +1,4 @@
-import { site } from "@/content/site";
+import { roleList, site } from "@/content/site";
 import { ogImage, siteUrl } from "@/lib/seo";
 
 const personId = `${siteUrl}/#person`;
@@ -31,7 +31,7 @@ const graph = {
       url: siteUrl,
       image: `${siteUrl}${ogImage.url}`,
       description: site.positioning,
-      jobTitle: "Underwriting Expert",
+      jobTitle: roleList,
       email: site.email,
       telephone: site.phone,
       homeLocation: {
@@ -47,11 +47,13 @@ const graph = {
         },
       },
       knowsAbout: [
-        "Underwriting",
+        "Risk advisory",
         "Corporate risk and insurance",
-        "Plants",
-        "Travel",
+        "Public relations",
+        "IPR Ghana Accredited",
         "Books",
+        "Travel",
+        "Plants",
       ],
       sameAs,
       mainEntityOfPage: { "@id": websiteId },
