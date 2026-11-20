@@ -50,6 +50,7 @@ const graph = {
         "Risk advisory",
         "Corporate risk and insurance",
         "Public relations",
+        "IPR Ghana Accredited",
         "Books",
         "Travel",
         "Plants",

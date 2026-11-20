@@ -23,7 +23,7 @@ export const metadata: Metadata = pageMetadata({
   title: "Home",
   absoluteTitle: defaultTitle,
   description:
-    "Risk counsel by day. Plants, pages, and open roads when the week opens. Risk Advisor, PR Strategist, Author, Traveler, and Plant lover.",
+    "Risk counsel by day. Plants, pages, and open roads when the week opens. Risk Advisor, PR Strategist · IPR Ghana Accredited, Author, Traveler, and Plant lover.",
   path: "/",
 });
 

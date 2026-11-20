@@ -4,7 +4,7 @@ import { ContactForm } from "@/components/forms/ContactForm";
 import { MediaPlaceholder } from "@/components/ui/MediaPlaceholder";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { media } from "@/content/media";
-import { site } from "@/content/site";
+import { accreditation, site } from "@/content/site";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
@@ -29,6 +29,9 @@ export default function ContactPage() {
             <p className="mt-5 text-lg leading-relaxed text-ink/70">
               Consulting, speaking, plant partnerships, media—or something else.
               Choose a topic so the reply can be useful.
+            </p>
+            <p className="mt-4 text-xs font-semibold uppercase tracking-[0.16em] text-sage">
+              {accreditation}
             </p>
           </div>
           <MediaPlaceholder

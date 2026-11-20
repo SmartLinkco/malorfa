@@ -18,6 +18,9 @@ export const roleLine = roles.join(" · ");
 export const roleList =
   "Risk Advisor, PR Strategist, Author, Traveler, and Plant lover";
 
+/** Display this string exactly. Institute of Public Relations, Ghana. */
+export const accreditation = "IPR Ghana Accredited";
+
 export const site = {
   name: "Malorfa Aryee",
   shortName: "Malorfa",
