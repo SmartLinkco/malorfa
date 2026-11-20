@@ -2,15 +2,30 @@
  * Site-wide content for Malorfa Aryee.
  */
 
+/** Current expertise. Used for role lines, chips, and structured data. */
+export const roles = [
+  "Risk Advisor",
+  "PR Strategist",
+  "Author",
+  "Traveler",
+  "Plant lover",
+] as const;
+
+/** Middot-separated roles for the hero, footer, and about name line. */
+export const roleLine = roles.join(" · ");
+
+/** Prose list for sentences, metadata, and JSON-LD jobTitle. */
+export const roleList =
+  "Risk Advisor, PR Strategist, Author, Traveler, and Plant lover";
+
 export const site = {
   name: "Malorfa Aryee",
   shortName: "Malorfa",
   brand: "Malorfa",
-  credentials: "Underwriting Expert · IPR Ghana Accredited",
+  credentials: roleLine,
   tagline:
     "Risk counsel by day. Plants, pages, and open roads when the week opens.",
-  positioning:
-    "Underwriting expert · corporate risk & insurance advisor · IPR Ghana Accredited · plant-tropist · traveler · published author",
+  positioning: roleLine,
   email: "hello@malorfa.com",
   phone: "+233 24 355 4423",
   location: "Ghana · on the road",
@@ -46,14 +61,14 @@ export const facets = [
     label: "Risk & Insurance",
     href: "/services",
     blurb:
-      "Boardroom-ready underwriting and risk counsel for corporate agents and growing organizations.",
+      "Boardroom-ready risk advisory for corporate agents and growing organizations.",
     image: "/media/corporate-skyline.jpg",
     imageAlt: "Urban skyline framed by tree branches — boardroom and nature",
     cue: "Counsel",
   },
   {
     id: "plants",
-    label: "Plant-tropist",
+    label: "Plant lover",
     href: "/plants",
     blurb: "A living collection, care notes, and nursery partnerships.",
     image: "/media/plant-orchid-detail.jpg",

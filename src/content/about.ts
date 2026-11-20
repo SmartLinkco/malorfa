@@ -1,7 +1,7 @@
 export const biography = {
-  lead: "I advise organizations on risk and insurance with the same attention I bring to a garden, a manuscript, and an itinerary: clear structure, honest tradeoffs, and room to breathe.",
+  lead: "I bring the same careful attention to boardrooms, bookshelves, open roads, and a growing green collection.",
   paragraphs: [
-    "Malorfa Aryee — underwriting expert and IPR Ghana Accredited professional — brings corporate risk and insurance counsel shaped by clarity under pressure and language that finance and ops can actually use.",
+    "Malorfa Aryee — Risk Advisor, PR Strategist, Author, Traveler, Plant lover, and IPR Ghana Accredited professional — brings risk and insurance advisory shaped by clarity under pressure and language that finance and ops can actually use.",
     "Away from client work, I tend living plants, publish (I Walked Away), and travel alone when the calendar allows—Barcelona plazas, Paris café tables, East African roads. These are not side hobbies bolted onto a résumé; they shape how I listen, write briefs, and stay grounded.",
     "This site gathers those threads under one name. If you are here for consulting, start with Services. If you found me through the book, a plant tip, or a travel note, welcome—stay as long as it is useful.",
   ],
@@ -10,9 +10,9 @@ export const biography = {
 export const timeline = [
   {
     year: "Career",
-    title: "Underwriting, risk & insurance counsel",
+    title: "Risk & insurance advisory",
     detail:
-      "Nearly two decades across underwriting, claims, reinsurance, and risk communication—advisory work for agents and organizations who need stakeholder-ready clarity.",
+      "Nearly two decades across risk advisory, claims, reinsurance, and risk communication—for agents and organizations who need stakeholder-ready clarity.",
   },
   {
     year: "Credential",
@@ -22,9 +22,9 @@ export const timeline = [
   },
   {
     year: "Expertise",
-    title: "Underwriting Expert",
+    title: "Risk Advisor, PR Strategist, Author, Traveler, and Plant lover",
     detail:
-      "Deep practice pricing risk, designing programs, and translating underwriting judgment into decisions leaders can act on.",
+      "Risk advisory that prices risk, designs insurance programs, and turns judgment into decisions leaders can act on—alongside PR strategy, books, travel, and a living collection.",
   },
   {
     year: "2024",
@@ -65,7 +65,7 @@ export const credentials = [
   },
   {
     label: "Expertise",
-    value: "Underwriting Expert",
+    value: "Risk Advisor, PR Strategist, Author, Traveler, and Plant lover",
   },
   {
     label: "Accreditation",

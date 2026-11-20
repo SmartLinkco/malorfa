@@ -15,6 +15,7 @@ import { books } from "@/content/books";
 import { media } from "@/content/media";
 import { plantCollection } from "@/content/plants";
 import { services } from "@/content/services";
+import { roles } from "@/content/site";
 import { countriesVisitedCount } from "@/content/travel";
 import { defaultTitle, pageMetadata } from "@/lib/seo";
 
@@ -22,7 +23,7 @@ export const metadata: Metadata = pageMetadata({
   title: "Home",
   absoluteTitle: defaultTitle,
   description:
-    "Risk counsel by day. Plants, pages, and open roads when the week opens. Underwriting expert, IPR Ghana Accredited, plant-tropist, traveler, and published author.",
+    "Risk counsel by day. Plants, pages, and open roads when the week opens. Risk Advisor, PR Strategist, Author, Traveler, and Plant lover.",
   path: "/",
 });
 
@@ -38,10 +39,9 @@ export default function HomePage() {
             Trusted for
           </p>
           <ul className="flex flex-wrap gap-x-8 gap-y-2 text-sm text-ink/70">
-            <li>Underwriting expertise</li>
-            <li>Corporate risk briefings</li>
-            <li>IPR Ghana Accredited</li>
-            <li>Author talks & media</li>
+            {roles.map((role) => (
+              <li key={role}>{role}</li>
+            ))}
           </ul>
         </div>
       </section>

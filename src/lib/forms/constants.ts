@@ -2,10 +2,11 @@
 
 export const contactTopics = [
   { value: "consulting", label: "Consulting / risk & insurance" },
-  { value: "underwriting", label: "Underwriting" },
+  { value: "risk-advisory", label: "Risk advisory" },
   { value: "pr", label: "PR" },
   { value: "speaking", label: "Speaking" },
   { value: "plants", label: "Plants / nursery partnership" },
+  { value: "travel-tips", label: "Travel Tips" },
   { value: "media", label: "Media / press" },
   { value: "other", label: "Other" },
 ] as const;
