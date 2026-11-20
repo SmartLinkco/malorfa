@@ -78,8 +78,7 @@ export default function HomePage() {
               src={media.corporateLaptop.src}
               alt={media.corporateLaptop.alt}
               aspect="wide"
-              className="hidden lg:block"
-              objectPosition="center 40%"
+              objectPosition="center 35%"
             />
           </div>
           <div className="mb-8 lg:hidden">

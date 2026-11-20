@@ -44,8 +44,8 @@ export const media = {
     alt: "Urban skyline framed by tree branches — boardroom and nature",
   },
   corporateLaptop: {
-    src: "/media/corporate-laptop.jpg",
-    alt: "Malorfa in a white suit working on a laptop",
+    src: "/media/malorfa-white-suit-laptop.webp",
+    alt: "Malorfa Aryee working on her laptop",
   },
   travelTram: {
     src: "/media/travel-tram.jpg",

@@ -6,12 +6,12 @@ Every semantic photo is used **once** as a primary visual (story listing → det
 |------|-----------|
 | `author-speaking.jpg` | Home hero, and Books → Talks & signings |
 | `gallery-02.jpeg` | Home gallery |
-| `corporate-laptop.jpg` | Home → Services teaser |
+| `malorfa-white-suit-laptop.webp` | Home → Services teaser, and the middle photo in the About gallery |
 | `portrait-orchid.jpg` | Plants hero |
 | `author-paris-book.jpg` | Books (`I Walked Away`) |
 | `about-wings.jpg` | About hero |
 | `about-casual-collage.jpg` | About gallery |
-| `about-black-dress.jpg` | About gallery |
+| `about-black-dress.jpg` | Unused. The About gallery middle photo is the white-suit laptop portrait. |
 | `travel-urban-red.jpg` | About gallery |
 | `corporate-skyline.jpg` | Services hero |
 | `travel-barcelona-pigeon.jpg` | Travel hero |
